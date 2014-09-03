@@ -62,7 +62,7 @@ class cf7_extras {
 
 		add_meta_box( 
 			'cf7s-subject', 
-			__( 'Extra Settings', 'cf7-extra' ),
+			__( 'Extra Settings', 'cf7-extras' ),
 			array( $this, 'wpcf7_metabox' ), 
 			null,
 			'form', 
@@ -227,16 +227,11 @@ class cf7_extras {
 
 	function maybe_dequeue_scripts() {
 
-		//print_r($this->rendered);
-
 		foreach ( $this->rendered as $form_id => $settings ) {
 
 			if ( isset( $settings['disable-ajax'] ) && $settings['disable-ajax'] ) {
 				wp_dequeue_script( 'contact-form-7' );
-			}
-
-			if ( isset( $settings['track-ga'] ) && ! empty( $settings['track-ga'] ) ) {
-				// 
+				return;
 			}
 
 		}
