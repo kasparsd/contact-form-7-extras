@@ -1,0 +1,5 @@
+.cf7-extras-table th { max-width:15em; }
+.cf7-extras-table th label { font-weight:normal; }
+.cf7-extras-table .desc { line-height:1.4; font-style:italic; color:#666; margin:0.2em 0 0 0; }
+.cf7-extras-table td ul { margin:0; }
+.cf7-extras-table td li { margin:0.5em 0; display:block; }
