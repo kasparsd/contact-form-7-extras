@@ -1,8 +1,8 @@
 <?php
 /*
 	Plugin Name: Contact Form 7 Extras
-	Description: 
-	Plugin URI: 
+	Description: Add simple controls for advanced functionality of Contact Form 7.
+	Plugin URI: https://github.com/kasparsd/contact-form-7-extras
 	Author: Kaspars Dambis
 	Author URI: http://kaspars.net
 	Version: 0.1
@@ -84,9 +84,11 @@ class cf7_extras {
 						<input name="extra[disable-ajax]" value="0" type="hidden" /> 
 						<input id="extra-disable-ajax" name="extra[disable-ajax]" value="1" %s type="checkbox" /> 
 						<span>%s</span>
-					</label>',
+					</label>
+					<p class="desc">%s</p>',
 					checked( get_post_meta( $post_id, 'extra-disable-ajax', true ), true, false ),
-					__( 'Disable AJAX for this form', 'cf7-extras' )
+					__( 'Disable AJAX for this form', 'cf7-extras' ),
+					esc_html__( 'Note that disabling AJAX will also disable Google Analytics event tracking for this form.', 'cf7-extras' )
 				)
 			),
 			'extra-redirect-success' => array(
@@ -98,7 +100,7 @@ class cf7_extras {
 					<p class="desc">%s</p>',
 					esc_attr( esc_url( get_post_meta( $post_id, 'extra-redirect-success', true ) ) ),
 					esc_attr( 'http://example.com' ),
-					esc_html( __( 'Enter a URL where users should be redirected after successful form submissions.' ) )
+					esc_html__( 'Enter URL where users should be redirected after successful form submissions.', 'cf7-extras' )
 				)
 			),
 			'extra-track-ga-success' => array(
