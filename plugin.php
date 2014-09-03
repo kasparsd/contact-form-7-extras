@@ -17,7 +17,7 @@ cf7_extras::instance();
 class cf7_extras {
 
 	public static $instance;
-	private $rendered;
+	private $rendered = array();
 
 
 	public static function instance() {
