@@ -43,8 +43,11 @@ class cf7_extras {
 		// Detect a form being rendered on the front-end
 		add_filter( 'wpcf7_form_action_url', array( $this, 'capture_form_load' ) );
 
+		// Remove front-end CSS by default, put it back in the footer if required
+		add_action( 'wpcf7_enqueue_styles', array( $this, 'dequeue_styles' ), 12 );
+
 		// Maybe disable AJAX requests
-		add_action( 'wp_print_footer_scripts', array( $this, 'maybe_dequeue_scripts' ), 8 );
+		add_action( 'wp_print_footer_scripts', array( $this, 'maybe_alter_scripts' ), 8 );
 
 		// Maybe redirect or trigger GA events
 		add_filter( 'wpcf7_ajax_json_echo', array( $this, 'filter_ajax_echo' ), 10, 2 );
@@ -54,6 +57,8 @@ class cf7_extras {
 
 		// TODO: Enable Google analytics tracking when AJAX is disabled
 		//add_filter( 'wpcf7_form_response_output', array( $this, 'maybe_trigger' ), 10, 4 );
+		
+		add_filter( 'wpcf7_form_elements', array( $this, 'maybe_reset_autop' ) );
 
 	}
 
@@ -88,7 +93,35 @@ class cf7_extras {
 					<p class="desc">%s</p>',
 					checked( get_post_meta( $post_id, 'extra-disable-ajax', true ), true, false ),
 					__( 'Disable AJAX for this form', 'cf7-extras' ),
-					esc_html__( 'Note that disabling AJAX will also disable Google Analytics event tracking for this form.', 'cf7-extras' )
+					__( 'Note that disabling AJAX will also disable Google Analytics event tracking for this form. Same as <code>define( \'WPCF7_LOAD_JS\', true );</code>.', 'cf7-extras' )
+				)
+			),
+			'extra-disable-css' => array(
+				'label' => __( 'Default CSS', 'cf7-extras' ),
+				'field' => sprintf( 
+					'<label>
+						<input name="extra[disable-css]" value="0" type="hidden" /> 
+						<input id="extra-disable-css" name="extra[disable-css]" value="1" %s type="checkbox" /> 
+						<span>%s</span>
+					</label>
+					<p class="desc">%s</p>',
+					checked( get_post_meta( $post_id, 'extra-disable-css', true ), true, false ),
+					__( 'Disable default CSS for this form', 'cf7-extras' ),
+					__( 'Disables CSS that comes bundled with Contact Form 7. Same as <code>define( \'WPCF7_LOAD_CSS\', false );</code>.', 'cf7-extras' )
+				)
+			),
+			'extra-disable-autop' => array(
+				'label' => __( 'Automatic Formatting', 'cf7-extras' ),
+				'field' => sprintf( 
+					'<label>
+						<input name="extra[disable-autop]" value="0" type="hidden" /> 
+						<input id="extra-disable-autop" name="extra[disable-autop]" value="1" %s type="checkbox" /> 
+						<span>%s</span>
+					</label>
+					<p class="desc">%s</p>',
+					checked( get_post_meta( $post_id, 'extra-disable-autop', true ), true, false ),
+					__( 'Disable automatic paragraph formatting', 'cf7-extras' ),
+					__( 'Same as <code>define( \'WPCF7_AUTOP\', false );</code>.', 'cf7-extras' )
 				)
 			),
 			'extra-redirect-success' => array(
@@ -227,16 +260,27 @@ class cf7_extras {
 	}
 
 
-	function maybe_dequeue_scripts() {
+	function maybe_alter_scripts() {
 
 		foreach ( $this->rendered as $form_id => $settings ) {
 
+			if ( isset( $settings['disable-css'] ) && ! $settings['disable-css'] ) {
+				wp_enqueue_style( 'contact-form-7' );
+			}
+
 			if ( isset( $settings['disable-ajax'] ) && $settings['disable-ajax'] ) {
 				wp_dequeue_script( 'contact-form-7' );
-				return;
 			}
 
 		}
+
+	}
+
+
+	function dequeue_styles() {
+
+		// We add this back if a form with styles enabled is found
+		wp_dequeue_style( 'contact-form-7' );
 
 	}
 
@@ -300,6 +344,29 @@ class cf7_extras {
 			}
 
 		}
+
+	}
+
+
+	function maybe_reset_autop( $form ) {
+
+		$form_instance = WPCF7_ContactForm::get_current();
+		$disable_autop = get_post_meta( $form_instance->id(), 'extra-disable-autop', true );
+
+		if ( $disable_autop ) {
+
+			$manager = WPCF7_ShortcodeManager::get_instance();
+
+			$form_meta = get_post_meta( $form_instance->id(), '_form', true );
+			$form = $manager->do_shortcode( $form_meta );
+
+			$form_instance->set_properties( array(
+					'form' => $form
+				) );
+
+		}
+
+		return $form;
 
 	}
 
