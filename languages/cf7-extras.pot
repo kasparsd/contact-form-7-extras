@@ -1,0 +1,110 @@
+# Copyright (C) 2014 Contact Form 7 Extras
+# This file is distributed under the same license as the Contact Form 7 Extras package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Contact Form 7 Extras 0.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/git\n"
+"POT-Creation-Date: 2014-09-10 04:14:29+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: plugin.php:70
+msgid "Extra Settings"
+msgstr ""
+
+#: plugin.php:86
+msgid "AJAX Submissions"
+msgstr ""
+
+#: plugin.php:95
+msgid "Disable AJAX for this form"
+msgstr ""
+
+#: plugin.php:96
+msgid ""
+"Note that disabling AJAX will also disable Google Analytics event tracking "
+"for this form. Same as <code>define( 'WPCF7_LOAD_JS', true );</code>."
+msgstr ""
+
+#: plugin.php:100
+msgid "Default CSS"
+msgstr ""
+
+#: plugin.php:109
+msgid "Disable default CSS for this form"
+msgstr ""
+
+#: plugin.php:110
+msgid ""
+"Disables CSS that comes bundled with Contact Form 7. Same as "
+"<code>define( 'WPCF7_LOAD_CSS', false );</code>."
+msgstr ""
+
+#: plugin.php:114
+msgid "Automatic Formatting"
+msgstr ""
+
+#: plugin.php:123
+msgid "Disable automatic paragraph formatting"
+msgstr ""
+
+#: plugin.php:124
+msgid "Same as <code>define( 'WPCF7_AUTOP', false );</code>."
+msgstr ""
+
+#: plugin.php:128
+msgid "Redirect to URL on Success"
+msgstr ""
+
+#: plugin.php:136
+msgid ""
+"Enter URL where users should be redirected after successful form submissions."
+msgstr ""
+
+#: plugin.php:140
+msgid "Google Analytics Tracking"
+msgstr ""
+
+#: plugin.php:161
+msgid "Trigger Google Analytics event on successful form submissions."
+msgstr ""
+
+#: plugin.php:163
+msgid ""
+"Track Google Analytics event with category \"Contact Form\", label \"Sent\" "
+"and \"%s\" as value."
+msgstr ""
+
+#: plugin.php:167
+msgid "Trigger Google Analytics event on all form submissions."
+msgstr ""
+
+#: plugin.php:169
+msgid ""
+"Track Google Analytics event with category \"Contact Form\", label \"Submit"
+"\" and \"%s\" as value."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Contact Form 7 Extras"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/kasparsd/contact-form-7-extras"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Add simple controls for advanced functionality of Contact Form 7."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Kaspars Dambis"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://kaspars.net"
+msgstr ""
