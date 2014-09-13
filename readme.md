@@ -13,9 +13,10 @@ Adds simple and user friendly controls for some of the advanced functionality of
 
 Contact Form 7 Extras provides simple user interface for the following functionality of the [Contact Form 7](http://wordpress.org/plugins/contact-form-7/) plugin:
 
-- Disabling form AJAX
-- Tracking form submissions and completions with Google Analytics.
+- Disable AJAX form submission
 - Disable default form CSS
+- Disable automatic paragraph formatting
+- Track form submissions and completions with Google Analytics.
 - Redirect to URL on form submission
 
 
@@ -36,6 +37,12 @@ None, yet.
 
 ## Changelog
 
+
+### 0.1.1
+
+- Update readme. 
+- Use stable tags instead of trunk for releases.
+
 ### 0.1
 
-* Initial release.
+- Initial release.
