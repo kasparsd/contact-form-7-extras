@@ -4,7 +4,7 @@ Contributors: kasparsd, buzztone
 Tags: Contact Form 7, cf7, admin, backend, redirect, tracking, google analytics   
 Requires at least: 3.0   
 Tested up to: 4.0   
-Stable tag: trunk   
+Stable tag: 0.1.1   
 
 Adds simple and user friendly controls for some of the advanced functionality of Contact Form 7 plugin.
 
