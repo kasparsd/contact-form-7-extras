@@ -2,10 +2,12 @@
 /*
 	Plugin Name: Contact Form 7 Extras
 	Description: Add simple controls for advanced functionality of Contact Form 7.
+	Tags: contact form, contact form 7, cf7, admin, backend, google analytics, ga, forms, form, track
 	Plugin URI: https://github.com/kasparsd/contact-form-7-extras
 	Author: Kaspars Dambis
 	Author URI: http://kaspars.net
 	Version: 0.1.1
+	Tested up to: 4.0
 	License: GPL2
 	Text Domain: cf7-extras
 */
