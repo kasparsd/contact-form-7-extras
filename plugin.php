@@ -6,7 +6,7 @@
 	Plugin URI: https://github.com/kasparsd/contact-form-7-extras
 	Author: Kaspars Dambis
 	Author URI: http://kaspars.net
-	Version: 0.1.1
+	Version: 0.1.2
 	Tested up to: 4.0
 	License: GPL2
 	Text Domain: cf7-extras
@@ -172,13 +172,13 @@ class cf7_extras {
 					checked( get_post_meta( $post_id, 'extra-track-ga-success', true ), true, false ),
 					esc_html__( 'Trigger Google Analytics event on successful form submissions.', 'cf7-extras' ),
 					esc_html( sprintf(
-						__( 'Track Google Analytics event with category "Contact Form", label "Sent" and "%s" as value.', 'cf7-extras' ),
+						__( 'Track Google Analytics event with category "Contact Form", action "Sent" and "%s" as label.', 'cf7-extras' ),
 						$cf7->title()
 					) ),
 					checked( get_post_meta( $post_id, 'extra-track-ga-submit', true ), true, false ),
 					esc_html__( 'Trigger Google Analytics event on all form submissions.', 'cf7-extras' ),
 					esc_html( sprintf(
-						__( 'Track Google Analytics event with category "Contact Form", label "Submit" and "%s" as value.', 'cf7-extras' ),
+						__( 'Track Google Analytics event with category "Contact Form", action "Submit" and "%s" as label.', 'cf7-extras' ),
 						$cf7->title()
 					) )
 				)
@@ -309,7 +309,7 @@ class cf7_extras {
 				$items['onSubmit'] = array();
 
 			$items['onSubmit'][] = sprintf( 
-					'if ( typeof ga == "function" ) { ga( "send", "event", "Contact Form", "Submit", "%1$s" ); } else { var _gaq = _gaq || []; _gaq.push(["_trackEvent", "Contact Form", "Submit", "%1$s" ]); }',
+					'if ( typeof ga == "function" ) { ga( "send", "event", "Contact Form", "Submit", "%1$s" ); } else { _gaq.push(["_trackEvent", "Contact Form", "Submit", "%1$s" ]); }',
 					esc_js( $form->title() )
 				);
 			
