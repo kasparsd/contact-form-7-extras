@@ -37,6 +37,9 @@ None, yet.
 
 ## Changelog
 
+### 0.1.3
+
+- Fix Google Analytics tracking for sent event too.
 
 ### 0.1.2
 

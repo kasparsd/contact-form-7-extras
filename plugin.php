@@ -6,7 +6,7 @@
 	Plugin URI: https://github.com/kasparsd/contact-form-7-extras
 	Author: Kaspars Dambis
 	Author URI: http://kaspars.net
-	Version: 0.1.2
+	Version: 0.1.3
 	Tested up to: 4.0
 	License: GPL2
 	Text Domain: cf7-extras
@@ -325,7 +325,7 @@ class cf7_extras {
 			}
 
 			$items['onSentOk'][] = sprintf( 
-					'if ( typeof ga == "function" ) { ga( "send", "event", "Contact Form", "Sent", "%1$s" ); } else { var _gaq = _gaq || []; _gaq.push(["_trackEvent", "Contact Form", "Sent", "%1$s" ]); }',
+					'if ( typeof ga == "function" ) { ga( "send", "event", "Contact Form", "Sent", "%1$s" ); } else { _gaq.push(["_trackEvent", "Contact Form", "Sent", "%1$s" ]); }',
 					esc_js( $form->title() )
 				);
 
