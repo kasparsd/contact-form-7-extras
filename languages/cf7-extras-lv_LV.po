@@ -4,31 +4,31 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Contact Form 7 Extras 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/git\n"
-"POT-Creation-Date: 2014-09-10 04:14:29+00:00\n"
+"POT-Creation-Date: 2014-10-14 10:30:17+00:00\n"
+"PO-Revision-Date: 2014-10-14 13:32+0200\n"
+"Last-Translator: Kaspars <hi@kaspars.net>\n"
+"Language-Team: \n"
+"Language: lv_LV\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2014-09-10 07:30+0200\n"
-"Last-Translator: Kaspars <hi@kaspars.net>\n"
-"Language-Team: \n"
 "X-Generator: Poedit 1.6.8\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"Language: lv_LV\n"
 
-#: plugin.php:70
+#: plugin.php:82
 msgid "Extra Settings"
 msgstr "Papildu uzstādījumi"
 
-#: plugin.php:86
+#: plugin.php:98
 msgid "AJAX Submissions"
 msgstr "AJAX iesniegšana"
 
-#: plugin.php:95
+#: plugin.php:107
 msgid "Disable AJAX for this form"
 msgstr "Atspējot AJAX šai formai"
 
-#: plugin.php:96
+#: plugin.php:108
 msgid ""
 "Note that disabling AJAX will also disable Google Analytics event tracking "
 "for this form. Same as <code>define( 'WPCF7_LOAD_JS', true );</code>."
@@ -37,15 +37,15 @@ msgstr ""
 "uzskaite šai formai. Tas pats, kas <code>define( 'WPCF7_LOAD_JS', true );</"
 "code>."
 
-#: plugin.php:100
+#: plugin.php:112
 msgid "Default CSS"
 msgstr "Noklusētais CSS"
 
-#: plugin.php:109
+#: plugin.php:121
 msgid "Disable default CSS for this form"
 msgstr "Atspējot noklusēto CSS šai formai"
 
-#: plugin.php:110
+#: plugin.php:122
 msgid ""
 "Disables CSS that comes bundled with Contact Form 7. Same as "
 "<code>define( 'WPCF7_LOAD_CSS', false );</code>."
@@ -53,60 +53,78 @@ msgstr ""
 "Atspējo CSS, kas nāk kopā ar Contact Form 7. Tas pats, kas "
 "<code>define( 'WPCF7_LOAD_CSS', false );</code>."
 
-#: plugin.php:114
+#: plugin.php:126
 msgid "Automatic Formatting"
 msgstr "Automātiskā noformēšana"
 
-#: plugin.php:123
+#: plugin.php:135
 msgid "Disable automatic paragraph formatting"
 msgstr "Atspējot automātisko paragrāfu formēšanu"
 
-#: plugin.php:124
+#: plugin.php:136
 msgid "Same as <code>define( 'WPCF7_AUTOP', false );</code>."
 msgstr "Tas pats, kas <code>define( 'WPCF7_AUTOP', false );</code>."
 
-#: plugin.php:128
+#: plugin.php:140
 msgid "Redirect to URL on Success"
 msgstr "Nosūtīt uz URL pēc veiksmīgas iesniegšanas"
 
-#: plugin.php:136
+#: plugin.php:148
 msgid ""
 "Enter URL where users should be redirected after successful form submissions."
 msgstr ""
 "Norādi URL, uz kuru nosūtīt lietotājus, pēc veiksmīgas formas iesniegšanas."
 
-#: plugin.php:140
+#: plugin.php:152
 msgid "Google Analytics Tracking"
 msgstr "Google Analytics uzskaite"
 
-#: plugin.php:161
+#: plugin.php:173
 msgid "Trigger Google Analytics event on successful form submissions."
 msgstr ""
 "Pieskaitīt Google Analytics notikumu pie veiksmīgas formas iesniegšanas."
 
-#: plugin.php:163
+#: plugin.php:175
+#, fuzzy
 msgid ""
-"Track Google Analytics event with category \"Contact Form\", label \"Sent\" "
-"and \"%s\" as value."
+"Track Google Analytics event with category \"Contact Form\", action \"Sent\" "
+"and \"%s\" as label."
 msgstr ""
 "Pieskaitīt Google Analytics notikumu kategorijā \"Contact Form\" ar "
 "apzīmējumu \"Sent\" un \"%s\" kā vērtību."
 
-#: plugin.php:167
+#: plugin.php:179
 msgid "Trigger Google Analytics event on all form submissions."
 msgstr "Pieskaitīt Google Analytics notikumu pie visām formas iesniegšanām."
 
-#: plugin.php:169
+#: plugin.php:181
+#, fuzzy
 msgid ""
-"Track Google Analytics event with category \"Contact Form\", label \"Submit"
-"\" and \"%s\" as value."
+"Track Google Analytics event with category \"Contact Form\", action \"Submit"
+"\" and \"%s\" as label."
 msgstr ""
 "Pieskaitīt Google Analytics notikumu kategorijā \"Contact Form\" ar "
 "apzīmējumu \"Submit\" un \"%s\" kā vertību."
 
+#: plugin.php:205 plugin.php:220
+msgid "Store Form Entries"
+msgstr "Saglabā formas ierakstus"
+
+#: plugin.php:211
+msgid "View entries of this contact form"
+msgstr "Skatīt formas ierakstus"
+
+#: plugin.php:224
+msgid ""
+"Use the %s plugin to save entries of this contact form in your WordPress "
+"database or export as CSV for Excel."
+msgstr ""
+"Izmanto %s spraudni, lai saglabātu šis formas ierakstus WordPress datubāzē "
+"un eksportētu CSV formātā."
+
 #. Plugin Name of the plugin/theme
 msgid "Contact Form 7 Extras"
-msgstr ""
+msgstr "Contact Form 7 Extras"
 
 #. Plugin URI of the plugin/theme
 msgid "https://github.com/kasparsd/contact-form-7-extras"
@@ -122,4 +140,10 @@ msgstr ""
 
 #. Author URI of the plugin/theme
 msgid "http://kaspars.net"
+msgstr ""
+
+#. Tags of the plugin/theme
+msgid ""
+"contact form, contact form 7, cf7, admin, backend, google analytics, ga, "
+"forms, form, track"
 msgstr ""
