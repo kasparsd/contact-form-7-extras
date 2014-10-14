@@ -6,7 +6,7 @@
 	Plugin URI: https://github.com/kasparsd/contact-form-7-extras
 	Author: Kaspars Dambis
 	Author URI: http://kaspars.net
-	Version: 0.1.3
+	Version: 0.1.4
 	Tested up to: 4.0
 	License: GPL2
 	Text Domain: cf7-extras
@@ -185,6 +185,50 @@ class cf7_extras {
 			)
 		);
 
+		if ( class_exists( 'cf7_storage' ) ) {
+
+			$form_entries_link = add_query_arg( 
+					array( 
+						'page' => 'cf7_storage',
+						'form_id' => $post_id
+					),
+					admin_url( 'admin.php' )
+				);
+
+			$form_entries = get_posts( array(
+					'fields' => 'ids',
+					'post_type' => 'cf7_entry',
+					'post_parent' => $post_id
+				) );
+
+			$fields['extra-cf7-storage'] = array(
+					'label' => __( 'Store Form Entries', 'cf7-extras' ),
+					'field' => sprintf(
+						'<p>%s</p>',
+						sprintf(
+							'<a href="%s">%s</a> (%d)',
+							$form_entries_link,
+							__( 'View entries of this contact form', 'cf7-extras' ),
+							count( $form_entries )
+						)
+					)
+				);
+
+		} else {
+
+			$fields['extra-cf7-storage'] = array(
+					'label' => __( 'Store Form Entries', 'cf7-extras' ),
+					'field' => sprintf(
+						'<p>%s</p>',
+						sprintf( 
+							esc_html__( 'Use the %s plugin to save entries of this contact form in your WordPress database or export as CSV for Excel.', 'cf7-extras' ),
+							'<a href="http://codecanyon.net/item/storage-for-contact-form-7-/7806229?ref=Preseto">Storage for Contact Form 7</a>'
+						)
+					)
+				);
+
+		}
+
 		$rows = array();
 
 		foreach ( $fields as $field_id => $field )
@@ -309,7 +353,12 @@ class cf7_extras {
 				$items['onSubmit'] = array();
 
 			$items['onSubmit'][] = sprintf( 
-					'if ( typeof ga == "function" ) { ga( "send", "event", "Contact Form", "Submit", "%1$s" ); } else { _gaq.push(["_trackEvent", "Contact Form", "Submit", "%1$s" ]); }',
+					'if ( typeof ga == "function" ) { 
+						ga( "send", "event", "Contact Form", "Submit", "%1$s" ); 
+					}
+					if ( typeof _gaq !== "undefined" ) { 
+						_gaq.push([ "_trackEvent", "Contact Form", "Submit", "%1$s" ]); 
+					}',
 					esc_js( $form->title() )
 				);
 			
@@ -325,7 +374,12 @@ class cf7_extras {
 			}
 
 			$items['onSentOk'][] = sprintf( 
-					'if ( typeof ga == "function" ) { ga( "send", "event", "Contact Form", "Sent", "%1$s" ); } else { _gaq.push(["_trackEvent", "Contact Form", "Sent", "%1$s" ]); }',
+					'if ( typeof ga == "function" ) { 
+						ga( "send", "event", "Contact Form", "Sent", "%1$s" ); 
+					} 
+					if ( typeof _gaq !== "undefined" ) { 
+						_gaq.push([ "_trackEvent", "Contact Form", "Sent", "%1$s" ]); 
+					}',
 					esc_js( $form->title() )
 				);
 

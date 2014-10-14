@@ -19,6 +19,8 @@ Contact Form 7 Extras provides simple user interface for the following functiona
 - Track form submissions and completions with Google Analytics.
 - Redirect to URL on form submission
 
+Note that some settings work on per-page level and will inherit for all forms on the same page. For example, disabling AJAX form submissions for one form will disable AJAX submissions on all forms on _that page_.
+
 
 ## Installation
 
@@ -36,6 +38,10 @@ None, yet.
 
 
 ## Changelog
+
+### 0.1.4
+
+- Check if `_gaq` Google Analytics global exists before adding an event.
 
 ### 0.1.3
 
