@@ -198,7 +198,8 @@ class cf7_extras {
 			$form_entries = get_posts( array(
 					'fields' => 'ids',
 					'post_type' => 'cf7_entry',
-					'post_parent' => $post_id
+					'post_parent' => $post_id,
+					'posts_per_page' => -1
 				) );
 
 			$fields['extra-cf7-storage'] = array(
