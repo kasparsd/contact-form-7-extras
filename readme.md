@@ -1,17 +1,17 @@
 # Contact Form 7 Controls
 
-Contributors: kasparsd, buzztone
-Tags: Contact Form 7, cf7, admin, backend, redirect, tracking, google analytics
-Requires at least: 3.0
-Tested up to: 4.3
-Stable tag: trunk
+Contributors: kasparsd, buzztone   
+Tags: Contact Form 7, cf7, admin, backend, redirect, tracking, google analytics, simple, interface, dashboard   
+Requires at least: 3.0   
+Tested up to: 4.3   
+Stable tag: trunk   
 
-Adds simple and user friendly controls for some of the advanced functionality of Contact Form 7 plugin.
+Adds simple controls for some of the advanced functionality of the Contact Form 7 plugin.
 
 
 ## Description
 
-Contact Form 7 Controls provides simple user interface for the following functionality of the [Contact Form 7](http://wordpress.org/plugins/contact-form-7/) plugin:
+This plugin adds simple admin controlls for the following functionality of the [Contact Form 7](http://wordpress.org/plugins/contact-form-7/) plugin:
 
 - Disable AJAX form submission
 - Disable default form CSS
@@ -20,6 +20,10 @@ Contact Form 7 Controls provides simple user interface for the following functio
 - Redirect to URL on form submission
 
 Note that some settings work on per-page level and will inherit for all forms on the same page. For example, disabling AJAX form submissions for one form will disable AJAX submissions on all forms on _that page_.
+
+### Saving Form Submissions in WordPress
+
+The "[Storage for Contact Form 7](http://codecanyon.net/item/storage-for-contact-form-7-/7806229)" plugin automatically stores all the contact form submissions (including attachments) in your WordPress database. It also provides the CSV export of the form entries.
 
 
 ## Installation
