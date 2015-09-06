@@ -1,4 +1,4 @@
-# Contact Form 7 Extras
+# Contact Form 7 Controls
 
 Contributors: kasparsd, buzztone
 Tags: Contact Form 7, cf7, admin, backend, redirect, tracking, google analytics
@@ -11,7 +11,7 @@ Adds simple and user friendly controls for some of the advanced functionality of
 
 ## Description
 
-Contact Form 7 Extras provides simple user interface for the following functionality of the [Contact Form 7](http://wordpress.org/plugins/contact-form-7/) plugin:
+Contact Form 7 Controls provides simple user interface for the following functionality of the [Contact Form 7](http://wordpress.org/plugins/contact-form-7/) plugin:
 
 - Disable AJAX form submission
 - Disable default form CSS
@@ -24,7 +24,7 @@ Note that some settings work on per-page level and will inherit for all forms on
 
 ## Installation
 
-Search for "Contact Form 7 Extras" using the standard plugin installer.
+Search for "Contact Form 7 Controls" using the standard plugin installer.
 
 
 ## Frequently Asked Questions
@@ -42,6 +42,7 @@ None, yet.
 ### 0.2 (September 6, 2015)
 
 - Make compatible with Contact Form 7 version 4.3 and later.
+- Rename the plugin to "Contact Form 7 Controls" in the repository.
 
 ### 0.1.5
 
