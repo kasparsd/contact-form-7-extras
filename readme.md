@@ -1,10 +1,10 @@
 # Contact Form 7 Extras
 
-Contributors: kasparsd, buzztone   
-Tags: Contact Form 7, cf7, admin, backend, redirect, tracking, google analytics   
-Requires at least: 3.0   
-Tested up to: 4.0   
-Stable tag: trunk     
+Contributors: kasparsd, buzztone
+Tags: Contact Form 7, cf7, admin, backend, redirect, tracking, google analytics
+Requires at least: 3.0
+Tested up to: 4.3
+Stable tag: trunk
 
 Adds simple and user friendly controls for some of the advanced functionality of Contact Form 7 plugin.
 
@@ -39,6 +39,10 @@ None, yet.
 
 ## Changelog
 
+### 0.2 (September 6, 2015)
+
+- Make compatible with Contact Form 7 version 4.3 and later.
+
 ### 0.1.5
 
 - Bugfix: display the correct number of entries submitted for each contact form.
@@ -58,7 +62,7 @@ None, yet.
 
 ### 0.1.1
 
-- Update readme. 
+- Update readme.
 - Use stable tags instead of trunk for releases.
 
 ### 0.1

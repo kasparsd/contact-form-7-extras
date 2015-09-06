@@ -6,8 +6,8 @@
 	Plugin URI: https://github.com/kasparsd/contact-form-7-extras
 	Author: Kaspars Dambis
 	Author URI: http://kaspars.net
-	Version: 0.1.5
-	Tested up to: 4.0
+	Version: 0.2
+	Tested up to: 4.3
 	License: GPL2
 	Text Domain: cf7-extras
 */
@@ -35,13 +35,17 @@ class cf7_extras {
 	private function __construct() {
 
 		// Add Extra settings to contact form settings
+		// This filter was removed in version 4.2 of CF7
 		add_action( 'wpcf7_add_meta_boxes', array( $this, 'wpcf7_add_meta_boxes' ) );
+
+		// @since CF7 4.2
+		add_filter( 'wpcf7_editor_panels', array( $this, 'register_wpcf7_panel' ) );
 
 		// Store Extra settings
 		add_action( 'wpcf7_save_contact_form', array( $this, 'wpcf7_save_contact_form' ) );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
-	
+
 		// Detect a form being rendered on the front-end
 		add_filter( 'wpcf7_form_action_url', array( $this, 'capture_form_load' ) );
 
@@ -59,7 +63,7 @@ class cf7_extras {
 
 		// TODO: Enable Google analytics tracking when AJAX is disabled
 		//add_filter( 'wpcf7_form_response_output', array( $this, 'maybe_trigger' ), 10, 4 );
-		
+
 		add_filter( 'wpcf7_form_elements', array( $this, 'maybe_reset_autop' ) );
 
 		// Enable localization
@@ -77,13 +81,13 @@ class cf7_extras {
 
 	function wpcf7_add_meta_boxes( $post_id ) {
 
-		add_meta_box( 
-			'cf7s-subject', 
+		add_meta_box(
+			'cf7s-subject',
 			__( 'Extra Settings', 'cf7-extras' ),
-			array( $this, 'wpcf7_metabox' ), 
+			array( $this, 'wpcf7_metabox' ),
 			null,
-			'form', 
-			'low' 
+			'form',
+			'low'
 		);
 
 	}
@@ -96,10 +100,10 @@ class cf7_extras {
 		$fields = array(
 			'extra-disable-ajax' => array(
 				'label' => __( 'AJAX Submissions', 'cf7-extras' ),
-				'field' => sprintf( 
+				'field' => sprintf(
 					'<label>
-						<input name="extra[disable-ajax]" value="0" type="hidden" /> 
-						<input id="extra-disable-ajax" name="extra[disable-ajax]" value="1" %s type="checkbox" /> 
+						<input name="extra[disable-ajax]" value="0" type="hidden" />
+						<input id="extra-disable-ajax" name="extra[disable-ajax]" value="1" %s type="checkbox" />
 						<span>%s</span>
 					</label>
 					<p class="desc">%s</p>',
@@ -110,10 +114,10 @@ class cf7_extras {
 			),
 			'extra-disable-css' => array(
 				'label' => __( 'Default CSS', 'cf7-extras' ),
-				'field' => sprintf( 
+				'field' => sprintf(
 					'<label>
-						<input name="extra[disable-css]" value="0" type="hidden" /> 
-						<input id="extra-disable-css" name="extra[disable-css]" value="1" %s type="checkbox" /> 
+						<input name="extra[disable-css]" value="0" type="hidden" />
+						<input id="extra-disable-css" name="extra[disable-css]" value="1" %s type="checkbox" />
 						<span>%s</span>
 					</label>
 					<p class="desc">%s</p>',
@@ -124,10 +128,10 @@ class cf7_extras {
 			),
 			'extra-disable-autop' => array(
 				'label' => __( 'Automatic Formatting', 'cf7-extras' ),
-				'field' => sprintf( 
+				'field' => sprintf(
 					'<label>
-						<input name="extra[disable-autop]" value="0" type="hidden" /> 
-						<input id="extra-disable-autop" name="extra[disable-autop]" value="1" %s type="checkbox" /> 
+						<input name="extra[disable-autop]" value="0" type="hidden" />
+						<input id="extra-disable-autop" name="extra[disable-autop]" value="1" %s type="checkbox" />
 						<span>%s</span>
 					</label>
 					<p class="desc">%s</p>',
@@ -138,9 +142,9 @@ class cf7_extras {
 			),
 			'extra-redirect-success' => array(
 				'label' => __( 'Redirect to URL on Success', 'cf7-extras' ),
-				'field' => sprintf( 
+				'field' => sprintf(
 					'<label>
-						<input type="text" class="wide" id="extra-redirect-success" name="extra[redirect-success]" value="%s" placeholder="%s" /> 
+						<input type="text" class="wide large-text" id="extra-redirect-success" name="extra[redirect-success]" value="%s" placeholder="%s" />
 					</label>
 					<p class="desc">%s</p>',
 					esc_attr( esc_url( get_post_meta( $post_id, 'extra-redirect-success', true ) ) ),
@@ -187,8 +191,8 @@ class cf7_extras {
 
 		if ( class_exists( 'cf7_storage' ) ) {
 
-			$form_entries_link = add_query_arg( 
-					array( 
+			$form_entries_link = add_query_arg(
+					array(
 						'page' => 'cf7_storage',
 						'form_id' => $post_id
 					),
@@ -221,7 +225,7 @@ class cf7_extras {
 					'label' => __( 'Store Form Entries', 'cf7-extras' ),
 					'field' => sprintf(
 						'<p>%s</p>',
-						sprintf( 
+						sprintf(
 							esc_html__( 'Use the %s plugin to save entries of this contact form in your WordPress database or export as CSV for Excel.', 'cf7-extras' ),
 							'<a href="http://codecanyon.net/item/storage-for-contact-form-7-/7806229?ref=Preseto">Storage for Contact Form 7</a>'
 						)
@@ -244,10 +248,10 @@ class cf7_extras {
 				$field['field']
 			);
 
-		printf( 
+		printf(
 			'<table class="form-table cf7-extras-table">
 				%s
-			</table>', 
+			</table>',
 			implode( '', $rows )
 		);
 
@@ -277,21 +281,40 @@ class cf7_extras {
 		if ( false === strpos( $hook, 'wpcf7' ) )
 			return;
 
-		wp_enqueue_style( 
+		wp_enqueue_style(
 			'cf7-extras',
 			plugins_url( 'css/admin.css', __FILE__ ),
-			null, 
-			'0.1', 
-			'all' 
+			null,
+			'0.1',
+			'all'
 		);
 
-		wp_enqueue_script( 
+		wp_enqueue_script(
 			'cf7-extras-js',
 			plugins_url( 'js/admin.js', __FILE__ ),
-			array( 'jquery' ), 
+			array( 'jquery' ),
 			'0.1',
 			true
 		);
+
+	}
+
+
+	function register_wpcf7_panel( $panels ) {
+
+		$form = WPCF7_ContactForm::get_current();
+		$post_id = $form->id();
+
+		if ( empty( $post_id ) || ! current_user_can( 'wpcf7_edit_contact_form', $post_id ) ) {
+			return $panels;
+		}
+
+		$panels['cf7-extras'] = array(
+			'title' => __( 'Customize', 'cf7-extras' ),
+			'callback' => array( $this, 'wpcf7_metabox' ),
+		);
+
+		return $panels;
 
 	}
 
@@ -345,7 +368,6 @@ class cf7_extras {
 	function filter_ajax_echo( $items, $result ) {
 
 		$form = WPCF7_ContactForm::get_current();
-
 		$track_ga_submit = get_post_meta( $form->id(), 'extra-track-ga-submit', true );
 
 		if ( ! empty( $track_ga_submit ) ) {
@@ -353,19 +375,19 @@ class cf7_extras {
 			if ( ! isset( $items['onSubmit'] ) )
 				$items['onSubmit'] = array();
 
-			$items['onSubmit'][] = sprintf( 
-					'if ( typeof ga == "function" ) { 
-						ga( "send", "event", "Contact Form", "Submit", "%1$s" ); 
+			$items['onSubmit'][] = sprintf(
+					'if ( typeof ga == "function" ) {
+						ga( "send", "event", "Contact Form", "Submit", "%1$s" );
 					}
-					if ( typeof _gaq !== "undefined" ) { 
-						_gaq.push([ "_trackEvent", "Contact Form", "Submit", "%1$s" ]); 
+					if ( typeof _gaq !== "undefined" ) {
+						_gaq.push([ "_trackEvent", "Contact Form", "Submit", "%1$s" ]);
 					}',
 					esc_js( $form->title() )
 				);
-			
+
 		}
 
-		if ( 'mail_sent' == $result['status'] ) {
+		if ( 'mail_sent' === $result['status'] ) {
 
 			$track_ga_success = get_post_meta( $form->id(), 'extra-track-ga-success', true );
 			$redirect = get_post_meta( $form->id(), 'extra-redirect-success', true );
@@ -374,25 +396,25 @@ class cf7_extras {
 				$items['onSentOk'] = array();
 			}
 
-			$items['onSentOk'][] = sprintf( 
-					'if ( typeof ga == "function" ) { 
-						ga( "send", "event", "Contact Form", "Sent", "%1$s" ); 
-					} 
-					if ( typeof _gaq !== "undefined" ) { 
-						_gaq.push([ "_trackEvent", "Contact Form", "Sent", "%1$s" ]); 
+			$items['onSentOk'][] = sprintf(
+					'if ( typeof ga == "function" ) {
+						ga( "send", "event", "Contact Form", "Sent", "%1$s" );
+					}
+					if ( typeof _gaq !== "undefined" ) {
+						_gaq.push([ "_trackEvent", "Contact Form", "Sent", "%1$s" ]);
 					}',
 					esc_js( $form->title() )
 				);
 
 			if ( ! empty( $redirect ) ) {
-				$items['onSentOk'][] = sprintf( 
-						'window.location = "%s";', 
-						esc_js( esc_url( $redirect ) ) 
+				$items['onSentOk'][] = sprintf(
+						'window.location = "%s";',
+						esc_js( esc_url( $redirect ) )
 					);
 			}
 
 		}
-		
+
 		return $items;
 
 	}
