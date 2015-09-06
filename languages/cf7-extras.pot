@@ -1,110 +1,114 @@
-# Copyright (C) 2014 Contact Form 7 Extras
-# This file is distributed under the same license as the Contact Form 7 Extras package.
+# Copyright (C) 2015 Contact Form 7 Controls
+# This file is distributed under the same license as the Contact Form 7 Controls package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Contact Form 7 Extras 0.1.4\n"
+"Project-Id-Version: Contact Form 7 Controls 0.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/git\n"
-"POT-Creation-Date: 2014-10-14 10:30:17+00:00\n"
+"POT-Creation-Date: 2015-09-06 20:44:32+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: plugin.php:82
+#: plugin.php:86
 msgid "Extra Settings"
 msgstr ""
 
-#: plugin.php:98
+#: plugin.php:102
 msgid "AJAX Submissions"
 msgstr ""
 
-#: plugin.php:107
+#: plugin.php:111
 msgid "Disable AJAX for this form"
 msgstr ""
 
-#: plugin.php:108
+#: plugin.php:112
 msgid ""
 "Note that disabling AJAX will also disable Google Analytics event tracking "
 "for this form. Same as <code>define( 'WPCF7_LOAD_JS', true );</code>."
 msgstr ""
 
-#: plugin.php:112
+#: plugin.php:116
 msgid "Default CSS"
 msgstr ""
 
-#: plugin.php:121
+#: plugin.php:125
 msgid "Disable default CSS for this form"
 msgstr ""
 
-#: plugin.php:122
+#: plugin.php:126
 msgid ""
 "Disables CSS that comes bundled with Contact Form 7. Same as "
 "<code>define( 'WPCF7_LOAD_CSS', false );</code>."
 msgstr ""
 
-#: plugin.php:126
+#: plugin.php:130
 msgid "Automatic Formatting"
 msgstr ""
 
-#: plugin.php:135
+#: plugin.php:139
 msgid "Disable automatic paragraph formatting"
 msgstr ""
 
-#: plugin.php:136
+#: plugin.php:140
 msgid "Same as <code>define( 'WPCF7_AUTOP', false );</code>."
 msgstr ""
 
-#: plugin.php:140
+#: plugin.php:144
 msgid "Redirect to URL on Success"
 msgstr ""
 
-#: plugin.php:148
+#: plugin.php:152
 msgid ""
 "Enter URL where users should be redirected after successful form submissions."
 msgstr ""
 
-#: plugin.php:152
+#: plugin.php:156
 msgid "Google Analytics Tracking"
 msgstr ""
 
-#: plugin.php:173
+#: plugin.php:177
 msgid "Trigger Google Analytics event on successful form submissions."
 msgstr ""
 
-#: plugin.php:175
+#: plugin.php:179
 msgid ""
 "Track Google Analytics event with category \"Contact Form\", action \"Sent\" "
 "and \"%s\" as label."
 msgstr ""
 
-#: plugin.php:179
+#: plugin.php:183
 msgid "Trigger Google Analytics event on all form submissions."
 msgstr ""
 
-#: plugin.php:181
+#: plugin.php:185
 msgid ""
 "Track Google Analytics event with category \"Contact Form\", action \"Submit"
 "\" and \"%s\" as label."
 msgstr ""
 
-#: plugin.php:205 plugin.php:220
+#: plugin.php:210 plugin.php:225
 msgid "Store Form Entries"
 msgstr ""
 
-#: plugin.php:211
+#: plugin.php:216
 msgid "View entries of this contact form"
 msgstr ""
 
-#: plugin.php:224
+#: plugin.php:229
 msgid ""
 "Use the %s plugin to save entries of this contact form in your WordPress "
 "database or export as CSV for Excel."
 msgstr ""
 
+#: plugin.php:313
+msgid "Customize"
+msgstr ""
+
 #. Plugin Name of the plugin/theme
-msgid "Contact Form 7 Extras"
+msgid "Contact Form 7 Controls"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
@@ -112,7 +116,7 @@ msgid "https://github.com/kasparsd/contact-form-7-extras"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Add simple controls for advanced functionality of Contact Form 7."
+msgid "Add simple controls for the advanced functionality of Contact Form 7."
 msgstr ""
 
 #. Author of the plugin/theme
