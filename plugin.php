@@ -6,7 +6,7 @@
 	Plugin URI: https://github.com/kasparsd/contact-form-7-extras
 	Author: Kaspars Dambis
 	Author URI: http://kaspars.net
-	Version: 0.2
+	Version: 0.3-dev
 	Tested up to: 4.3
 	License: GPL2
 	Text Domain: cf7-extras
@@ -100,10 +100,10 @@ class cf7_extras {
 		$fields = array(
 			'extra-disable-ajax' => array(
 				'label' => __( 'AJAX Submissions', 'cf7-extras' ),
+				'docs_url' => 'http://contactform7.com/controlling-behavior-by-setting-constants/',
 				'field' => sprintf(
 					'<label>
-						<input name="extra[disable-ajax]" value="0" type="hidden" />
-						<input id="extra-disable-ajax" name="extra[disable-ajax]" value="1" %s type="checkbox" />
+						<input id="extra-disable-ajax" data-toggle-on=".extra-field-extra-track-ga-success" name="extra[disable-ajax]" value="1" %s type="checkbox" />
 						<span>%s</span>
 					</label>
 					<p class="desc">%s</p>',
@@ -114,9 +114,9 @@ class cf7_extras {
 			),
 			'extra-disable-css' => array(
 				'label' => __( 'Default CSS', 'cf7-extras' ),
+				'docs_url' => 'http://contactform7.com/controlling-behavior-by-setting-constants/',
 				'field' => sprintf(
 					'<label>
-						<input name="extra[disable-css]" value="0" type="hidden" />
 						<input id="extra-disable-css" name="extra[disable-css]" value="1" %s type="checkbox" />
 						<span>%s</span>
 					</label>
@@ -128,9 +128,9 @@ class cf7_extras {
 			),
 			'extra-disable-autop' => array(
 				'label' => __( 'Automatic Formatting', 'cf7-extras' ),
+				'docs_url' => 'http://contactform7.com/controlling-behavior-by-setting-constants/',
 				'field' => sprintf(
 					'<label>
-						<input name="extra[disable-autop]" value="0" type="hidden" />
 						<input id="extra-disable-autop" name="extra[disable-autop]" value="1" %s type="checkbox" />
 						<span>%s</span>
 					</label>
@@ -140,8 +140,37 @@ class cf7_extras {
 					__( 'Same as <code>define( \'WPCF7_AUTOP\', false );</code>.', 'cf7-extras' )
 				)
 			),
+			'extra-html5' => array(
+				'label' => __( 'HTML5 input types', 'cf7-extras' ),
+				'docs_url' => 'http://contactform7.com/faq/does-contact-form-7-support-html5-input-types/',
+				'field' => sprintf(
+					'<ul>
+						<li id="extra-html5-disable-wrap">
+							<label>
+								<input id="extra-html5-disable" name="extra[html5-disable]" value="1" data-toggle-on="#extra-html5-fallback-wrap" %s type="checkbox" />
+								<span>%s</span>
+							</label>
+							<p class="desc">%s</p>
+						</li>
+						<li id="extra-html5-fallback-wrap">
+							<label>
+								<input id="extra-html5-fallback" name="extra[html5-fallback]" value="1" %s type="checkbox" />
+								<span>%s</span>
+							</label>
+							<p class="desc">%s</p>
+						</li>
+					</ul>',
+					checked( get_post_meta( $post_id, 'extra-html5-disable', true ), true, false ),
+					__( 'Disable HTML5 input types', 'cf7-extras' ),
+					__( 'Use regular input types instead.', 'cf7-extras' ),
+					checked( get_post_meta( $post_id, 'extra-html5-fallback', true ), true, false ),
+					__( 'Enable HTML5 input type fallback', 'cf7-extras' ),
+					__( 'Adds support for HTML5 input fields to older browsers.', 'cf7-extras' )
+				)
+			),
 			'extra-redirect-success' => array(
 				'label' => __( 'Redirect to URL on Success', 'cf7-extras' ),
+				'docs_url' => 'http://contactform7.com/redirecting-to-another-url-after-submissions/',
 				'field' => sprintf(
 					'<label>
 						<input type="text" class="wide large-text" id="extra-redirect-success" name="extra[redirect-success]" value="%s" placeholder="%s" />
@@ -154,11 +183,11 @@ class cf7_extras {
 			),
 			'extra-track-ga-success' => array(
 				'label' => __( 'Google Analytics Tracking', 'cf7-extras' ),
+				'docs_url' => 'http://contactform7.com/tracking-form-submissions-with-google-analytics/',
 				'field' => sprintf(
 					'<ul>
 					<li>
 						<label>
-							<input name="extra[track-ga-success]" value="0" type="hidden" />
 							<input type="checkbox" id="extra-track-ga-success" name="extra[track-ga-success]" value="1" %s />
 							<span>%s</span>
 						</label>
@@ -166,7 +195,6 @@ class cf7_extras {
 					</li>
 					<li>
 						<label>
-							<input name="extra[track-ga-submit]" value="0" type="hidden" />
 							<input type="checkbox" id="extra-track-ga-submit" name="extra[track-ga-submit]" value="1" %s />
 							<span>%s</span>
 						</label>
@@ -208,6 +236,7 @@ class cf7_extras {
 
 			$fields['extra-cf7-storage'] = array(
 					'label' => __( 'Store Form Entries', 'cf7-extras' ),
+					'docs_url' => 'http://codecanyon.net/item/storage-for-contact-form-7-/7806229?ref=Preseto',
 					'field' => sprintf(
 						'<p>%s</p>',
 						sprintf(
@@ -223,10 +252,11 @@ class cf7_extras {
 
 			$fields['extra-cf7-storage'] = array(
 					'label' => __( 'Store Form Entries', 'cf7-extras' ),
+					'docs_url' => 'http://codecanyon.net/item/storage-for-contact-form-7-/7806229?ref=Preseto',
 					'field' => sprintf(
 						'<p>%s</p>',
 						sprintf(
-							esc_html__( 'Use the %s plugin to save entries of this contact form in your WordPress database or export as CSV for Excel.', 'cf7-extras' ),
+							esc_html__( 'Install the %s plugin to save the form submissions in your WordPress database or export as CSV for Excel.', 'cf7-extras' ),
 							'<a href="http://codecanyon.net/item/storage-for-contact-form-7-/7806229?ref=Preseto">Storage for Contact Form 7</a>'
 						)
 					)
@@ -239,12 +269,18 @@ class cf7_extras {
 		foreach ( $fields as $field_id => $field )
 			$rows[] = sprintf(
 				'<tr class="extra-field-%s">
-					<th><label for="%s">%s</label></th>
+					<th>
+						<label for="%s">%s</label>
+						<a href="%s" target="_blank" class="extras-docs-link" title="%s">%s</a>
+					</th>
 					<td>%s</td>
 				</tr>',
 				esc_attr( $field_id ),
 				esc_attr( $field_id ),
 				esc_html( $field['label'] ),
+				esc_url( $field['docs_url'] ),
+				esc_attr__( 'View the official documentation for this feature', 'cf7-extras' ),
+				esc_html__( 'Docs', 'cf7-extras' ),
 				$field['field']
 			);
 
@@ -285,7 +321,7 @@ class cf7_extras {
 			'cf7-extras',
 			plugins_url( 'css/admin.css', __FILE__ ),
 			null,
-			'0.1',
+			'0.2',
 			'all'
 		);
 
@@ -293,7 +329,7 @@ class cf7_extras {
 			'cf7-extras-js',
 			plugins_url( 'js/admin.js', __FILE__ ),
 			array( 'jquery' ),
-			'0.1',
+			'0.2',
 			true
 		);
 
@@ -328,6 +364,9 @@ class cf7_extras {
 
 		$this->add_form( $form );
 
+		// Maybe toggle HTML5 input type support
+		$this->maybe_toggle_html5();
+
 		return $action;
 
 	}
@@ -350,6 +389,23 @@ class cf7_extras {
 
 			if ( isset( $settings['disable-ajax'] ) && $settings['disable-ajax'] ) {
 				wp_dequeue_script( 'contact-form-7' );
+			}
+
+		}
+
+	}
+
+
+	function maybe_toggle_html5() {
+
+		foreach ( $this->rendered as $form_id => $settings ) {
+
+			if ( isset( $settings['html5-disable'] ) && $settings['html5-disable'] ) {
+				add_filter( 'wpcf7_support_html5', '__return_false' );
+			}
+
+			if ( isset( $settings['html5-fallback'] ) && $settings['html5-fallback'] ) {
+				add_filter( 'wpcf7_support_html5_fallback', '__return_true' );
 			}
 
 		}

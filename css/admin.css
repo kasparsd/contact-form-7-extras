@@ -1,4 +1,10 @@
-.cf7-extras-table th, #contact-form-editor .contact-form-editor-panel .cf7-extras-table th { max-width:10em; width:auto; }
+.cf7-extras-table th, #contact-form-editor .contact-form-editor-panel .cf7-extras-table th { width:12em; }
 .cf7-extras-table .desc { line-height:1.4; font-style:italic; color:#666; margin:0.2em 0 0 0; }
 .cf7-extras-table td ul { margin:0; }
 .cf7-extras-table td li { margin:0.5em 0; display:block; }
+.cf7-extras-table .extras-docs-link { display:block; font-size:0.86em; font-weight:normal; }
+
+@media screen and (max-width: 760px) {
+	.cf7-extras-table th, #contact-form-editor .contact-form-editor-panel .cf7-extras-table th { width:100%; padding-bottom:0.5em; }
+	.cf7-extras-table .extras-docs-link { display:inline-block; margin-left:1em; }
+}
