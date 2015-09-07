@@ -96,6 +96,7 @@ class cf7_extras {
 	function wpcf7_metabox( $cf7 ) {
 
 		$post_id = $cf7->id();
+		$settings = $this->get_form_settings( $cf7 );
 
 		$fields = array(
 			'extra-disable-ajax' => array(
@@ -103,13 +104,13 @@ class cf7_extras {
 				'docs_url' => 'http://contactform7.com/controlling-behavior-by-setting-constants/',
 				'field' => sprintf(
 					'<label>
-						<input id="extra-disable-ajax" data-toggle-on=".extra-field-extra-track-ga-success" name="extra[disable-ajax]" value="1" %s type="checkbox" />
+						<input id="extra-disable-ajax" data-toggle-on=".extra-field-extra-track-ga-success, #extra-html5-fallback-wrap" name="extra[disable-ajax]" value="1" %s type="checkbox" />
 						<span>%s</span>
 					</label>
 					<p class="desc">%s</p>',
-					checked( get_post_meta( $post_id, 'extra-disable-ajax', true ), true, false ),
+					checked( $settings[ 'disable-ajax' ], true, false ),
 					__( 'Disable AJAX for this form', 'cf7-extras' ),
-					__( 'Note that disabling AJAX will also disable Google Analytics event tracking for this form. Same as <code>define( \'WPCF7_LOAD_JS\', true );</code>.', 'cf7-extras' )
+					__( 'Same as <code>define( \'WPCF7_LOAD_JS\', true );</code>. Disabling AJAX will also disable Google Analytics event tracking and HTML5 input type fallback for this form. ', 'cf7-extras' )
 				)
 			),
 			'extra-disable-css' => array(
@@ -121,7 +122,7 @@ class cf7_extras {
 						<span>%s</span>
 					</label>
 					<p class="desc">%s</p>',
-					checked( get_post_meta( $post_id, 'extra-disable-css', true ), true, false ),
+					checked( $settings[ 'disable-css' ], true, false ),
 					__( 'Disable default CSS for this form', 'cf7-extras' ),
 					__( 'Disables CSS that comes bundled with Contact Form 7. Same as <code>define( \'WPCF7_LOAD_CSS\', false );</code>.', 'cf7-extras' )
 				)
@@ -135,7 +136,7 @@ class cf7_extras {
 						<span>%s</span>
 					</label>
 					<p class="desc">%s</p>',
-					checked( get_post_meta( $post_id, 'extra-disable-autop', true ), true, false ),
+					checked( $settings[ 'disable-autop' ], true, false ),
 					__( 'Disable automatic paragraph formatting', 'cf7-extras' ),
 					__( 'Same as <code>define( \'WPCF7_AUTOP\', false );</code>.', 'cf7-extras' )
 				)
@@ -160,10 +161,10 @@ class cf7_extras {
 							<p class="desc">%s</p>
 						</li>
 					</ul>',
-					checked( get_post_meta( $post_id, 'extra-html5-disable', true ), true, false ),
+					checked( $settings[ 'html5-disable' ], true, false ),
 					__( 'Disable HTML5 input types', 'cf7-extras' ),
 					__( 'Use regular input types instead.', 'cf7-extras' ),
-					checked( get_post_meta( $post_id, 'extra-html5-fallback', true ), true, false ),
+					checked( $settings[ 'html5-fallback' ], true, false ),
 					__( 'Enable HTML5 input type fallback', 'cf7-extras' ),
 					__( 'Adds support for HTML5 input fields to older browsers.', 'cf7-extras' )
 				)
@@ -176,7 +177,7 @@ class cf7_extras {
 						<input type="text" class="wide large-text" id="extra-redirect-success" name="extra[redirect-success]" value="%s" placeholder="%s" />
 					</label>
 					<p class="desc">%s</p>',
-					esc_attr( esc_url( get_post_meta( $post_id, 'extra-redirect-success', true ) ) ),
+					esc_attr( esc_url( $settings[ 'redirect-success' ] ) ),
 					esc_attr( 'http://example.com' ),
 					esc_html__( 'Enter URL where users should be redirected after successful form submissions.', 'cf7-extras' )
 				)
@@ -201,13 +202,13 @@ class cf7_extras {
 						<p class="desc">%s</p>
 					</li>
 					</ul>',
-					checked( get_post_meta( $post_id, 'extra-track-ga-success', true ), true, false ),
+					checked( $settings[ 'track-ga-success' ], true, false ),
 					esc_html__( 'Trigger Google Analytics event on successful form submissions.', 'cf7-extras' ),
 					esc_html( sprintf(
 						__( 'Track Google Analytics event with category "Contact Form", action "Sent" and "%s" as label.', 'cf7-extras' ),
 						$cf7->title()
 					) ),
-					checked( get_post_meta( $post_id, 'extra-track-ga-submit', true ), true, false ),
+					checked( $settings[ 'track-ga-submit' ], true, false ),
 					esc_html__( 'Trigger Google Analytics event on all form submissions.', 'cf7-extras' ),
 					esc_html( sprintf(
 						__( 'Track Google Analytics event with category "Contact Form", action "Submit" and "%s" as label.', 'cf7-extras' ),
@@ -374,7 +375,46 @@ class cf7_extras {
 
 	function add_form( $form ) {
 
-		$this->rendered[ $form->id() ] = get_post_meta( $form->id(), 'extras', true );
+		$this->rendered[ $form->id() ] = $this->get_form_settings( $form );
+
+	}
+
+
+	function get_form_settings( $form, $field = null, $fresh = false ) {
+
+		static $form_settings = array();
+
+		if ( isset( $form_settings[ $form->id() ] ) && ! $fresh )
+			$settings = $form_settings[ $form->id() ];
+		else
+			$settings = get_post_meta( $form->id(), 'extras', true );
+
+		$settings = wp_parse_args(
+			$settings,
+			array(
+				'disable-css' => false,
+				'disable-ajax' => false,
+				'html5-disable' => false,
+				'html5-fallback' => false,
+				'disable-autop' => false,
+				'redirect-success' => false,
+				'track-ga-success' => false,
+				'track-ga-submit' => false,
+			)
+		);
+
+		// Cache it for re-use
+		$form_settings[ $form->id() ] = $settings;
+
+		// Return a specific field value
+		if ( isset( $field ) ) {
+			if ( isset( $settings[ $field ] ) )
+				return $settings[ $field ];
+			else
+				return null;
+		}
+
+		return $settings;
 
 	}
 
@@ -383,11 +423,11 @@ class cf7_extras {
 
 		foreach ( $this->rendered as $form_id => $settings ) {
 
-			if ( isset( $settings['disable-css'] ) && ! $settings['disable-css'] ) {
+			if ( empty( $settings['disable-css'] ) ) {
 				wp_enqueue_style( 'contact-form-7' );
 			}
 
-			if ( isset( $settings['disable-ajax'] ) && $settings['disable-ajax'] ) {
+			if ( $settings['disable-ajax'] ) {
 				wp_dequeue_script( 'contact-form-7' );
 			}
 
@@ -400,11 +440,11 @@ class cf7_extras {
 
 		foreach ( $this->rendered as $form_id => $settings ) {
 
-			if ( isset( $settings['html5-disable'] ) && $settings['html5-disable'] ) {
+			if ( $settings['html5-disable'] ) {
 				add_filter( 'wpcf7_support_html5', '__return_false' );
 			}
 
-			if ( isset( $settings['html5-fallback'] ) && $settings['html5-fallback'] ) {
+			if ( $settings['html5-fallback'] ) {
 				add_filter( 'wpcf7_support_html5_fallback', '__return_true' );
 			}
 
@@ -424,7 +464,7 @@ class cf7_extras {
 	function filter_ajax_echo( $items, $result ) {
 
 		$form = WPCF7_ContactForm::get_current();
-		$track_ga_submit = get_post_meta( $form->id(), 'extra-track-ga-submit', true );
+		$track_ga_submit = $this->get_form_settings( $form, 'track-ga-submit' );
 
 		if ( ! empty( $track_ga_submit ) ) {
 
@@ -445,8 +485,8 @@ class cf7_extras {
 
 		if ( 'mail_sent' === $result['status'] ) {
 
-			$track_ga_success = get_post_meta( $form->id(), 'extra-track-ga-success', true );
-			$redirect = get_post_meta( $form->id(), 'extra-redirect-success', true );
+			$track_ga_success = $this->get_form_settings( $form, 'track-ga-success' );
+			$redirect = trim( $this->get_form_settings( $form, 'redirect-success' ) );
 
 			if ( ! isset( $items['onSentOk'] ) ) {
 				$items['onSentOk'] = array();
@@ -481,7 +521,7 @@ class cf7_extras {
 		// Redirect only if this is a successful non-AJAX response
 		if ( isset( $result['status'] ) && 'mail_sent' == $result['status'] && ! isset( $result['scripts_on_sent_ok'] ) ) {
 
-			$redirect = trim( get_post_meta( $form->id(), 'extra-redirect-success', true ) );
+			$redirect = trim( $this->get_form_settings( $form, 'redirect-success' ) );
 
 			if ( ! empty( $redirect ) ) {
 				wp_redirect( esc_url( $redirect ) );
@@ -496,7 +536,7 @@ class cf7_extras {
 	function maybe_reset_autop( $form ) {
 
 		$form_instance = WPCF7_ContactForm::get_current();
-		$disable_autop = get_post_meta( $form_instance->id(), 'extra-disable-autop', true );
+		$disable_autop = $this->get_form_settings( $form_instance, 'disable-autop' );
 
 		if ( $disable_autop ) {
 
