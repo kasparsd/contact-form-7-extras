@@ -1,23 +1,25 @@
 # Contact Form 7 Controls
 
-Contributors: kasparsd, buzztone   
-Tags: Contact Form 7, cf7, admin, backend, redirect, tracking, google analytics, simple, interface, dashboard   
-Requires at least: 3.0   
-Tested up to: 4.3   
-Stable tag: trunk   
+Contributors: kasparsd, buzztone
+Tags: Contact Form 7, cf7, admin, backend, redirect, tracking, google analytics, ga, simple, interface, dashboard, recaptcha
+Requires at least: 3.0
+Tested up to: 4.3.1
+Stable tag: trunk
 
 Adds simple controls for some of the advanced functionality of the Contact Form 7 plugin.
 
 
 ## Description
 
-This plugin adds simple admin controlls for the following functionality of the [Contact Form 7](http://wordpress.org/plugins/contact-form-7/) plugin:
+This plugin adds simple admin controlls for the following customization of the [Contact Form 7](http://wordpress.org/plugins/contact-form-7/) form output:
 
 - Disable AJAX form submission
 - Disable default form CSS
 - Disable automatic paragraph formatting
-- Track form submissions and completions with Google Analytics.
+- Disable HTML5 input field types or enable the HTML5 input type fallback
+- Track form submissions and completions with Google Analytics
 - Redirect to URL on form submission
+- Specify Google Recaptcha language.
 
 Note that some settings work on per-page level and will inherit for all forms on the same page. For example, disabling AJAX form submissions for one form will disable AJAX submissions on all forms on _that page_.
 
@@ -42,6 +44,10 @@ None, yet.
 
 
 ## Changelog
+
+### 0.3 (October 8, 2015)
+
+- Add the Google Recaptcha language setting.
 
 ### 0.2 (September 6, 2015)
 
