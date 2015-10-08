@@ -48,6 +48,7 @@ None, yet.
 ### 0.3 (October 8, 2015)
 
 - Add the Google Recaptcha language setting.
+- Update the translation source file.
 
 ### 0.2 (September 6, 2015)
 
