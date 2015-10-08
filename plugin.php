@@ -182,6 +182,19 @@ class cf7_extras {
 					esc_html__( 'Enter URL where users should be redirected after successful form submissions.', 'cf7-extras' )
 				)
 			),
+			'extra-google-recaptcha-lang' => array(
+				'label' => __( 'Google Recaptcha Language', 'cf7-extras' ),
+				'docs_url' => 'https://developers.google.com/recaptcha/docs/language',
+				'field' => sprintf(
+					'<label>
+						<input type="text" id="extra-google-recaptcha-lang" name="extra[google-recaptcha-lang]" value="%s" placeholder="%s" />
+					</label>
+					<p class="desc">%s</p>',
+					esc_attr( $settings[ 'google-recaptcha-lang' ] ),
+					esc_attr( 'en' ),
+					esc_html__( 'Specify the language code of the Google Recaptcha output.', 'cf7-extras' )
+				)
+			),
 			'extra-track-ga-success' => array(
 				'label' => __( 'Google Analytics Tracking', 'cf7-extras' ),
 				'docs_url' => 'http://contactform7.com/tracking-form-submissions-with-google-analytics/',
@@ -400,6 +413,7 @@ class cf7_extras {
 				'redirect-success' => false,
 				'track-ga-success' => false,
 				'track-ga-submit' => false,
+				'google-recaptcha-lang' => null,
 			)
 		);
 
@@ -421,6 +435,9 @@ class cf7_extras {
 
 	function maybe_alter_scripts() {
 
+		// @todo use wp_scripts() in future
+		global $wp_scripts;
+
 		foreach ( $this->rendered as $form_id => $settings ) {
 
 			if ( empty( $settings['disable-css'] ) ) {
@@ -429,6 +446,17 @@ class cf7_extras {
 
 			if ( $settings['disable-ajax'] ) {
 				wp_dequeue_script( 'contact-form-7' );
+			}
+
+			if ( ! empty( $settings['google-recaptcha-lang'] ) && isset( $wp_scripts->registered[ 'google-recaptcha' ] ) ) {
+
+				// Append the `hl` query param which specifies the Recaptcha language
+				$wp_scripts->registered[ 'google-recaptcha' ]->src = add_query_arg(
+					'hl',
+					$settings['google-recaptcha-lang'],
+					$wp_scripts->registered[ 'google-recaptcha' ]->src
+				);
+
 			}
 
 		}
