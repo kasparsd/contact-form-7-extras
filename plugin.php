@@ -110,7 +110,7 @@ class cf7_extras {
 					<p class="desc">%s</p>',
 					checked( $settings[ 'disable-ajax' ], true, false ),
 					esc_html__( 'Disable AJAX for this form', 'cf7-extras' ),
-					__( 'Same as <code>define( \'WPCF7_LOAD_JS\', true );</code>. Disabling AJAX will also disable Google Analytics event tracking and HTML5 input type fallback for this form. ', 'cf7-extras' )
+					__( 'Same as <code>define( \'WPCF7_LOAD_JS\', false );</code>. Disabling AJAX will also disable Google Analytics event tracking and HTML5 input type fallback for this form. ', 'cf7-extras' )
 				)
 			),
 			'extra-disable-css' => array(
