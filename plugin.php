@@ -177,7 +177,7 @@ class cf7_extras {
 						<input type="text" class="wide large-text" id="extra-redirect-success" name="extra[redirect-success]" value="%s" placeholder="%s" />
 					</label>
 					<p class="desc">%s</p>',
-					esc_attr( esc_url( $settings[ 'redirect-success' ] ) ),
+					esc_url( $settings[ 'redirect-success' ] ),
 					esc_attr( 'http://example.com' ),
 					esc_html__( 'Enter URL where users should be redirected after successful form submissions.', 'cf7-extras' )
 				)
