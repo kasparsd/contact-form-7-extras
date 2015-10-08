@@ -6,7 +6,7 @@
 	Plugin URI: https://github.com/kasparsd/contact-form-7-extras
 	Author: Kaspars Dambis
 	Author URI: http://kaspars.net
-	Version: 0.3
+	Version: 0.3.1-dev
 	Tested up to: 4.3
 	License: GPL2
 	Text Domain: cf7-extras
@@ -18,16 +18,17 @@ cf7_extras::instance();
 
 class cf7_extras {
 
-	public static $instance;
 	private $rendered = array();
 
 
 	public static function instance() {
 
-		if ( ! self::$instance )
-			self::$instance = new self();
+		static $instance;
 
-		return self::$instance;
+		if ( ! $instance )
+			$instance = new self();
+
+		return $instance;
 
 	}
 
