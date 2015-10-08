@@ -109,7 +109,7 @@ class cf7_extras {
 					</label>
 					<p class="desc">%s</p>',
 					checked( $settings[ 'disable-ajax' ], true, false ),
-					__( 'Disable AJAX for this form', 'cf7-extras' ),
+					esc_html__( 'Disable AJAX for this form', 'cf7-extras' ),
 					__( 'Same as <code>define( \'WPCF7_LOAD_JS\', true );</code>. Disabling AJAX will also disable Google Analytics event tracking and HTML5 input type fallback for this form. ', 'cf7-extras' )
 				)
 			),
@@ -123,7 +123,7 @@ class cf7_extras {
 					</label>
 					<p class="desc">%s</p>',
 					checked( $settings[ 'disable-css' ], true, false ),
-					__( 'Disable default CSS for this form', 'cf7-extras' ),
+					esc_html__( 'Disable default CSS for this form', 'cf7-extras' ),
 					__( 'Disables CSS that comes bundled with Contact Form 7. Same as <code>define( \'WPCF7_LOAD_CSS\', false );</code>.', 'cf7-extras' )
 				)
 			),
@@ -137,7 +137,7 @@ class cf7_extras {
 					</label>
 					<p class="desc">%s</p>',
 					checked( $settings[ 'disable-autop' ], true, false ),
-					__( 'Disable automatic paragraph formatting', 'cf7-extras' ),
+					esc_html__( 'Disable automatic paragraph formatting', 'cf7-extras' ),
 					__( 'Same as <code>define( \'WPCF7_AUTOP\', false );</code>.', 'cf7-extras' )
 				)
 			),
@@ -162,11 +162,11 @@ class cf7_extras {
 						</li>
 					</ul>',
 					checked( $settings[ 'html5-disable' ], true, false ),
-					__( 'Disable HTML5 input types', 'cf7-extras' ),
-					__( 'Use regular input types instead.', 'cf7-extras' ),
+					esc_html__( 'Disable HTML5 input types', 'cf7-extras' ),
+					esc_html__( 'Use regular input types instead.', 'cf7-extras' ),
 					checked( $settings[ 'html5-fallback' ], true, false ),
-					__( 'Enable HTML5 input type fallback', 'cf7-extras' ),
-					__( 'Adds support for HTML5 input fields to older browsers.', 'cf7-extras' )
+					esc_html__( 'Enable HTML5 input type fallback', 'cf7-extras' ),
+					esc_html__( 'Adds support for HTML5 input fields to older browsers.', 'cf7-extras' )
 				)
 			),
 			'extra-redirect-success' => array(
@@ -256,7 +256,7 @@ class cf7_extras {
 						sprintf(
 							'<a href="%s">%s</a> (%d)',
 							$form_entries_link,
-							__( 'View entries of this contact form', 'cf7-extras' ),
+							esc_html__( 'View entries of this contact form', 'cf7-extras' ),
 							count( $form_entries )
 						)
 					)
