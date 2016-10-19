@@ -5,9 +5,9 @@
 	Tags: contact form, contact form 7, cf7, admin, backend, google analytics, ga, forms, form, track
 	Plugin URI: https://github.com/kasparsd/contact-form-7-extras
 	Author: Kaspars Dambis
-	Author URI: http://kaspars.net
-	Version: 0.3.1-dev
-	Tested up to: 4.3
+	Author URI: https://kaspars.net
+	Version: 0.3.1
+	Tested up to: 4.6.1
 	License: GPL2
 	Text Domain: cf7-extras
 */
@@ -586,4 +586,3 @@ class cf7_extras {
 
 
 }
-

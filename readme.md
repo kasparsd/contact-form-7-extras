@@ -1,17 +1,17 @@
 # Contact Form 7 Controls
 
-Contributors: kasparsd, buzztone
-Tags: Contact Form 7, cf7, admin, backend, redirect, tracking, google analytics, ga, simple, interface, dashboard, recaptcha
-Requires at least: 3.0
-Tested up to: 4.3.1
-Stable tag: trunk
+Contributors: kasparsd, buzztone   
+Tags: Contact Form 7, cf7, admin, backend, redirect, tracking, google analytics, ga, simple, interface, dashboard, recaptcha   
+Requires at least: 3.0   
+Tested up to: 4.6.1   
+Stable tag: trunk   
 
 Adds simple controls for some of the advanced functionality of the Contact Form 7 plugin.
 
 
 ## Description
 
-This plugin adds simple admin controlls for the following customization of the [Contact Form 7](http://wordpress.org/plugins/contact-form-7/) form output:
+This plugin adds simple admin controls for the following customization of the [Contact Form 7](http://wordpress.org/plugins/contact-form-7/) form output:
 
 - Disable AJAX form submission
 - Disable default form CSS
@@ -44,6 +44,10 @@ None, yet.
 
 
 ## Changelog
+
+### 0.3.1 (October 19, 2016)
+
+- Test with the latest version of WordPress
 
 ### 0.3 (October 8, 2015)
 
