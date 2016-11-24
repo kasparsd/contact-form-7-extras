@@ -27,6 +27,10 @@ Note that some settings work on per-page level and will inherit for all forms on
 
 The "[Storage for Contact Form 7](http://codecanyon.net/item/storage-for-contact-form-7-/7806229)" plugin automatically stores all the contact form submissions (including attachments) in your WordPress database. It also provides the CSV export of the form entries.
 
+### Get Involved
+
+Here is the [GitHub repository](https://github.com/kasparsd/contact-form-7-extras) for the plugin.
+
 
 ## Installation
 
