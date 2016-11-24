@@ -45,6 +45,10 @@ None, yet.
 
 ## Changelog
 
+### 0.3.2 (November 24, 2016)
+
+- Fix redirect functionality for both AJAX and non-AJAX form submissions.
+
 ### 0.3.1 (October 19, 2016)
 
 - Test with the latest version of WordPress
