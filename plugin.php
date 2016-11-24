@@ -111,7 +111,7 @@ class cf7_extras {
 					<p class="desc">%s</p>',
 					checked( $settings[ 'disable-ajax' ], true, false ),
 					esc_html__( 'Disable AJAX for this form', 'cf7-extras' ),
-					__( 'Same as <code>define( \'WPCF7_LOAD_JS\', false );</code>. Disabling AJAX will also disable Google Analytics event tracking and HTML5 input type fallback for this form. ', 'cf7-extras' )
+					__( 'Same as <code>define( \'WPCF7_LOAD_JS\', false );</code>. Disabling AJAX will also disable Google Analytics event tracking and HTML5 input type fallback for this form.', 'cf7-extras' )
 				)
 			),
 			'extra-disable-css' => array(
@@ -167,7 +167,7 @@ class cf7_extras {
 					esc_html__( 'Use regular input types instead.', 'cf7-extras' ),
 					checked( $settings[ 'html5-fallback' ], true, false ),
 					esc_html__( 'Enable HTML5 input type fallback', 'cf7-extras' ),
-					esc_html__( 'Adds support for HTML5 input fields to older browsers.', 'cf7-extras' )
+					esc_html__( 'Adds support for HTML5 input fields to older browsers (requires AJAX form submissions).', 'cf7-extras' )
 				)
 			),
 			'extra-redirect-success' => array(
@@ -547,16 +547,19 @@ class cf7_extras {
 
 	function wpcf7_submit( $form, $result ) {
 
-		// Redirect only if this is a successful non-AJAX response
-		if ( isset( $result['status'] ) && 'mail_sent' == $result['status'] && ! isset( $result['scripts_on_sent_ok'] ) ) {
+		// JS is already doing the redirect
+		if ( isset( $_POST['_wpcf7_is_ajax_call'] ) || ! isset( $result['status'] ) ) {
+			return;
+		}
 
+		// Redirect only if this is a successful non-AJAX response
+		if ( 'mail_sent' == $result['status'] ) {
 			$redirect = trim( $this->get_form_settings( $form, 'redirect-success' ) );
 
 			if ( ! empty( $redirect ) ) {
 				wp_redirect( esc_url( $redirect ) );
 				exit;
 			}
-
 		}
 
 	}

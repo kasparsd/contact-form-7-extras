@@ -1,149 +1,136 @@
-# Copyright (C) 2015 Contact Form 7 Controls
+# Copyright (C) 2016 Contact Form 7 Controls
 # This file is distributed under the same license as the Contact Form 7 Controls package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Contact Form 7 Controls 0.3\n"
+"Project-Id-Version: Contact Form 7 Controls 0.3.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/git\n"
-"POT-Creation-Date: 2015-10-08 08:27:41+00:00\n"
+"POT-Creation-Date: 2016-11-24 16:56:46+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: plugin.php:86
+#: plugin.php:87
 msgid "Extra Settings"
 msgstr ""
 
-#: plugin.php:103
+#: plugin.php:104
 msgid "AJAX Submissions"
 msgstr ""
 
-#: plugin.php:112
+#: plugin.php:113
 msgid "Disable AJAX for this form"
 msgstr ""
 
-#: plugin.php:113
-msgid ""
-"Same as <code>define( 'WPCF7_LOAD_JS', false );</code>. Disabling AJAX will "
-"also disable Google Analytics event tracking and HTML5 input type fallback "
-"for this form. "
+#: plugin.php:114
+msgid "Same as <code>define( 'WPCF7_LOAD_JS', false );</code>. Disabling AJAX will also disable Google Analytics event tracking and HTML5 input type fallback for this form."
 msgstr ""
 
-#: plugin.php:117
+#: plugin.php:118
 msgid "Default CSS"
 msgstr ""
 
-#: plugin.php:126
+#: plugin.php:127
 msgid "Disable default CSS for this form"
 msgstr ""
 
-#: plugin.php:127
-msgid ""
-"Disables CSS that comes bundled with Contact Form 7. Same as "
-"<code>define( 'WPCF7_LOAD_CSS', false );</code>."
+#: plugin.php:128
+msgid "Disables CSS that comes bundled with Contact Form 7. Same as <code>define( 'WPCF7_LOAD_CSS', false );</code>."
 msgstr ""
 
-#: plugin.php:131
+#: plugin.php:132
 msgid "Automatic Formatting"
 msgstr ""
 
-#: plugin.php:140
+#: plugin.php:141
 msgid "Disable automatic paragraph formatting"
 msgstr ""
 
-#: plugin.php:141
+#: plugin.php:142
 msgid "Same as <code>define( 'WPCF7_AUTOP', false );</code>."
 msgstr ""
 
-#: plugin.php:145
+#: plugin.php:146
 msgid "HTML5 input types"
 msgstr ""
 
-#: plugin.php:165
+#: plugin.php:166
 msgid "Disable HTML5 input types"
 msgstr ""
 
-#: plugin.php:166
+#: plugin.php:167
 msgid "Use regular input types instead."
 msgstr ""
 
-#: plugin.php:168
+#: plugin.php:169
 msgid "Enable HTML5 input type fallback"
 msgstr ""
 
-#: plugin.php:169
-msgid "Adds support for HTML5 input fields to older browsers."
+#: plugin.php:170
+msgid "Adds support for HTML5 input fields to older browsers (requires AJAX form submissions)."
 msgstr ""
 
-#: plugin.php:173
+#: plugin.php:174
 msgid "Redirect to URL on Success"
 msgstr ""
 
-#: plugin.php:182
-msgid ""
-"Enter URL where users should be redirected after successful form submissions."
+#: plugin.php:183
+msgid "Enter URL where users should be redirected after successful form submissions."
 msgstr ""
 
-#: plugin.php:186
+#: plugin.php:187
 msgid "Google Recaptcha Language"
 msgstr ""
 
-#: plugin.php:195
+#: plugin.php:196
 msgid "Specify the language code of the Google Recaptcha output."
 msgstr ""
 
-#: plugin.php:199
+#: plugin.php:200
 msgid "Google Analytics Tracking"
 msgstr ""
 
-#: plugin.php:219
+#: plugin.php:220
 msgid "Trigger Google Analytics event on successful form submissions."
 msgstr ""
 
-#: plugin.php:221
-msgid ""
-"Track Google Analytics event with category \"Contact Form\", action \"Sent\" "
-"and \"%s\" as label."
+#: plugin.php:222
+msgid "Track Google Analytics event with category \"Contact Form\", action \"Sent\" and \"%s\" as label."
 msgstr ""
 
-#: plugin.php:225
+#: plugin.php:226
 msgid "Trigger Google Analytics event on all form submissions."
 msgstr ""
 
-#: plugin.php:227
-msgid ""
-"Track Google Analytics event with category \"Contact Form\", action \"Submit"
-"\" and \"%s\" as label."
+#: plugin.php:228
+msgid "Track Google Analytics event with category \"Contact Form\", action \"Submit\" and \"%s\" as label."
 msgstr ""
 
-#: plugin.php:252 plugin.php:268
+#: plugin.php:253 plugin.php:269
 msgid "Store Form Entries"
 msgstr ""
 
-#: plugin.php:259
+#: plugin.php:260
 msgid "View entries of this contact form"
 msgstr ""
 
-#: plugin.php:273
-msgid ""
-"Install the %s plugin to save the form submissions in your WordPress "
-"database or export as CSV for Excel."
-msgstr ""
-
-#: plugin.php:296
-msgid "View the official documentation for this feature"
+#: plugin.php:274
+msgid "Install the %s plugin to save the form submissions in your WordPress database or export as CSV for Excel."
 msgstr ""
 
 #: plugin.php:297
+msgid "View the official documentation for this feature"
+msgstr ""
+
+#: plugin.php:298
 msgid "Docs"
 msgstr ""
 
-#: plugin.php:363
+#: plugin.php:364
 msgid "Customize"
 msgstr ""
-
 #. Plugin Name of the plugin/theme
 msgid "Contact Form 7 Controls"
 msgstr ""
@@ -161,11 +148,9 @@ msgid "Kaspars Dambis"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "http://kaspars.net"
+msgid "https://kaspars.net"
 msgstr ""
 
 #. Tags of the plugin/theme
-msgid ""
-"contact form, contact form 7, cf7, admin, backend, google analytics, ga, "
-"forms, form, track"
+msgid "contact form, contact form 7, cf7, admin, backend, google analytics, ga, forms, form, track"
 msgstr ""
