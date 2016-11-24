@@ -547,6 +547,11 @@ class cf7_extras {
 
 	function wpcf7_submit( $form, $result ) {
 
+		// JS is already doing the redirect
+		if ( isset( $_POST['_wpcf7_is_ajax_call'] ) ) {
+			return;
+		}
+
 		// Redirect only if this is a successful non-AJAX response
 		if ( isset( $result['status'] ) && 'mail_sent' == $result['status'] && ! isset( $result['scripts_on_sent_ok'] ) ) {
 
