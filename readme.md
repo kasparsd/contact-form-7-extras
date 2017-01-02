@@ -49,6 +49,10 @@ None, yet.
 
 ## Changelog
 
+### 0.3.4 (January 2, 2017)
+
+- Fix redirect URL escaping for JS too.
+
 ### 0.3.3 (January 2, 2017)
 
 - Fix redirect URL escaping.
