@@ -3,7 +3,7 @@
 Contributors: kasparsd, buzztone   
 Tags: Contact Form 7, cf7, admin, backend, redirect, tracking, google analytics, ga, simple, interface, dashboard, recaptcha   
 Requires at least: 3.0   
-Tested up to: 4.6.1   
+Tested up to: 4.7   
 Stable tag: trunk   
 
 Adds simple controls for some of the advanced functionality of the Contact Form 7 plugin.
@@ -48,6 +48,11 @@ None, yet.
 
 
 ## Changelog
+
+### 0.3.3 (January 2, 2017)
+
+- Fix redirect URL escaping.
+- Tested with WordPress 4.7.
 
 ### 0.3.2 (November 24, 2016)
 
