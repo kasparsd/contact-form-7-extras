@@ -3,7 +3,7 @@
 Contributors: kasparsd, buzztone   
 Tags: Contact Form 7, cf7, admin, backend, redirect, tracking, google analytics, ga, simple, interface, dashboard, recaptcha   
 Requires at least: 3.0   
-Tested up to: 4.7   
+Tested up to: 4.7.3   
 Stable tag: trunk   
 
 Adds simple controls for some of the advanced functionality of the Contact Form 7 plugin.
@@ -11,21 +11,18 @@ Adds simple controls for some of the advanced functionality of the Contact Form 
 
 ## Description
 
-This plugin adds simple admin controls for the following customization of the [Contact Form 7](http://wordpress.org/plugins/contact-form-7/) form output:
+This plugin enables simple controls for some of the advanced features of the [Contact Form 7](http://wordpress.org/plugins/contact-form-7/) plugin:
 
-- Disable AJAX form submission
+- Disable AJAX form submissions
 - Disable default form CSS
 - Disable automatic paragraph formatting
 - Disable HTML5 input field types or enable the HTML5 input type fallback
 - Track form submissions and completions with Google Analytics
 - Redirect to URL on form submission
-- Specify Google Recaptcha language.
+- Specify the Google Recaptcha language
 
-Note that some settings work on per-page level and will inherit for all forms on the same page. For example, disabling AJAX form submissions for one form will disable AJAX submissions on all forms on _that page_.
+Please note that some settings work on per-page level and will inherit for all forms on the same page. For example, disabling AJAX form submissions for one form will disable AJAX submissions on all forms on the same page.
 
-### Saving Form Submissions in WordPress
-
-The "[Storage for Contact Form 7](http://codecanyon.net/item/storage-for-contact-form-7-/7806229)" plugin automatically stores all the contact form submissions (including attachments) in your WordPress database. It also provides the CSV export of the form entries.
 
 ### Get Involved
 
@@ -39,7 +36,10 @@ Search for "Contact Form 7 Controls" using the standard plugin installer.
 
 ## Frequently Asked Questions
 
-None, yet.
+### How to save Contact Form 7 submissions in the WordPress database?
+
+The "[Storage for Contact Form 7](https://codecanyon.net/item/storage-for-contact-form-7-/7806229)" plugin stores all contact form submissions (including attachments) securely in the WordPress database. It also provides a CSV export of the form entries.
+
 
 
 ## Screenshots
@@ -48,6 +48,10 @@ None, yet.
 
 
 ## Changelog
+
+### 0.3.5 (April 6, 2017)
+
+- Confirm that the plugin works with WordPress 4.7.3.
 
 ### 0.3.4 (January 2, 2017)
 

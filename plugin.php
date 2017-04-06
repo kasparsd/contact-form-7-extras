@@ -6,8 +6,8 @@
 	Plugin URI: https://github.com/kasparsd/contact-form-7-extras
 	Author: Kaspars Dambis
 	Author URI: https://kaspars.net
-	Version: 0.3.4
-	Tested up to: 4.7
+	Version: 0.3.5
+	Tested up to: 4.7.3
 	License: GPL2
 	Text Domain: cf7-extras
 */
@@ -249,9 +249,9 @@ class cf7_extras {
 					'posts_per_page' => -1
 				) );
 
-			$fields['extra-cf7-storage'] = array(
+			$storage_field = array(
 					'label' => __( 'Store Form Entries', 'cf7-extras' ),
-					'docs_url' => 'http://codecanyon.net/item/storage-for-contact-form-7-/7806229?ref=Preseto',
+					'docs_url' => 'https://codecanyon.net/item/storage-for-contact-form-7-/7806229?ref=Preseto',
 					'field' => sprintf(
 						'<p>%s</p>',
 						sprintf(
@@ -265,19 +265,25 @@ class cf7_extras {
 
 		} else {
 
-			$fields['extra-cf7-storage'] = array(
+			$storage_field = array(
 					'label' => __( 'Store Form Entries', 'cf7-extras' ),
-					'docs_url' => 'http://codecanyon.net/item/storage-for-contact-form-7-/7806229?ref=Preseto',
+					'docs_url' => 'https://codecanyon.net/item/storage-for-contact-form-7-/7806229?ref=Preseto',
 					'field' => sprintf(
 						'<p>%s</p>',
 						sprintf(
 							esc_html__( 'Install the %s plugin to save the form submissions in your WordPress database or export as CSV for Excel.', 'cf7-extras' ),
-							'<a href="http://codecanyon.net/item/storage-for-contact-form-7-/7806229?ref=Preseto">Storage for Contact Form 7</a>'
+							'<a href="https://codecanyon.net/item/storage-for-contact-form-7-/7806229?ref=Preseto">Storage for Contact Form 7</a>'
 						)
 					)
 				);
 
 		}
+
+		// Place the storage links on top
+		$fields = array_merge(
+			array( 'extra-cf7-storage' => $storage_field ),
+			$fields
+		);
 
 		$rows = array();
 
