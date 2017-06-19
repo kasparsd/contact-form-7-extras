@@ -1,0 +1,25 @@
+{
+  "name": "contact-form-7-extras",
+  "version": "1.0.0",
+  "description": "Advanced controls for Contact Form 7",
+  "scripts": {
+    "wpsh": "wpsh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kasparsd/contact-form-7-extras.git"
+  },
+  "keywords": [
+    "wordpress",
+    "wordpress-plugin"
+  ],
+  "author": "Kaspars Dambis (https://kaspars.net)",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/kasparsd/contact-form-7-extras/issues"
+  },
+  "homepage": "https://wordpress.org/plugins/contact-form-7-extras/",
+  "devDependencies": {
+    "wp-shuttle": "github:wpsh/wpsh"
+  }
+}
