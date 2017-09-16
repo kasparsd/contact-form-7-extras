@@ -545,6 +545,8 @@ class cf7_extras {
 		// JS is already doing the redirect
 		if ( isset( $_POST['_wpcf7_is_ajax_call'] ) || ! isset( $result['status'] ) ) {
 			return;
+		} elseif ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
+			return;
 		}
 
 		// Redirect only if this is a successful non-AJAX response
