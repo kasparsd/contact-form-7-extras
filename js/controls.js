@@ -36,21 +36,21 @@
 	}
 
 	$( document ).on( 'wpcf7:mailsent', function( event, form ) {
-		if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga-success' ) ) {
+		if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga' ) ) {
 			var formConfig = getFormConfig( form.contactFormId );
 			trackGaEvent( 'Contact Form', 'Sent', formConfig.title );
 		}
 	} );
 
 	$( document ).on( 'wpcf7:mailfailed', function( event, form ) {
-		if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga-error' ) ) {
+		if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga' ) ) {
 			var formConfig = getFormConfig( form.contactFormId );
 			trackGaEvent( 'Contact Form', 'Error', formConfig.title );
 		}
 	} );
 
 	$( document ).on( 'wpcf7:submit', function( event, form ) {
-		if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga-submit' ) ) {
+		if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga' ) ) {
 			var formConfig = getFormConfig( form.contactFormId );
 			trackGaEvent( 'Contact Form', 'Submit', formConfig.title );
 		}
