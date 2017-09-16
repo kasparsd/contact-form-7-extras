@@ -105,7 +105,7 @@ class cf7_extras {
 				'docs_url' => 'http://contactform7.com/controlling-behavior-by-setting-constants/',
 				'field' => sprintf(
 					'<label>
-						<input id="extra-disable-ajax" data-toggle-on=".extra-field-extra-track-ga-success, #extra-html5-fallback-wrap" name="extra[disable-ajax]" value="1" %s type="checkbox" />
+						<input id="extra-disable-ajax" data-toggle-on=".extra-field-extra-track-ga, #extra-html5-fallback-wrap" name="extra[disable-ajax]" value="1" %s type="checkbox" />
 						<span>%s</span>
 					</label>
 					<p class="desc">%s</p>',
@@ -196,36 +196,19 @@ class cf7_extras {
 					esc_html__( 'Specify the language code of the Google Recaptcha output.', 'cf7-extras' )
 				)
 			),
-			'extra-track-ga-success' => array(
+			'extra-track-ga' => array(
 				'label' => __( 'Google Analytics Tracking', 'cf7-extras' ),
 				'docs_url' => 'http://contactform7.com/tracking-form-submissions-with-google-analytics/',
 				'field' => sprintf(
-					'<ul>
-					<li>
-						<label>
-							<input type="checkbox" id="extra-track-ga-success" name="extra[track-ga-success]" value="1" %s />
-							<span>%s</span>
-						</label>
-						<p class="desc">%s</p>
-					</li>
-					<li>
-						<label>
-							<input type="checkbox" id="extra-track-ga-submit" name="extra[track-ga-submit]" value="1" %s />
-							<span>%s</span>
-						</label>
-						<p class="desc">%s</p>
-					</li>
-					</ul>',
-					checked( $settings[ 'track-ga-success' ], true, false ),
-					esc_html__( 'Trigger Google Analytics event on successful form submissions.', 'cf7-extras' ),
+					'<label>
+						<input type="checkbox" id="extra-track-ga" name="extra[track-ga]" value="1" %s />
+						<span>%s</span>
+					</label>
+					<p class="desc">%s</p>',
+					checked( $settings[ 'track-ga' ], true, false ),
+					esc_html__( 'Trigger Google Analytics events on form submissions.', 'cf7-extras' ),
 					esc_html( sprintf(
 						__( 'Track Google Analytics event with category "Contact Form", action "Sent" and "%s" as label.', 'cf7-extras' ),
-						$cf7->title()
-					) ),
-					checked( $settings[ 'track-ga-submit' ], true, false ),
-					esc_html__( 'Trigger Google Analytics event on all form submissions.', 'cf7-extras' ),
-					esc_html( sprintf(
-						__( 'Track Google Analytics event with category "Contact Form", action "Submit" and "%s" as label.', 'cf7-extras' ),
 						$cf7->title()
 					) )
 				)
@@ -420,12 +403,18 @@ class cf7_extras {
 				'redirect-success' => false,
 				'track-ga-success' => false,
 				'track-ga-submit' => false,
+				'track-ga' => false,
 				'google-recaptcha-lang' => null,
 			)
 		);
 
 		// Cache it for re-use
 		$form_settings[ $form->id() ] = $settings;
+
+		// Convert individual legacy settings into one.
+		if ( ! empty( $settings['track-ga-success'] ) || ! empty( $settings['track-ga-submit'] ) ) {
+			$settings['track-ga'] = true;
+		}
 
 		// Return a specific field value
 		if ( isset( $field ) ) {
@@ -503,9 +492,7 @@ class cf7_extras {
 		}
 
 		$form_events = array(
-			'track-ga-submit' => array(),
-			'track-ga-success' => array(),
-			'track-ga-error' => array(),
+			'track-ga' => array(),
 			'redirect-success' => array(),
 		);
 
