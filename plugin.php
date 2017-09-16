@@ -180,7 +180,7 @@ class cf7_extras {
 					<p class="desc">%s</p>',
 					esc_url( $settings[ 'redirect-success' ] ),
 					esc_attr( 'http://example.com' ),
-					esc_html__( 'Enter URL where users should be redirected after successful form submissions.', 'cf7-extras' )
+					esc_html__( 'Enter the URL where users should be redirected after successful form submissions.', 'cf7-extras' )
 				)
 			),
 			'extra-google-recaptcha-lang' => array(
@@ -208,7 +208,7 @@ class cf7_extras {
 					checked( $settings[ 'track-ga' ], true, false ),
 					esc_html__( 'Trigger Google Analytics events on form submissions.', 'cf7-extras' ),
 					esc_html( sprintf(
-						__( 'Track Google Analytics event with category "Contact Form", action "Sent" and "%s" as label.', 'cf7-extras' ),
+						__( 'Track form submissions as events with category "Contact Form", actions "Sent", "Error" or "Submit" and label "%s".', 'cf7-extras' ),
 						$cf7->title()
 					) )
 				)
