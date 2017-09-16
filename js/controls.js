@@ -4,10 +4,10 @@
 	}
 
 	var trackGaEvent = function( eventCategory, eventAction, eventTitle ) {
-		if ( "function" === typeof ga ) {
-			ga( "send", "event", eventCategory, eventAction, eventTitle );
-		} else if ( "undefined" !== typeof _gaq ) {
-			_gaq.push( [ "_trackEvent", eventCategory, eventAction, eventTitle ] );
+		if ( 'function' === typeof ga ) {
+			ga( 'send', 'event', eventCategory, eventAction, eventTitle );
+		} else if ( 'undefined' !== typeof _gaq ) {
+			_gaq.push( [ '_trackEvent', eventCategory, eventAction, eventTitle ] );
 		}
 	};
 
