@@ -57,7 +57,7 @@ class cf7_extras {
 		add_action( 'wp_print_footer_scripts', array( $this, 'maybe_alter_scripts' ), 8 );
 
 		// Maybe redirect or trigger GA events
-		add_filter( 'wpcf7_ajax_json_echo', array( $this, 'filter_ajax_echo' ), 10, 2 );
+		add_action( 'wp_print_footer_scripts', array( $this, 'track_form_events' ), 9 );
 
 		// Redirect to a custom URL really late
 		add_action( 'wpcf7_submit', array( $this, 'wpcf7_submit' ), 987, 2 );
@@ -496,57 +496,59 @@ class cf7_extras {
 	}
 
 
-	function filter_ajax_echo( $items, $result ) {
+	function track_form_events() {
 
-		$form = WPCF7_ContactForm::get_current();
-		$track_ga_submit = $this->get_form_settings( $form, 'track-ga-submit' );
-
-		if ( ! empty( $track_ga_submit ) ) {
-
-			if ( ! isset( $items['onSubmit'] ) )
-				$items['onSubmit'] = array();
-
-			$items['onSubmit'][] = sprintf(
-					'if ( typeof ga == "function" ) {
-						ga( "send", "event", "Contact Form", "Submit", "%1$s" );
-					}
-					if ( typeof _gaq !== "undefined" ) {
-						_gaq.push([ "_trackEvent", "Contact Form", "Submit", "%1$s" ]);
-					}',
-					esc_js( $form->title() )
-				);
-
+		if ( empty( $this->rendered ) ) {
+			return;
 		}
 
-		if ( 'mail_sent' === $result['status'] ) {
+		$form_events = array(
+			'track-ga-submit' => array(),
+			'track-ga-success' => array(),
+			'track-ga-error' => array(),
+			'redirect-success' => array(),
+		);
 
-			$track_ga_success = $this->get_form_settings( $form, 'track-ga-success' );
-			$redirect = trim( $this->get_form_settings( $form, 'redirect-success' ) );
+		$form_config = array();
 
-			if ( ! isset( $items['onSentOk'] ) ) {
-				$items['onSentOk'] = array();
+		foreach ( $this->rendered as $form_id => $settings ) {
+
+			// Bail out since CF7 JS is disabled.
+			if ( ! empty( $settings['disable-ajax'] ) ) {
+				return;
 			}
 
-			$items['onSentOk'][] = sprintf(
-					'if ( typeof ga == "function" ) {
-						ga( "send", "event", "Contact Form", "Sent", "%1$s" );
-					}
-					if ( typeof _gaq !== "undefined" ) {
-						_gaq.push([ "_trackEvent", "Contact Form", "Sent", "%1$s" ]);
-					}',
-					esc_js( $form->title() )
-				);
+			$form = wpcf7_contact_form( $form_id );
 
-			if ( ! empty( $redirect ) ) {
-				$items['onSentOk'][] = sprintf(
-						'window.location = "%s";',
-						esc_js( esc_url_raw( $redirect ) )
-					);
+			$form_config[ $form_id ] = array(
+				'title' => $form->title(),
+				'redirect_url' => $settings['redirect-success'],
+			);
+
+			foreach ( $form_events as $event_key => $event_form_ids ) {
+				if ( ! empty( $settings[ $event_key ] ) ) {
+					$form_events[ $event_key ][] = intval( $form_id );
+				}
 			}
 
 		}
 
-		return $items;
+		wp_enqueue_script(
+			'cf7-extras',
+			plugins_url( 'js/controls.js', __FILE__ ),
+			array( 'contact-form-7' ),
+			'0.0.1',
+			true
+		);
+
+		wp_localize_script(
+			'cf7-extras',
+			'cf7_extras',
+			array(
+				'events' => $form_events,
+				'forms' => $form_config,
+			)
+		);
 
 	}
 
