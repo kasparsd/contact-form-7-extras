@@ -554,7 +554,7 @@ class cf7_extras {
 			$redirect = trim( $this->get_form_settings( $form, 'redirect-success' ) );
 
 			if ( ! empty( $redirect ) ) {
-				wp_redirect( esc_url_raw( $redirect ) );
+				wp_safe_redirect( esc_url_raw( $redirect ), 302 );
 				exit;
 			}
 		}
