@@ -6,8 +6,8 @@
 	Plugin URI: https://github.com/kasparsd/contact-form-7-extras
 	Author: Kaspars Dambis
 	Author URI: https://kaspars.net
-	Version: 0.3.5
-	Tested up to: 4.7.3
+	Version: 0.4.0
+	Tested up to: 4.8.1
 	License: GPL2
 	Text Domain: cf7-extras
 */
@@ -57,7 +57,7 @@ class cf7_extras {
 		add_action( 'wp_print_footer_scripts', array( $this, 'maybe_alter_scripts' ), 8 );
 
 		// Maybe redirect or trigger GA events
-		add_filter( 'wpcf7_ajax_json_echo', array( $this, 'filter_ajax_echo' ), 10, 2 );
+		add_action( 'wp_print_footer_scripts', array( $this, 'track_form_events' ), 9 );
 
 		// Redirect to a custom URL really late
 		add_action( 'wpcf7_submit', array( $this, 'wpcf7_submit' ), 987, 2 );
@@ -105,7 +105,7 @@ class cf7_extras {
 				'docs_url' => 'http://contactform7.com/controlling-behavior-by-setting-constants/',
 				'field' => sprintf(
 					'<label>
-						<input id="extra-disable-ajax" data-toggle-on=".extra-field-extra-track-ga-success, #extra-html5-fallback-wrap" name="extra[disable-ajax]" value="1" %s type="checkbox" />
+						<input id="extra-disable-ajax" data-toggle-on=".extra-field-extra-track-ga, #extra-html5-fallback-wrap" name="extra[disable-ajax]" value="1" %s type="checkbox" />
 						<span>%s</span>
 					</label>
 					<p class="desc">%s</p>',
@@ -180,7 +180,7 @@ class cf7_extras {
 					<p class="desc">%s</p>',
 					esc_url( $settings[ 'redirect-success' ] ),
 					esc_attr( 'http://example.com' ),
-					esc_html__( 'Enter URL where users should be redirected after successful form submissions.', 'cf7-extras' )
+					esc_html__( 'Enter the URL where users should be redirected after successful form submissions.', 'cf7-extras' )
 				)
 			),
 			'extra-google-recaptcha-lang' => array(
@@ -196,36 +196,19 @@ class cf7_extras {
 					esc_html__( 'Specify the language code of the Google Recaptcha output.', 'cf7-extras' )
 				)
 			),
-			'extra-track-ga-success' => array(
+			'extra-track-ga' => array(
 				'label' => __( 'Google Analytics Tracking', 'cf7-extras' ),
 				'docs_url' => 'http://contactform7.com/tracking-form-submissions-with-google-analytics/',
 				'field' => sprintf(
-					'<ul>
-					<li>
-						<label>
-							<input type="checkbox" id="extra-track-ga-success" name="extra[track-ga-success]" value="1" %s />
-							<span>%s</span>
-						</label>
-						<p class="desc">%s</p>
-					</li>
-					<li>
-						<label>
-							<input type="checkbox" id="extra-track-ga-submit" name="extra[track-ga-submit]" value="1" %s />
-							<span>%s</span>
-						</label>
-						<p class="desc">%s</p>
-					</li>
-					</ul>',
-					checked( $settings[ 'track-ga-success' ], true, false ),
-					esc_html__( 'Trigger Google Analytics event on successful form submissions.', 'cf7-extras' ),
+					'<label>
+						<input type="checkbox" id="extra-track-ga" name="extra[track-ga]" value="1" %s />
+						<span>%s</span>
+					</label>
+					<p class="desc">%s</p>',
+					checked( $settings[ 'track-ga' ], true, false ),
+					esc_html__( 'Trigger Google Analytics events on form submissions.', 'cf7-extras' ),
 					esc_html( sprintf(
-						__( 'Track Google Analytics event with category "Contact Form", action "Sent" and "%s" as label.', 'cf7-extras' ),
-						$cf7->title()
-					) ),
-					checked( $settings[ 'track-ga-submit' ], true, false ),
-					esc_html__( 'Trigger Google Analytics event on all form submissions.', 'cf7-extras' ),
-					esc_html( sprintf(
-						__( 'Track Google Analytics event with category "Contact Form", action "Submit" and "%s" as label.', 'cf7-extras' ),
+						__( 'Track form submissions as events with category "Contact Form", actions "Sent", "Error" or "Submit" and label "%s".', 'cf7-extras' ),
 						$cf7->title()
 					) )
 				)
@@ -420,12 +403,18 @@ class cf7_extras {
 				'redirect-success' => false,
 				'track-ga-success' => false,
 				'track-ga-submit' => false,
+				'track-ga' => false,
 				'google-recaptcha-lang' => null,
 			)
 		);
 
 		// Cache it for re-use
 		$form_settings[ $form->id() ] = $settings;
+
+		// Convert individual legacy settings into one.
+		if ( ! empty( $settings['track-ga-success'] ) || ! empty( $settings['track-ga-submit'] ) ) {
+			$settings['track-ga'] = true;
+		}
 
 		// Return a specific field value
 		if ( isset( $field ) ) {
@@ -496,57 +485,57 @@ class cf7_extras {
 	}
 
 
-	function filter_ajax_echo( $items, $result ) {
+	function track_form_events() {
 
-		$form = WPCF7_ContactForm::get_current();
-		$track_ga_submit = $this->get_form_settings( $form, 'track-ga-submit' );
-
-		if ( ! empty( $track_ga_submit ) ) {
-
-			if ( ! isset( $items['onSubmit'] ) )
-				$items['onSubmit'] = array();
-
-			$items['onSubmit'][] = sprintf(
-					'if ( typeof ga == "function" ) {
-						ga( "send", "event", "Contact Form", "Submit", "%1$s" );
-					}
-					if ( typeof _gaq !== "undefined" ) {
-						_gaq.push([ "_trackEvent", "Contact Form", "Submit", "%1$s" ]);
-					}',
-					esc_js( $form->title() )
-				);
-
+		if ( empty( $this->rendered ) ) {
+			return;
 		}
 
-		if ( 'mail_sent' === $result['status'] ) {
+		$form_events = array(
+			'track-ga' => array(),
+			'redirect-success' => array(),
+		);
 
-			$track_ga_success = $this->get_form_settings( $form, 'track-ga-success' );
-			$redirect = trim( $this->get_form_settings( $form, 'redirect-success' ) );
+		$form_config = array();
 
-			if ( ! isset( $items['onSentOk'] ) ) {
-				$items['onSentOk'] = array();
+		foreach ( $this->rendered as $form_id => $settings ) {
+
+			// Bail out since CF7 JS is disabled.
+			if ( ! empty( $settings['disable-ajax'] ) ) {
+				return;
 			}
 
-			$items['onSentOk'][] = sprintf(
-					'if ( typeof ga == "function" ) {
-						ga( "send", "event", "Contact Form", "Sent", "%1$s" );
-					}
-					if ( typeof _gaq !== "undefined" ) {
-						_gaq.push([ "_trackEvent", "Contact Form", "Sent", "%1$s" ]);
-					}',
-					esc_js( $form->title() )
-				);
+			$form = wpcf7_contact_form( $form_id );
 
-			if ( ! empty( $redirect ) ) {
-				$items['onSentOk'][] = sprintf(
-						'window.location = "%s";',
-						esc_js( esc_url_raw( $redirect ) )
-					);
+			$form_config[ $form_id ] = array(
+				'title' => $form->title(),
+				'redirect_url' => $settings['redirect-success'],
+			);
+
+			foreach ( $form_events as $event_key => $event_form_ids ) {
+				if ( ! empty( $settings[ $event_key ] ) ) {
+					$form_events[ $event_key ][] = intval( $form_id );
+				}
 			}
 
 		}
 
-		return $items;
+		wp_enqueue_script(
+			'cf7-extras',
+			plugins_url( 'js/controls.js', __FILE__ ),
+			array( 'contact-form-7' ),
+			'0.0.1',
+			true
+		);
+
+		wp_localize_script(
+			'cf7-extras',
+			'cf7_extras',
+			array(
+				'events' => $form_events,
+				'forms' => $form_config,
+			)
+		);
 
 	}
 
@@ -555,6 +544,8 @@ class cf7_extras {
 
 		// JS is already doing the redirect
 		if ( isset( $_POST['_wpcf7_is_ajax_call'] ) || ! isset( $result['status'] ) ) {
+			return;
+		} elseif ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
 			return;
 		}
 
