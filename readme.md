@@ -3,10 +3,10 @@
 Contributors: kasparsd, buzztone   
 Tags: Contact Form 7, cf7, admin, backend, redirect, tracking, google analytics, ga, simple, interface, dashboard, recaptcha   
 Requires at least: 3.0   
-Tested up to: 4.7.3   
-Stable tag: trunk   
+Tested up to: 4.8.1   
+Stable tag: 0.4.0   
 
-Adds simple controls for some of the advanced functionality of the Contact Form 7 plugin.
+Simple controls for some of the advanced Contact Form 7 plugin functionality.
 
 
 ## Description
@@ -17,7 +17,7 @@ This plugin enables simple controls for some of the advanced features of the [Co
 - Disable default form CSS
 - Disable automatic paragraph formatting
 - Disable HTML5 input field types or enable the HTML5 input type fallback
-- Track form submissions and completions with Google Analytics
+- Track form submissions, errors and completions with Google Analytics
 - Redirect to URL on form submission
 - Specify the Google Recaptcha language
 
@@ -48,6 +48,11 @@ The "[Storage for Contact Form 7](https://codecanyon.net/item/storage-for-contac
 
 
 ## Changelog
+
+### 0.4.0 (September 17, 2017)
+
+- Fix Google Analytics tracking and redirect logic.
+- Confirm that the plugin works with WordPress 4.8.1.
 
 ### 0.3.5 (April 6, 2017)
 
