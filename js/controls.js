@@ -45,6 +45,9 @@
 		if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga' ) ) {
 			var formConfig = getFormConfig( form.contactFormId );
 			trackGaEvent( 'Contact Form', 'Sent', formConfig.title );
+		}
+		if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-matomo' ) ) {
+			var formConfig = getFormConfig( form.contactFormId );
 			trackMatomoEvent( 'Contact Form', 'Sent', formConfig.title );
 		}
 	} );
@@ -53,6 +56,9 @@
 		if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga' ) ) {
 			var formConfig = getFormConfig( form.contactFormId );
 			trackGaEvent( 'Contact Form', 'Error', formConfig.title );
+		}
+		if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-matomo' ) ) {
+			var formConfig = getFormConfig( form.contactFormId );
 			trackMatomoEvent( 'Contact Form', 'Error', formConfig.title );
 		}
 	} );
@@ -61,6 +67,9 @@
 		if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga' ) ) {
 			var formConfig = getFormConfig( form.contactFormId );
 			trackGaEvent( 'Contact Form', 'Spam', formConfig.title );
+		}
+		if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-matomo' ) ) {
+			var formConfig = getFormConfig( form.contactFormId );
 			trackMatomoEvent( 'Contact Form', 'Spam', formConfig.title );
 		}
 	} );
@@ -69,6 +78,9 @@
 		if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga' ) ) {
 			var formConfig = getFormConfig( form.contactFormId );
 			trackGaEvent( 'Contact Form', 'Submit', formConfig.title );
+		}
+		if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-matomo' ) ) {
+			var formConfig = getFormConfig( form.contactFormId );
 			trackMatomoEvent( 'Contact Form', 'Submit', formConfig.title );
 		}
 
