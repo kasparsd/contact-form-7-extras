@@ -11,6 +11,12 @@
 		}
 	};
 
+	var trackMatomoEvent = function( eventCategory, eventAction, eventTitle ) {
+		if ( 'undefined' !== typeof _paq ) {
+			_paq.push([ 'trackEvent', eventCategory, eventAction, eventTitle ]);
+		}
+	};
+
 	var formEventEnabled = function( formId, eventName ) {
 		formId = parseInt( formId );
 
@@ -39,6 +45,7 @@
 		if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga' ) ) {
 			var formConfig = getFormConfig( form.contactFormId );
 			trackGaEvent( 'Contact Form', 'Sent', formConfig.title );
+			trackMatomoEvent( 'Contact Form', 'Sent', formConfig.title );
 		}
 	} );
 
@@ -46,6 +53,7 @@
 		if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga' ) ) {
 			var formConfig = getFormConfig( form.contactFormId );
 			trackGaEvent( 'Contact Form', 'Error', formConfig.title );
+			trackMatomoEvent( 'Contact Form', 'Error', formConfig.title );
 		}
 	} );
 
@@ -53,6 +61,7 @@
 		if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga' ) ) {
 			var formConfig = getFormConfig( form.contactFormId );
 			trackGaEvent( 'Contact Form', 'Spam', formConfig.title );
+			trackMatomoEvent( 'Contact Form', 'Spam', formConfig.title );
 		}
 	} );
 
@@ -60,6 +69,7 @@
 		if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga' ) ) {
 			var formConfig = getFormConfig( form.contactFormId );
 			trackGaEvent( 'Contact Form', 'Submit', formConfig.title );
+			trackMatomoEvent( 'Contact Form', 'Submit', formConfig.title );
 		}
 
 		if ( form.contactFormId && 'mail_sent' === form.status && formEventEnabled( form.contactFormId, 'redirect-success' ) ) {
