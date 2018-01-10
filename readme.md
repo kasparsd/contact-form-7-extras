@@ -3,7 +3,7 @@
 Contributors: kasparsd, buzztone   
 Tags: Contact Form 7, cf7, admin, backend, redirect, tracking, google analytics, ga, simple, interface, dashboard, recaptcha   
 Requires at least: 3.0   
-Tested up to: 4.8.1   
+Tested up to: 4.9.1   
 Stable tag: 0.4.0   
 
 Simple controls for some of the advanced Contact Form 7 plugin functionality.
@@ -48,6 +48,11 @@ The "[Storage for Contact Form 7](https://codecanyon.net/item/storage-for-contac
 
 
 ## Changelog
+
+### 0.5.0 (January 11, 2018)
+
+- Add support for Matomo (formerly Piwik) event tracking, props [@KZeni](https://github.com/kasparsd/contact-form-7-extras/pull/16).
+- Confirm that the plugin works with WordPress 4.9.1.
 
 ### 0.4.0 (September 17, 2017)
 
