@@ -17,7 +17,7 @@ This plugin enables simple controls for some of the advanced features of the [Co
 - Disable default form CSS
 - Disable automatic paragraph formatting
 - Disable HTML5 input field types or enable the HTML5 input type fallback
-- Track form submissions, errors and completions with Google Analytics
+- Track form submissions, errors and completions with Google Analytics and Matomo (formerly Piwik)
 - Redirect to URL on form submission
 - Specify the Google Recaptcha language
 
