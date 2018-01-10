@@ -105,7 +105,7 @@ class cf7_extras {
 				'docs_url' => 'http://contactform7.com/controlling-behavior-by-setting-constants/',
 				'field' => sprintf(
 					'<label>
-						<input id="extra-disable-ajax" data-toggle-on=".extra-field-extra-track-ga, .extra-field-extra-track-matomo, #extra-html5-fallback-wrap" name="extra[disable-ajax]" value="1" %s type="checkbox" />
+						<input id="extra-disable-ajax" data-toggle-on=".extra-field-extra-track-ga, #extra-html5-fallback-wrap" name="extra[disable-ajax]" value="1" %s type="checkbox" />
 						<span>%s</span>
 					</label>
 					<p class="desc">%s</p>',
@@ -197,7 +197,7 @@ class cf7_extras {
 				)
 			),
 			'extra-track-ga' => array(
-				'label' => __( 'Google Analytics Tracking', 'cf7-extras' ),
+				'label' => __( 'Google Analytics and/or Matomo (formerly Piwik) Tracking', 'cf7-extras' ),
 				'docs_url' => 'http://contactform7.com/tracking-form-submissions-with-google-analytics/',
 				'field' => sprintf(
 					'<label>
@@ -206,24 +206,7 @@ class cf7_extras {
 					</label>
 					<p class="desc">%s</p>',
 					checked( $settings[ 'track-ga' ], true, false ),
-					esc_html__( 'Trigger Google Analytics events on form submissions.', 'cf7-extras' ),
-					esc_html( sprintf(
-						__( 'Track form submissions as events with category "Contact Form", actions "Sent", "Error" or "Submit" and label "%s".', 'cf7-extras' ),
-						$cf7->title()
-					) )
-				)
-			),
-			'extra-track-matomo' => array(
-				'label' => __( 'Matomo (formerly Piwik) Tracking', 'cf7-extras' ),
-				'docs_url' => 'http://contactform7.com/tracking-form-submissions-with-google-analytics/',
-				'field' => sprintf(
-					'<label>
-						<input type="checkbox" id="extra-track-matomo" name="extra[track-matomo]" value="1" %s />
-						<span>%s</span>
-					</label>
-					<p class="desc">%s</p>',
-					checked( $settings[ 'track-matomo' ], true, false ),
-					esc_html__( 'Trigger Matomo (formerly Piwik) events on form submissions.', 'cf7-extras' ),
+					esc_html__( 'Trigger Google Analytics and/or Matomo (formerly Piwik) events on form submissions. This will tigger whichever tracking code is set up on the site.', 'cf7-extras' ),
 					esc_html( sprintf(
 						__( 'Track form submissions as events with category "Contact Form", actions "Sent", "Error" or "Submit" and label "%s".', 'cf7-extras' ),
 						$cf7->title()
@@ -421,7 +404,6 @@ class cf7_extras {
 				'track-ga-success' => false,
 				'track-ga-submit' => false,
 				'track-ga' => false,
-				'track-matomo' => false,
 				'google-recaptcha-lang' => null,
 			)
 		);
@@ -511,7 +493,6 @@ class cf7_extras {
 
 		$form_events = array(
 			'track-ga' => array(),
-			'track-matomo' => array(),
 			'redirect-success' => array(),
 		);
 
