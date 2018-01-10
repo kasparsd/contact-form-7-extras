@@ -4,7 +4,7 @@ Contributors: kasparsd, buzztone
 Tags: Contact Form 7, cf7, admin, backend, redirect, tracking, google analytics, ga, simple, interface, dashboard, recaptcha   
 Requires at least: 3.0   
 Tested up to: 4.9.1   
-Stable tag: 0.4.0   
+Stable tag: 0.5.0   
 
 Simple controls for some of the advanced Contact Form 7 plugin functionality.
 
