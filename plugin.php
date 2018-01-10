@@ -197,7 +197,7 @@ class cf7_extras {
 				)
 			),
 			'extra-track-ga' => array(
-				'label' => __( 'Google Analytics and/or Matomo (formerly Piwik) Tracking', 'cf7-extras' ),
+				'label' => __( 'Analytics Tracking', 'cf7-extras' ),
 				'docs_url' => 'http://contactform7.com/tracking-form-submissions-with-google-analytics/',
 				'field' => sprintf(
 					'<label>
@@ -206,7 +206,7 @@ class cf7_extras {
 					</label>
 					<p class="desc">%s</p>',
 					checked( $settings[ 'track-ga' ], true, false ),
-					esc_html__( 'Trigger Google Analytics and/or Matomo (formerly Piwik) events on form submissions. This will tigger whichever tracking code is set up on the site.', 'cf7-extras' ),
+					esc_html__( 'Trigger Google Analytics and/or Matomo (formerly Piwik) events on form submissions. This will tigger the tracking code that has been set up on the site.', 'cf7-extras' ),
 					esc_html( sprintf(
 						__( 'Track form submissions as events with category "Contact Form", actions "Sent", "Error" or "Submit" and label "%s".', 'cf7-extras' ),
 						$cf7->title()
