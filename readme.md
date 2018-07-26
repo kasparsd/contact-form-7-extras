@@ -4,6 +4,8 @@
 
 Source of the [Contact Form 7 Controls plugin](https://wordpress.org/plugins/contact-form-7-extras/) for WordPress.
 
+Install the plugin by searching for "Contact Form 7 Controls" under "Plugins → Add New" in your WordPress dashboard.
+
 
 ## Start Contributing
 
