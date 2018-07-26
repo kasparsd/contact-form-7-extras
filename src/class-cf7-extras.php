@@ -82,6 +82,8 @@ class Cf7_Extras {
 	 * Register the custom tab for our form settings.
 	 *
 	 * @param integer $post_id Current form ID.
+	 *
+	 * @return void
 	 */
 	function wpcf7_add_meta_boxes( $post_id ) {
 
@@ -101,7 +103,7 @@ class Cf7_Extras {
 	 *
 	 * @param  WPCF7_ContactForm $cf7 Current form.
 	 *
-	 * @return string Form HTML blob.
+	 * @return void
 	 */
 	public function wpcf7_metabox( $cf7 ) {
 
@@ -217,6 +219,7 @@ class Cf7_Extras {
 					checked( $settings['track-ga'], true, false ),
 					esc_html__( 'Trigger Google Analytics and/or Matomo (formerly Piwik) events on form submissions. This will tigger the tracking code that has been set up on the site.', 'contact-form-7-extras' ),
 					esc_html( sprintf(
+						/* translators: %s: Title of the current form */
 						__( 'Track form submissions as events with category "Contact Form", actions "Sent", "Error" or "Submit" and label "%s".', 'contact-form-7-extras' ),
 						$cf7->title()
 					) )
@@ -263,6 +266,7 @@ class Cf7_Extras {
 				'field' => sprintf(
 					'<p>%s</p>',
 					sprintf(
+						/* translators: %s: Text "Storage for Contact Form 7" with a link to the product page */
 						esc_html__( 'Install the %s plugin to save the form submissions in your WordPress database or export as CSV for Excel.', 'contact-form-7-extras' ),
 						'<a href="https://codecanyon.net/item/storage-for-contact-form-7-/7806229?ref=Preseto">Storage for Contact Form 7</a>'
 					)
@@ -271,7 +275,7 @@ class Cf7_Extras {
 
 		}
 
-		// Place the storage links on top
+		// Place the storage links on top.
 		$fields = array_merge(
 			array( 'extra-cf7-storage' => $storage_field ),
 			$fields
@@ -335,6 +339,13 @@ class Cf7_Extras {
 	}
 
 
+	/**
+	 * Enqueue our scripts for the admin settings.
+	 *
+	 * @param  string $hook Current page ID.
+	 *
+	 * @return void
+	 */
 	function admin_enqueue_scripts( $hook ) {
 
 		if ( false === strpos( $hook, 'wpcf7' ) ) {
@@ -356,12 +367,16 @@ class Cf7_Extras {
 			'0.2',
 			true
 		);
-
 	}
 
-
-	function register_wpcf7_panel( $panels ) {
-
+	/**
+	 * Register our tab with the CF7 settings.
+	 *
+	 * @param  array $panels A list of panels or tabs.
+	 *
+	 * @return array
+	 */
+	public function register_wpcf7_panel( $panels ) {
 		$form = WPCF7_ContactForm::get_current();
 		$post_id = $form->id();
 
@@ -375,12 +390,16 @@ class Cf7_Extras {
 		);
 
 		return $panels;
-
 	}
 
-
-	function capture_form_load( $action ) {
-
+	/**
+	 * Detect a form loading on the front-end and trigger relevant checks.
+	 *
+	 * @param  string $action Form action URL.
+	 *
+	 * @return string
+	 */
+	public function capture_form_load( $action ) {
 		$form = WPCF7_ContactForm::get_current();
 
 		if ( empty( $form ) || ! $form->id() ) {
@@ -389,23 +408,31 @@ class Cf7_Extras {
 
 		$this->add_form( $form );
 
-		// Maybe toggle HTML5 input type support
+		// Maybe toggle HTML5 input type support.
 		$this->maybe_toggle_html5();
 
 		return $action;
-
 	}
 
-
-	function add_form( $form ) {
-
+	/**
+	 * Keep track of rendered forms.
+	 *
+	 * @param WPCF7_ContactForm $form Form object.
+	 */
+	public function add_form( $form ) {
 		$this->rendered[ $form->id() ] = $this->get_form_settings( $form );
-
 	}
 
-
-	function get_form_settings( $form, $field = null, $fresh = false ) {
-
+	/**
+	 * Fetch form settings.
+	 *
+	 * @param  WPCF7_ContactForm $form Form object.
+	 * @param  string            $field Setting field id.
+	 * @param  boolean           $fresh Fetch a fresh value from the DB instead of cache.
+	 *
+	 * @return mixed
+	 */
+	public function get_form_settings( $form, $field = null, $fresh = false ) {
 		static $form_settings = array();
 
 		if ( isset( $form_settings[ $form->id() ] ) && ! $fresh ) {
@@ -430,7 +457,7 @@ class Cf7_Extras {
 			)
 		);
 
-		// Cache it for re-use
+		// Cache it for re-use.
 		$form_settings[ $form->id() ] = $settings;
 
 		// Convert individual legacy settings into one.
@@ -438,7 +465,7 @@ class Cf7_Extras {
 			$settings['track-ga'] = true;
 		}
 
-		// Return a specific field value
+		// Return a specific field value.
 		if ( isset( $field ) ) {
 			if ( isset( $settings[ $field ] ) ) {
 				return $settings[ $field ];
@@ -448,12 +475,16 @@ class Cf7_Extras {
 		}
 
 		return $settings;
-
 	}
 
 
+	/**
+	 * Remove CF7 front-end scripts, if needed. Configure the Google recaptcha
+	 * language, if configured.
+	 *
+	 * @return void
+	 */
 	function maybe_alter_scripts() {
-
 		// @todo use wp_scripts() in future
 		global $wp_scripts;
 
@@ -468,24 +499,23 @@ class Cf7_Extras {
 			}
 
 			if ( ! empty( $settings['google-recaptcha-lang'] ) && isset( $wp_scripts->registered['google-recaptcha'] ) ) {
-
-				// Append the `hl` query param which specifies the Recaptcha language
+				// Append the `hl` query param which specifies the Recaptcha language.
 				$wp_scripts->registered['google-recaptcha']->src = add_query_arg(
 					'hl',
 					$settings['google-recaptcha-lang'],
 					$wp_scripts->registered['google-recaptcha']->src
 				);
-
 			}
 		}
-
 	}
 
-
-	function maybe_toggle_html5() {
-
+	/**
+	 * Adjust form output based on settings.
+	 *
+	 * @return void
+	 */
+	public function maybe_toggle_html5() {
 		foreach ( $this->rendered as $form_id => $settings ) {
-
 			if ( $settings['html5-disable'] ) {
 				add_filter( 'wpcf7_support_html5', '__return_false' );
 			}
@@ -494,20 +524,24 @@ class Cf7_Extras {
 				add_filter( 'wpcf7_support_html5_fallback', '__return_true' );
 			}
 		}
-
 	}
 
-
-	function dequeue_styles() {
-
-		// We add this back if a form with styles enabled is found
+	/**
+	 * Remove CF7 default styles.
+	 *
+	 * @return void
+	 */
+	public function dequeue_styles() {
+		// We add this back if a form with styles enabled is found.
 		wp_dequeue_style( 'contact-form-7' );
-
 	}
 
-
+	/**
+	 * Register our custom JS logic to track form events.
+	 *
+	 * @return void
+	 */
 	function track_form_events() {
-
 		if ( empty( $this->rendered ) ) {
 			return;
 		}
@@ -556,20 +590,25 @@ class Cf7_Extras {
 				'forms' => $form_config,
 			)
 		);
-
 	}
 
-
+	/**
+	 * Trigger a redirect on form submission.
+	 *
+	 * @param  WPCF7_ContactForm $form Current CF7 form.
+	 * @param  array             $result Form validation results.
+	 *
+	 * @return void
+	 */
 	function wpcf7_submit( $form, $result ) {
-
-		// JS is already doing the redirect
+		// JS is already doing the redirect.
 		if ( isset( $_POST['_wpcf7_is_ajax_call'] ) || ! isset( $result['status'] ) ) {
 			return;
 		} elseif ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
 			return;
 		}
 
-		// Redirect only if this is a successful non-AJAX response
+		// Redirect only if this is a successful non-AJAX response.
 		if ( 'mail_sent' == $result['status'] ) {
 			$redirect = trim( $this->get_form_settings( $form, 'redirect-success' ) );
 
@@ -578,17 +617,20 @@ class Cf7_Extras {
 				exit;
 			}
 		}
-
 	}
 
-
+	/**
+	 * Maybe disable WP core autop() on form email contents.
+	 *
+	 * @param WPCF7_ContactForm $form Current CF7 form.
+	 *
+	 * @return WPCF7_ContactForm
+	 */
 	function maybe_reset_autop( $form ) {
-
 		$form_instance = WPCF7_ContactForm::get_current();
 		$disable_autop = $this->get_form_settings( $form_instance, 'disable-autop' );
 
 		if ( $disable_autop ) {
-
 			$manager = WPCF7_ShortcodeManager::get_instance();
 
 			$form_meta = get_post_meta( $form_instance->id(), '_form', true );
@@ -597,12 +639,9 @@ class Cf7_Extras {
 			$form_instance->set_properties( array(
 				'form' => $form,
 			) );
-
 		}
 
 		return $form;
-
 	}
-
 
 }
