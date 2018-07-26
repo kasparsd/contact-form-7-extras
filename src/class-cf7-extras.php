@@ -1,10 +1,25 @@
 <?php
 
+/**
+ * Main plugin class.
+ *
+ * @todo Split into smaller chunks.
+ */
 class Cf7_Extras {
 
-	private $rendered = array();
+	/**
+	 * Keep track of forms that have been rendered during the request.
+	 *
+	 * @var array
+	 */
+	protected $rendered = array();
 
 
+	/**
+	 * Get the plugin singleton.
+	 *
+	 * @return Cf7_Extras
+	 */
 	public static function instance() {
 
 		static $instance;
@@ -16,6 +31,9 @@ class Cf7_Extras {
 
 	}
 
+	/**
+	 * Class constructor.
+	 */
 	public function __construct() {
 		// Do nothing for now.
 	}
@@ -61,7 +79,11 @@ class Cf7_Extras {
 
 	}
 
-
+	/**
+	 * Register the custom tab for our form settings.
+	 *
+	 * @param integer $post_id Current form ID.
+	 */
 	function wpcf7_add_meta_boxes( $post_id ) {
 
 		add_meta_box(
@@ -75,8 +97,14 @@ class Cf7_Extras {
 
 	}
 
-
-	function wpcf7_metabox( $cf7 ) {
+	/**
+	 * Display our custom form settings.
+	 *
+	 * @param  WPCF7_ContactForm $cf7 Current form.
+	 *
+	 * @return string Form HTML blob.
+	 */
+	public function wpcf7_metabox( $cf7 ) {
 
 		$post_id = $cf7->id();
 		$settings = $this->get_form_settings( $cf7 );
@@ -279,7 +307,13 @@ class Cf7_Extras {
 
 	}
 
-
+	/**
+	 * Save our custom form settings.
+	 *
+	 * @param  WPCF7_ContactForm $cf7 Current form object.
+	 *
+	 * @return void
+	 */
 	function wpcf7_save_contact_form( $cf7 ) {
 
 		if ( ! isset( $_POST ) || empty( $_POST ) || ! isset( $_POST['extra'] ) || ! is_array( $_POST['extra'] ) )
