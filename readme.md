@@ -3,8 +3,8 @@
 Contributors: kasparsd, buzztone   
 Tags: Contact Form 7, cf7, admin, backend, redirect, tracking, google analytics, ga, simple, interface, dashboard, recaptcha   
 Requires at least: 3.0   
-Tested up to: 4.9.1   
-Stable tag: 0.5.0   
+Tested up to: 4.9.7   
+Stable tag: 0.5.1   
 
 Simple controls for some of the advanced Contact Form 7 plugin functionality.
 
@@ -48,6 +48,11 @@ The "[Storage for Contact Form 7](https://codecanyon.net/item/storage-for-contac
 
 
 ## Changelog
+
+### 0.5.1 (July 26, 2018)
+
+- Add support for community translations, [fixes #19](https://github.com/kasparsd/contact-form-7-extras/issues/19).
+- Mark as tested with WordPress 4.9.7.
 
 ### 0.5.0 (January 11, 2018)
 
