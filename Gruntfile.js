@@ -60,7 +60,7 @@ module.exports = function( grunt ) {
 
 		// Extract the version from the main plugin file.
 		if ( 'undefined' === typeof pkgConfig.version ) {
-			var pluginVersion = getPluginVersion( 'widget-context.php' );
+			var pluginVersion = getPluginVersion( 'plugin.php' );
 
 			if ( ! pluginVersion ) {
 				grunt.warn( 'Failed to parse the plugin version in the plugin file.' );
@@ -116,7 +116,7 @@ module.exports = function( grunt ) {
 		wp_deploy: {
 			deploy: {
 				options: {
-					plugin_slug: 'widget-context',
+					plugin_slug: 'contact-form-7-extras',
 					svn_user: 'kasparsd',
 					build_dir: '<%= dist_dir %>',
 				},
