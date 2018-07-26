@@ -19,7 +19,7 @@
   },
   "scripts": {
     "lint": [
-      "vendor/bin/phpcs *.php"
+      "vendor/bin/phpcs ."
     ],
     "post-install-cmd": [
       "npm install"
