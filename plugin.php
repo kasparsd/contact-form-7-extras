@@ -66,16 +66,6 @@ class cf7_extras {
 
 		add_filter( 'wpcf7_form_elements', array( $this, 'maybe_reset_autop' ) );
 
-		// Enable localization
-		add_action( 'plugins_loaded', array( $this, 'init_l10n' ) );
-
-	}
-
-
-	function init_l10n() {
-
-		load_plugin_textdomain( 'cf7-extras', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-
 	}
 
 
