@@ -14,14 +14,12 @@ class Cf7_Extras {
 	 */
 	protected $rendered = array();
 
-
 	/**
 	 * Get the plugin singleton.
 	 *
 	 * @return Cf7_Extras
 	 */
 	public static function instance() {
-
 		static $instance;
 
 		if ( ! $instance ) {
@@ -29,7 +27,6 @@ class Cf7_Extras {
 		}
 
 		return $instance;
-
 	}
 
 	/**
@@ -45,7 +42,6 @@ class Cf7_Extras {
 	 * @return void
 	 */
 	public function init() {
-
 		// Add Extra settings to contact form settings
 		// This filter was removed in version 4.2 of CF7.
 		add_action( 'wpcf7_add_meta_boxes', array( $this, 'wpcf7_add_meta_boxes' ) );
@@ -75,7 +71,6 @@ class Cf7_Extras {
 
 		// TODO: Enable Google analytics tracking when AJAX is disabled.
 		add_filter( 'wpcf7_form_elements', array( $this, 'maybe_reset_autop' ) );
-
 	}
 
 	/**
@@ -86,7 +81,6 @@ class Cf7_Extras {
 	 * @return void
 	 */
 	function wpcf7_add_meta_boxes( $post_id ) {
-
 		add_meta_box(
 			'cf7s-subject',
 			__( 'Extra Settings', 'contact-form-7-extras' ),
@@ -95,7 +89,6 @@ class Cf7_Extras {
 			'form',
 			'low'
 		);
-
 	}
 
 	/**
@@ -106,7 +99,6 @@ class Cf7_Extras {
 	 * @return void
 	 */
 	public function wpcf7_metabox( $cf7 ) {
-
 		$post_id = $cf7->id();
 		$settings = $this->get_form_settings( $cf7 );
 
@@ -228,7 +220,6 @@ class Cf7_Extras {
 		);
 
 		if ( class_exists( 'cf7_storage' ) ) {
-
 			$form_entries_link = add_query_arg(
 				array(
 					'page' => 'cf7_storage',
@@ -257,9 +248,7 @@ class Cf7_Extras {
 					)
 				),
 			);
-
 		} else {
-
 			$storage_field = array(
 				'label' => __( 'Store Form Entries', 'contact-form-7-extras' ),
 				'docs_url' => 'https://codecanyon.net/item/storage-for-contact-form-7-/7806229?ref=Preseto',
@@ -272,7 +261,6 @@ class Cf7_Extras {
 					)
 				),
 			);
-
 		}
 
 		// Place the storage links on top.
@@ -308,7 +296,6 @@ class Cf7_Extras {
 			</table>',
 			implode( '', $rows )
 		);
-
 	}
 
 	/**
@@ -319,7 +306,6 @@ class Cf7_Extras {
 	 * @return void
 	 */
 	function wpcf7_save_contact_form( $cf7 ) {
-
 		if ( ! isset( $_POST ) || empty( $_POST ) || ! isset( $_POST['extra'] ) || ! is_array( $_POST['extra'] ) ) {
 			return;
 		}
@@ -335,9 +321,7 @@ class Cf7_Extras {
 		foreach ( $_POST['extra'] as $field_id => $field_value ) {
 			update_post_meta( $post_id, 'extra-' . $field_id, $field_value );
 		}
-
 	}
-
 
 	/**
 	 * Enqueue our scripts for the admin settings.
@@ -347,7 +331,6 @@ class Cf7_Extras {
 	 * @return void
 	 */
 	function admin_enqueue_scripts( $hook ) {
-
 		if ( false === strpos( $hook, 'wpcf7' ) ) {
 			return;
 		}
