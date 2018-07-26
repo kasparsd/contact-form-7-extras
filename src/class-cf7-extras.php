@@ -24,8 +24,9 @@ class Cf7_Extras {
 
 		static $instance;
 
-		if ( ! $instance )
+		if ( ! $instance ) {
 			$instance = new self();
+		}
 
 		return $instance;
 
@@ -73,8 +74,7 @@ class Cf7_Extras {
 		add_action( 'wpcf7_submit', array( $this, 'wpcf7_submit' ), 987, 2 );
 
 		// TODO: Enable Google analytics tracking when AJAX is disabled
-		//add_filter( 'wpcf7_form_response_output', array( $this, 'maybe_trigger' ), 10, 4 );
-
+		// add_filter( 'wpcf7_form_response_output', array( $this, 'maybe_trigger' ), 10, 4 );
 		add_filter( 'wpcf7_form_elements', array( $this, 'maybe_reset_autop' ) );
 
 	}
