@@ -47,34 +47,33 @@ class Cf7_Extras {
 	public function init() {
 
 		// Add Extra settings to contact form settings
-		// This filter was removed in version 4.2 of CF7
+		// This filter was removed in version 4.2 of CF7.
 		add_action( 'wpcf7_add_meta_boxes', array( $this, 'wpcf7_add_meta_boxes' ) );
 
 		// @since CF7 4.2
 		add_filter( 'wpcf7_editor_panels', array( $this, 'register_wpcf7_panel' ) );
 
-		// Store Extra settings
+		// Store Extra settings.
 		add_action( 'wpcf7_save_contact_form', array( $this, 'wpcf7_save_contact_form' ) );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 
-		// Detect a form being rendered on the front-end
+		// Detect a form being rendered on the front-end.
 		add_filter( 'wpcf7_form_action_url', array( $this, 'capture_form_load' ) );
 
-		// Remove front-end CSS by default, put it back in the footer if required
+		// Remove front-end CSS by default, put it back in the footer if required.
 		add_action( 'wpcf7_enqueue_styles', array( $this, 'dequeue_styles' ), 12 );
 
-		// Maybe disable AJAX requests
+		// Maybe disable AJAX requests.
 		add_action( 'wp_print_footer_scripts', array( $this, 'maybe_alter_scripts' ), 8 );
 
-		// Maybe redirect or trigger GA events
+		// Maybe redirect or trigger GA events.
 		add_action( 'wp_print_footer_scripts', array( $this, 'track_form_events' ), 9 );
 
-		// Redirect to a custom URL really late
+		// Redirect to a custom URL really late.
 		add_action( 'wpcf7_submit', array( $this, 'wpcf7_submit' ), 987, 2 );
 
-		// TODO: Enable Google analytics tracking when AJAX is disabled
-		// add_filter( 'wpcf7_form_response_output', array( $this, 'maybe_trigger' ), 10, 4 );
+		// TODO: Enable Google analytics tracking when AJAX is disabled.
 		add_filter( 'wpcf7_form_elements', array( $this, 'maybe_reset_autop' ) );
 
 	}
@@ -119,10 +118,10 @@ class Cf7_Extras {
 						<span>%s</span>
 					</label>
 					<p class="desc">%s</p>',
-					checked( $settings[ 'disable-ajax' ], true, false ),
+					checked( $settings['disable-ajax'], true, false ),
 					esc_html__( 'Disable AJAX for this form', 'contact-form-7-extras' ),
 					__( 'Same as <code>define( \'WPCF7_LOAD_JS\', false );</code>. Disabling AJAX will also disable Google Analytics event tracking and HTML5 input type fallback for this form.', 'contact-form-7-extras' )
-				)
+				),
 			),
 			'extra-disable-css' => array(
 				'label' => __( 'Default CSS', 'contact-form-7-extras' ),
@@ -133,10 +132,10 @@ class Cf7_Extras {
 						<span>%s</span>
 					</label>
 					<p class="desc">%s</p>',
-					checked( $settings[ 'disable-css' ], true, false ),
+					checked( $settings['disable-css'], true, false ),
 					esc_html__( 'Disable default CSS for this form', 'contact-form-7-extras' ),
 					__( 'Disables CSS that comes bundled with Contact Form 7. Same as <code>define( \'WPCF7_LOAD_CSS\', false );</code>.', 'contact-form-7-extras' )
-				)
+				),
 			),
 			'extra-disable-autop' => array(
 				'label' => __( 'Automatic Formatting', 'contact-form-7-extras' ),
@@ -147,10 +146,10 @@ class Cf7_Extras {
 						<span>%s</span>
 					</label>
 					<p class="desc">%s</p>',
-					checked( $settings[ 'disable-autop' ], true, false ),
+					checked( $settings['disable-autop'], true, false ),
 					esc_html__( 'Disable automatic paragraph formatting', 'contact-form-7-extras' ),
 					__( 'Same as <code>define( \'WPCF7_AUTOP\', false );</code>.', 'contact-form-7-extras' )
-				)
+				),
 			),
 			'extra-html5' => array(
 				'label' => __( 'HTML5 input types', 'contact-form-7-extras' ),
@@ -172,13 +171,13 @@ class Cf7_Extras {
 							<p class="desc">%s</p>
 						</li>
 					</ul>',
-					checked( $settings[ 'html5-disable' ], true, false ),
+					checked( $settings['html5-disable'], true, false ),
 					esc_html__( 'Disable HTML5 input types', 'contact-form-7-extras' ),
 					esc_html__( 'Use regular input types instead.', 'contact-form-7-extras' ),
-					checked( $settings[ 'html5-fallback' ], true, false ),
+					checked( $settings['html5-fallback'], true, false ),
 					esc_html__( 'Enable HTML5 input type fallback', 'contact-form-7-extras' ),
 					esc_html__( 'Adds support for HTML5 input fields to older browsers (requires AJAX form submissions).', 'contact-form-7-extras' )
-				)
+				),
 			),
 			'extra-redirect-success' => array(
 				'label' => __( 'Redirect to URL on Success', 'contact-form-7-extras' ),
@@ -188,10 +187,10 @@ class Cf7_Extras {
 						<input type="text" class="wide large-text" id="extra-redirect-success" name="extra[redirect-success]" value="%s" placeholder="%s" />
 					</label>
 					<p class="desc">%s</p>',
-					esc_url( $settings[ 'redirect-success' ] ),
+					esc_url( $settings['redirect-success'] ),
 					esc_attr( 'http://example.com' ),
 					esc_html__( 'Enter the URL where users should be redirected after successful form submissions.', 'contact-form-7-extras' )
-				)
+				),
 			),
 			'extra-google-recaptcha-lang' => array(
 				'label' => __( 'Google Recaptcha Language', 'contact-form-7-extras' ),
@@ -201,10 +200,10 @@ class Cf7_Extras {
 						<input type="text" id="extra-google-recaptcha-lang" name="extra[google-recaptcha-lang]" value="%s" placeholder="%s" />
 					</label>
 					<p class="desc">%s</p>',
-					esc_attr( $settings[ 'google-recaptcha-lang' ] ),
+					esc_attr( $settings['google-recaptcha-lang'] ),
 					esc_attr( 'en' ),
 					esc_html__( 'Specify the language code of the Google Recaptcha output.', 'contact-form-7-extras' )
-				)
+				),
 			),
 			'extra-track-ga' => array(
 				'label' => __( 'Analytics Tracking', 'contact-form-7-extras' ),
@@ -215,60 +214,60 @@ class Cf7_Extras {
 						<span>%s</span>
 					</label>
 					<p class="desc">%s</p>',
-					checked( $settings[ 'track-ga' ], true, false ),
+					checked( $settings['track-ga'], true, false ),
 					esc_html__( 'Trigger Google Analytics and/or Matomo (formerly Piwik) events on form submissions. This will tigger the tracking code that has been set up on the site.', 'contact-form-7-extras' ),
 					esc_html( sprintf(
 						__( 'Track form submissions as events with category "Contact Form", actions "Sent", "Error" or "Submit" and label "%s".', 'contact-form-7-extras' ),
 						$cf7->title()
 					) )
-				)
-			)
+				),
+			),
 		);
 
 		if ( class_exists( 'cf7_storage' ) ) {
 
 			$form_entries_link = add_query_arg(
-					array(
-						'page' => 'cf7_storage',
-						'form_id' => $post_id
-					),
-					admin_url( 'admin.php' )
-				);
+				array(
+					'page' => 'cf7_storage',
+					'form_id' => $post_id,
+				),
+				admin_url( 'admin.php' )
+			);
 
 			$form_entries = get_posts( array(
-					'fields' => 'ids',
-					'post_type' => 'cf7_entry',
-					'post_parent' => $post_id,
-					'posts_per_page' => -1
-				) );
+				'fields' => 'ids',
+				'post_type' => 'cf7_entry',
+				'post_parent' => $post_id,
+				'posts_per_page' => -1,
+			) );
 
 			$storage_field = array(
-					'label' => __( 'Store Form Entries', 'contact-form-7-extras' ),
-					'docs_url' => 'https://codecanyon.net/item/storage-for-contact-form-7-/7806229?ref=Preseto',
-					'field' => sprintf(
-						'<p>%s</p>',
-						sprintf(
-							'<a href="%s">%s</a> (%d)',
-							$form_entries_link,
-							esc_html__( 'View entries of this contact form', 'contact-form-7-extras' ),
-							count( $form_entries )
-						)
+				'label' => __( 'Store Form Entries', 'contact-form-7-extras' ),
+				'docs_url' => 'https://codecanyon.net/item/storage-for-contact-form-7-/7806229?ref=Preseto',
+				'field' => sprintf(
+					'<p>%s</p>',
+					sprintf(
+						'<a href="%s">%s</a> (%d)',
+						$form_entries_link,
+						esc_html__( 'View entries of this contact form', 'contact-form-7-extras' ),
+						count( $form_entries )
 					)
-				);
+				),
+			);
 
 		} else {
 
 			$storage_field = array(
-					'label' => __( 'Store Form Entries', 'contact-form-7-extras' ),
-					'docs_url' => 'https://codecanyon.net/item/storage-for-contact-form-7-/7806229?ref=Preseto',
-					'field' => sprintf(
-						'<p>%s</p>',
-						sprintf(
-							esc_html__( 'Install the %s plugin to save the form submissions in your WordPress database or export as CSV for Excel.', 'contact-form-7-extras' ),
-							'<a href="https://codecanyon.net/item/storage-for-contact-form-7-/7806229?ref=Preseto">Storage for Contact Form 7</a>'
-						)
+				'label' => __( 'Store Form Entries', 'contact-form-7-extras' ),
+				'docs_url' => 'https://codecanyon.net/item/storage-for-contact-form-7-/7806229?ref=Preseto',
+				'field' => sprintf(
+					'<p>%s</p>',
+					sprintf(
+						esc_html__( 'Install the %s plugin to save the form submissions in your WordPress database or export as CSV for Excel.', 'contact-form-7-extras' ),
+						'<a href="https://codecanyon.net/item/storage-for-contact-form-7-/7806229?ref=Preseto">Storage for Contact Form 7</a>'
 					)
-				);
+				),
+			);
 
 		}
 
@@ -280,7 +279,7 @@ class Cf7_Extras {
 
 		$rows = array();
 
-		foreach ( $fields as $field_id => $field )
+		foreach ( $fields as $field_id => $field ) {
 			$rows[] = sprintf(
 				'<tr class="extra-field-%s">
 					<th>
@@ -297,6 +296,7 @@ class Cf7_Extras {
 				esc_html__( 'Docs', 'contact-form-7-extras' ),
 				$field['field']
 			);
+		}
 
 		printf(
 			'<table class="form-table cf7-extras-table">
@@ -316,26 +316,30 @@ class Cf7_Extras {
 	 */
 	function wpcf7_save_contact_form( $cf7 ) {
 
-		if ( ! isset( $_POST ) || empty( $_POST ) || ! isset( $_POST['extra'] ) || ! is_array( $_POST['extra'] ) )
+		if ( ! isset( $_POST ) || empty( $_POST ) || ! isset( $_POST['extra'] ) || ! is_array( $_POST['extra'] ) ) {
 			return;
+		}
 
 		$post_id = $cf7->id();
 
-		if ( ! $post_id )
+		if ( ! $post_id ) {
 			return;
+		}
 
 		update_post_meta( $post_id, 'extras', $_POST['extra'] );
 
-		foreach ( $_POST['extra'] as $field_id => $field_value )
-			update_post_meta( $post_id, 'extra-' . $field_id , $field_value );
+		foreach ( $_POST['extra'] as $field_id => $field_value ) {
+			update_post_meta( $post_id, 'extra-' . $field_id, $field_value );
+		}
 
 	}
 
 
 	function admin_enqueue_scripts( $hook ) {
 
-		if ( false === strpos( $hook, 'wpcf7' ) )
+		if ( false === strpos( $hook, 'wpcf7' ) ) {
 			return;
+		}
 
 		wp_enqueue_style(
 			'cf7-extras',
@@ -379,8 +383,9 @@ class Cf7_Extras {
 
 		$form = WPCF7_ContactForm::get_current();
 
-		if ( empty( $form ) || ! $form->id() )
+		if ( empty( $form ) || ! $form->id() ) {
 			return $action;
+		}
 
 		$this->add_form( $form );
 
@@ -403,10 +408,11 @@ class Cf7_Extras {
 
 		static $form_settings = array();
 
-		if ( isset( $form_settings[ $form->id() ] ) && ! $fresh )
+		if ( isset( $form_settings[ $form->id() ] ) && ! $fresh ) {
 			$settings = $form_settings[ $form->id() ];
-		else
+		} else {
 			$settings = get_post_meta( $form->id(), 'extras', true );
+		}
 
 		$settings = wp_parse_args(
 			$settings,
@@ -434,10 +440,11 @@ class Cf7_Extras {
 
 		// Return a specific field value
 		if ( isset( $field ) ) {
-			if ( isset( $settings[ $field ] ) )
+			if ( isset( $settings[ $field ] ) ) {
 				return $settings[ $field ];
-			else
+			} else {
 				return null;
+			}
 		}
 
 		return $settings;
@@ -460,17 +467,16 @@ class Cf7_Extras {
 				wp_dequeue_script( 'contact-form-7' );
 			}
 
-			if ( ! empty( $settings['google-recaptcha-lang'] ) && isset( $wp_scripts->registered[ 'google-recaptcha' ] ) ) {
+			if ( ! empty( $settings['google-recaptcha-lang'] ) && isset( $wp_scripts->registered['google-recaptcha'] ) ) {
 
 				// Append the `hl` query param which specifies the Recaptcha language
-				$wp_scripts->registered[ 'google-recaptcha' ]->src = add_query_arg(
+				$wp_scripts->registered['google-recaptcha']->src = add_query_arg(
 					'hl',
 					$settings['google-recaptcha-lang'],
-					$wp_scripts->registered[ 'google-recaptcha' ]->src
+					$wp_scripts->registered['google-recaptcha']->src
 				);
 
 			}
-
 		}
 
 	}
@@ -487,7 +493,6 @@ class Cf7_Extras {
 			if ( $settings['html5-fallback'] ) {
 				add_filter( 'wpcf7_support_html5_fallback', '__return_true' );
 			}
-
 		}
 
 	}
@@ -533,7 +538,6 @@ class Cf7_Extras {
 					$form_events[ $event_key ][] = intval( $form_id );
 				}
 			}
-
 		}
 
 		wp_enqueue_script(
@@ -591,8 +595,8 @@ class Cf7_Extras {
 			$form = $manager->do_shortcode( $form_meta );
 
 			$form_instance->set_properties( array(
-					'form' => $form
-				) );
+				'form' => $form,
+			) );
 
 		}
 
