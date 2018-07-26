@@ -6,9 +6,9 @@
 	Plugin URI: https://github.com/kasparsd/contact-form-7-extras
 	Author: Kaspars Dambis
 	Author URI: https://kaspars.net
-	Version: 0.5.0
+	Version: 0.5.1
 	License: GPL2
-	Text Domain: cf7-extras
+	Text Domain: contact-form-7-extras
 */
 
 
@@ -66,16 +66,6 @@ class cf7_extras {
 
 		add_filter( 'wpcf7_form_elements', array( $this, 'maybe_reset_autop' ) );
 
-		// Enable localization
-		add_action( 'plugins_loaded', array( $this, 'init_l10n' ) );
-
-	}
-
-
-	function init_l10n() {
-
-		load_plugin_textdomain( 'cf7-extras', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-
 	}
 
 
@@ -83,7 +73,7 @@ class cf7_extras {
 
 		add_meta_box(
 			'cf7s-subject',
-			__( 'Extra Settings', 'cf7-extras' ),
+			__( 'Extra Settings', 'contact-form-7-extras' ),
 			array( $this, 'wpcf7_metabox' ),
 			null,
 			'form',
@@ -100,7 +90,7 @@ class cf7_extras {
 
 		$fields = array(
 			'extra-disable-ajax' => array(
-				'label' => __( 'AJAX Submissions', 'cf7-extras' ),
+				'label' => __( 'AJAX Submissions', 'contact-form-7-extras' ),
 				'docs_url' => 'http://contactform7.com/controlling-behavior-by-setting-constants/',
 				'field' => sprintf(
 					'<label>
@@ -109,12 +99,12 @@ class cf7_extras {
 					</label>
 					<p class="desc">%s</p>',
 					checked( $settings[ 'disable-ajax' ], true, false ),
-					esc_html__( 'Disable AJAX for this form', 'cf7-extras' ),
-					__( 'Same as <code>define( \'WPCF7_LOAD_JS\', false );</code>. Disabling AJAX will also disable Google Analytics event tracking and HTML5 input type fallback for this form.', 'cf7-extras' )
+					esc_html__( 'Disable AJAX for this form', 'contact-form-7-extras' ),
+					__( 'Same as <code>define( \'WPCF7_LOAD_JS\', false );</code>. Disabling AJAX will also disable Google Analytics event tracking and HTML5 input type fallback for this form.', 'contact-form-7-extras' )
 				)
 			),
 			'extra-disable-css' => array(
-				'label' => __( 'Default CSS', 'cf7-extras' ),
+				'label' => __( 'Default CSS', 'contact-form-7-extras' ),
 				'docs_url' => 'http://contactform7.com/controlling-behavior-by-setting-constants/',
 				'field' => sprintf(
 					'<label>
@@ -123,12 +113,12 @@ class cf7_extras {
 					</label>
 					<p class="desc">%s</p>',
 					checked( $settings[ 'disable-css' ], true, false ),
-					esc_html__( 'Disable default CSS for this form', 'cf7-extras' ),
-					__( 'Disables CSS that comes bundled with Contact Form 7. Same as <code>define( \'WPCF7_LOAD_CSS\', false );</code>.', 'cf7-extras' )
+					esc_html__( 'Disable default CSS for this form', 'contact-form-7-extras' ),
+					__( 'Disables CSS that comes bundled with Contact Form 7. Same as <code>define( \'WPCF7_LOAD_CSS\', false );</code>.', 'contact-form-7-extras' )
 				)
 			),
 			'extra-disable-autop' => array(
-				'label' => __( 'Automatic Formatting', 'cf7-extras' ),
+				'label' => __( 'Automatic Formatting', 'contact-form-7-extras' ),
 				'docs_url' => 'http://contactform7.com/controlling-behavior-by-setting-constants/',
 				'field' => sprintf(
 					'<label>
@@ -137,12 +127,12 @@ class cf7_extras {
 					</label>
 					<p class="desc">%s</p>',
 					checked( $settings[ 'disable-autop' ], true, false ),
-					esc_html__( 'Disable automatic paragraph formatting', 'cf7-extras' ),
-					__( 'Same as <code>define( \'WPCF7_AUTOP\', false );</code>.', 'cf7-extras' )
+					esc_html__( 'Disable automatic paragraph formatting', 'contact-form-7-extras' ),
+					__( 'Same as <code>define( \'WPCF7_AUTOP\', false );</code>.', 'contact-form-7-extras' )
 				)
 			),
 			'extra-html5' => array(
-				'label' => __( 'HTML5 input types', 'cf7-extras' ),
+				'label' => __( 'HTML5 input types', 'contact-form-7-extras' ),
 				'docs_url' => 'http://contactform7.com/faq/does-contact-form-7-support-html5-input-types/',
 				'field' => sprintf(
 					'<ul>
@@ -162,15 +152,15 @@ class cf7_extras {
 						</li>
 					</ul>',
 					checked( $settings[ 'html5-disable' ], true, false ),
-					esc_html__( 'Disable HTML5 input types', 'cf7-extras' ),
-					esc_html__( 'Use regular input types instead.', 'cf7-extras' ),
+					esc_html__( 'Disable HTML5 input types', 'contact-form-7-extras' ),
+					esc_html__( 'Use regular input types instead.', 'contact-form-7-extras' ),
 					checked( $settings[ 'html5-fallback' ], true, false ),
-					esc_html__( 'Enable HTML5 input type fallback', 'cf7-extras' ),
-					esc_html__( 'Adds support for HTML5 input fields to older browsers (requires AJAX form submissions).', 'cf7-extras' )
+					esc_html__( 'Enable HTML5 input type fallback', 'contact-form-7-extras' ),
+					esc_html__( 'Adds support for HTML5 input fields to older browsers (requires AJAX form submissions).', 'contact-form-7-extras' )
 				)
 			),
 			'extra-redirect-success' => array(
-				'label' => __( 'Redirect to URL on Success', 'cf7-extras' ),
+				'label' => __( 'Redirect to URL on Success', 'contact-form-7-extras' ),
 				'docs_url' => 'http://contactform7.com/redirecting-to-another-url-after-submissions/',
 				'field' => sprintf(
 					'<label>
@@ -179,11 +169,11 @@ class cf7_extras {
 					<p class="desc">%s</p>',
 					esc_url( $settings[ 'redirect-success' ] ),
 					esc_attr( 'http://example.com' ),
-					esc_html__( 'Enter the URL where users should be redirected after successful form submissions.', 'cf7-extras' )
+					esc_html__( 'Enter the URL where users should be redirected after successful form submissions.', 'contact-form-7-extras' )
 				)
 			),
 			'extra-google-recaptcha-lang' => array(
-				'label' => __( 'Google Recaptcha Language', 'cf7-extras' ),
+				'label' => __( 'Google Recaptcha Language', 'contact-form-7-extras' ),
 				'docs_url' => 'https://developers.google.com/recaptcha/docs/language',
 				'field' => sprintf(
 					'<label>
@@ -192,11 +182,11 @@ class cf7_extras {
 					<p class="desc">%s</p>',
 					esc_attr( $settings[ 'google-recaptcha-lang' ] ),
 					esc_attr( 'en' ),
-					esc_html__( 'Specify the language code of the Google Recaptcha output.', 'cf7-extras' )
+					esc_html__( 'Specify the language code of the Google Recaptcha output.', 'contact-form-7-extras' )
 				)
 			),
 			'extra-track-ga' => array(
-				'label' => __( 'Analytics Tracking', 'cf7-extras' ),
+				'label' => __( 'Analytics Tracking', 'contact-form-7-extras' ),
 				'docs_url' => 'http://contactform7.com/tracking-form-submissions-with-google-analytics/',
 				'field' => sprintf(
 					'<label>
@@ -205,9 +195,9 @@ class cf7_extras {
 					</label>
 					<p class="desc">%s</p>',
 					checked( $settings[ 'track-ga' ], true, false ),
-					esc_html__( 'Trigger Google Analytics and/or Matomo (formerly Piwik) events on form submissions. This will tigger the tracking code that has been set up on the site.', 'cf7-extras' ),
+					esc_html__( 'Trigger Google Analytics and/or Matomo (formerly Piwik) events on form submissions. This will tigger the tracking code that has been set up on the site.', 'contact-form-7-extras' ),
 					esc_html( sprintf(
-						__( 'Track form submissions as events with category "Contact Form", actions "Sent", "Error" or "Submit" and label "%s".', 'cf7-extras' ),
+						__( 'Track form submissions as events with category "Contact Form", actions "Sent", "Error" or "Submit" and label "%s".', 'contact-form-7-extras' ),
 						$cf7->title()
 					) )
 				)
@@ -232,14 +222,14 @@ class cf7_extras {
 				) );
 
 			$storage_field = array(
-					'label' => __( 'Store Form Entries', 'cf7-extras' ),
+					'label' => __( 'Store Form Entries', 'contact-form-7-extras' ),
 					'docs_url' => 'https://codecanyon.net/item/storage-for-contact-form-7-/7806229?ref=Preseto',
 					'field' => sprintf(
 						'<p>%s</p>',
 						sprintf(
 							'<a href="%s">%s</a> (%d)',
 							$form_entries_link,
-							esc_html__( 'View entries of this contact form', 'cf7-extras' ),
+							esc_html__( 'View entries of this contact form', 'contact-form-7-extras' ),
 							count( $form_entries )
 						)
 					)
@@ -248,12 +238,12 @@ class cf7_extras {
 		} else {
 
 			$storage_field = array(
-					'label' => __( 'Store Form Entries', 'cf7-extras' ),
+					'label' => __( 'Store Form Entries', 'contact-form-7-extras' ),
 					'docs_url' => 'https://codecanyon.net/item/storage-for-contact-form-7-/7806229?ref=Preseto',
 					'field' => sprintf(
 						'<p>%s</p>',
 						sprintf(
-							esc_html__( 'Install the %s plugin to save the form submissions in your WordPress database or export as CSV for Excel.', 'cf7-extras' ),
+							esc_html__( 'Install the %s plugin to save the form submissions in your WordPress database or export as CSV for Excel.', 'contact-form-7-extras' ),
 							'<a href="https://codecanyon.net/item/storage-for-contact-form-7-/7806229?ref=Preseto">Storage for Contact Form 7</a>'
 						)
 					)
@@ -282,8 +272,8 @@ class cf7_extras {
 				esc_attr( $field_id ),
 				esc_html( $field['label'] ),
 				esc_url( $field['docs_url'] ),
-				esc_attr__( 'View the official documentation for this feature', 'cf7-extras' ),
-				esc_html__( 'Docs', 'cf7-extras' ),
+				esc_attr__( 'View the official documentation for this feature', 'contact-form-7-extras' ),
+				esc_html__( 'Docs', 'contact-form-7-extras' ),
 				$field['field']
 			);
 
@@ -349,7 +339,7 @@ class cf7_extras {
 		}
 
 		$panels['cf7-extras'] = array(
-			'title' => __( 'Customize', 'cf7-extras' ),
+			'title' => __( 'Customize', 'contact-form-7-extras' ),
 			'callback' => array( $this, 'wpcf7_metabox' ),
 		);
 
