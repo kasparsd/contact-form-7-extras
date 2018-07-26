@@ -1,0 +1,12 @@
+/tests
+/vendor
+/node_modules
+Gruntfile.js
+composer.json
+composer.lock
+package.json
+package-lock.json
+phpcs.xml
+readme.md
+readme.txt.md
+.*

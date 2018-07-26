@@ -1,0 +1,37 @@
+{
+  "name": "kasparsd/contact-form-7-extras",
+  "description": "Simple controls for some of the advanced Contact Form 7 plugin functionality.",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0",
+  "authors": [
+    {
+      "name": "Kaspars Dambis",
+      "homepage": "https://preseto.com"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/kasparsd/contact-form-7-extras/issues",
+    "source": "https://github.com/kasparsd/contact-form-7-extras"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.3.0",
+    "wp-coding-standards/wpcs": "^1.0.0"
+  },
+  "scripts": {
+    "lint": [
+      "vendor/bin/phpcs ."
+    ],
+    "build": [
+      "npm run build"
+    ],
+    "deploy": [
+      "npm run deploy"
+    ],
+    "post-install-cmd": [
+      "npm install"
+    ],
+    "post-update-cmd": [
+      "npm install"
+    ]
+  }
+}
