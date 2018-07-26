@@ -21,6 +21,12 @@
     "lint": [
       "vendor/bin/phpcs ."
     ],
+    "build": [
+      "npm run build"
+    ],
+    "deploy": [
+      "npm run deploy"
+    ],
     "post-install-cmd": [
       "npm install"
     ],

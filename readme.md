@@ -9,6 +9,8 @@ Install the plugin by searching for "Contact Form 7 Controls" under "Plugins →
 
 ## Start Contributing
 
+We use [Composer](https://getcomposer.org) for managing PHP related dependencies and linting tools while [Node.js](https://nodejs.org) is used for the triggering the `pre-commit` hook, building the plugin release and deploying to WP.org
+
 1. Clone the plugin repository:
 
 	   git clone https://github.com/kasparsd/contact-form-7-extras.git
@@ -17,6 +19,10 @@ Install the plugin by searching for "Contact Form 7 Controls" under "Plugins →
 2. Setup the development environment and tools:
 
 	   composer install
+
+3. Prepare a release in the `dist` directory:
+
+	   composer build
 
 
 ## Screenshot
