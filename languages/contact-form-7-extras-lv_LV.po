@@ -1,0 +1,192 @@
+# Copyright (C) 2014 Contact Form 7 Extras
+# This file is distributed under the same license as the Contact Form 7 Extras package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Contact Form 7 Extras 0.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/git\n"
+"POT-Creation-Date: 2015-10-08 11:27+0300\n"
+"PO-Revision-Date: 2015-10-08 11:33+0300\n"
+"Last-Translator: Kaspars <hi@kaspars.net>\n"
+"Language-Team: \n"
+"Language: lv_LV\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.4\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+
+#: plugin.php:86
+msgid "Extra Settings"
+msgstr "Papildu uzstādījumi"
+
+#: plugin.php:103
+msgid "AJAX Submissions"
+msgstr "AJAX iesniegšana"
+
+#: plugin.php:112
+msgid "Disable AJAX for this form"
+msgstr "Atspējot AJAX šai formai"
+
+#: plugin.php:113
+msgid ""
+"Same as <code>define( 'WPCF7_LOAD_JS', false );</code>. Disabling AJAX will also "
+"disable Google Analytics event tracking and HTML5 input type fallback for this form. "
+msgstr ""
+"Tas pats, kas <code>define( 'WPCF7_LOAD_JS', false );</code>. Atspējojot AJAX tiks "
+"atspējota arī Google Analytics notikumu pieskaitīšana un HTML5 ievades lauku "
+"atkāpšanās aizstāšana."
+
+#: plugin.php:117
+msgid "Default CSS"
+msgstr "Noklusētais CSS"
+
+#: plugin.php:126
+msgid "Disable default CSS for this form"
+msgstr "Atspējot noklusēto CSS šai formai"
+
+#: plugin.php:127
+msgid ""
+"Disables CSS that comes bundled with Contact Form 7. Same as "
+"<code>define( 'WPCF7_LOAD_CSS', false );</code>."
+msgstr ""
+"Atspējo CSS, kas nāk kopā ar Contact Form 7. Tas pats, kas "
+"<code>define( 'WPCF7_LOAD_CSS', false );</code>."
+
+#: plugin.php:131
+msgid "Automatic Formatting"
+msgstr "Automātiskā noformēšana"
+
+#: plugin.php:140
+msgid "Disable automatic paragraph formatting"
+msgstr "Atspējot automātisko paragrāfu formēšanu"
+
+#: plugin.php:141
+msgid "Same as <code>define( 'WPCF7_AUTOP', false );</code>."
+msgstr "Tas pats, kas <code>define( 'WPCF7_AUTOP', false );</code>."
+
+#: plugin.php:145
+msgid "HTML5 input types"
+msgstr "HTML5 ievades lauki"
+
+#: plugin.php:165
+msgid "Disable HTML5 input types"
+msgstr "Atspējot HTML5 ievades laukus"
+
+#: plugin.php:166
+msgid "Use regular input types instead."
+msgstr "Izmantot parastos ievades laukus."
+
+#: plugin.php:168
+msgid "Enable HTML5 input type fallback"
+msgstr "Iespējot HTML5 ievades lauku aizstāšanu"
+
+#: plugin.php:169
+msgid "Adds support for HTML5 input fields to older browsers."
+msgstr "Iespējo HTML5 ievades laukus vecākiem tīmekļa pārlūkiem."
+
+#: plugin.php:173
+msgid "Redirect to URL on Success"
+msgstr "Nosūtīt uz URL pēc veiksmīgas iesniegšanas"
+
+#: plugin.php:182
+msgid "Enter URL where users should be redirected after successful form submissions."
+msgstr "Norādi URL, uz kuru nosūtīt lietotājus, pēc veiksmīgas formas iesniegšanas."
+
+#: plugin.php:186
+msgid "Google Recaptcha Language"
+msgstr "Google Recaptcha valoda"
+
+#: plugin.php:195
+msgid "Specify the language code of the Google Recaptcha output."
+msgstr "Norādi Google Recaptcha valodu."
+
+#: plugin.php:199
+msgid "Google Analytics Tracking"
+msgstr "Google Analytics uzskaite"
+
+#: plugin.php:219
+msgid "Trigger Google Analytics event on successful form submissions."
+msgstr "Pieskaitīt Google Analytics notikumu pie veiksmīgas formas iesniegšanas."
+
+#: plugin.php:221
+msgid ""
+"Track Google Analytics event with category \"Contact Form\", action \"Sent\" and \"%s"
+"\" as label."
+msgstr ""
+"Pieskaitīt Google Analytics notikumu kategorijā \"Contact Form\" ar apzīmējumu \"Sent"
+"\" un \"%s\" kā vērtību."
+
+#: plugin.php:225
+msgid "Trigger Google Analytics event on all form submissions."
+msgstr "Pieskaitīt Google Analytics notikumu pie visām formas iesniegšanām."
+
+#: plugin.php:227
+#, fuzzy
+msgid ""
+"Track Google Analytics event with category \"Contact Form\", action \"Submit\" and "
+"\"%s\" as label."
+msgstr ""
+"Pieskaitīt Google Analytics notikumu kategorijā \"Contact Form\" ar apzīmējumu "
+"\"Submit\" un \"%s\" kā vertību."
+
+#: plugin.php:252 plugin.php:268
+msgid "Store Form Entries"
+msgstr "Saglabā formas ierakstus"
+
+#: plugin.php:259
+msgid "View entries of this contact form"
+msgstr "Skatīt formas ierakstus"
+
+#: plugin.php:273
+#, fuzzy
+msgid ""
+"Install the %s plugin to save the form submissions in your WordPress database or "
+"export as CSV for Excel."
+msgstr ""
+"Izmanto %s spraudni, lai saglabātu šis formas ierakstus WordPress datubāzē un "
+"eksportētu CSV formātā."
+
+#: plugin.php:296
+msgid "View the official documentation for this feature"
+msgstr "Skatīt šīs iespējas oficiālo dokumentāciju"
+
+#: plugin.php:297
+msgid "Docs"
+msgstr "Dokumentācija"
+
+#: plugin.php:363
+msgid "Customize"
+msgstr "Pielāgot"
+
+#. Plugin Name of the plugin/theme
+msgid "Contact Form 7 Controls"
+msgstr "Contact Form 7 Rīki"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/kasparsd/contact-form-7-extras"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Add simple controls for the advanced functionality of Contact Form 7."
+msgstr "Iespējo vienkāršu saskarsni Contact Form 7 papildu uzstādījumiem."
+
+#. Author of the plugin/theme
+msgid "Kaspars Dambis"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://kaspars.net"
+msgstr ""
+
+#. Tags of the plugin/theme
+msgid ""
+"contact form, contact form 7, cf7, admin, backend, google analytics, ga, forms, "
+"form, track"
+msgstr ""
+
+#~ msgid ""
+#~ "Note that disabling AJAX will also disable Google Analytics event tracking for "
+#~ "this form. Same as <code>define( 'WPCF7_LOAD_JS', true );</code>."
+#~ msgstr ""
+#~ "Ievēro, ka atspējojot AJAX tiks aspējota arī Google Analytics notikumu uzskaite "
+#~ "šai formai. Tas pats, kas <code>define( 'WPCF7_LOAD_JS', true );</code>."

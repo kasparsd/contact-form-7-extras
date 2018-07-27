@@ -66,6 +66,8 @@ class Cf7_Extras {
 			return false;
 		}
 
+		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
+
 		// Add Extra settings to contact form settings
 		// This filter was removed in version 4.2 of CF7.
 		add_action( 'wpcf7_add_meta_boxes', array( $this, 'wpcf7_add_meta_boxes' ) );
@@ -97,6 +99,15 @@ class Cf7_Extras {
 		add_filter( 'wpcf7_form_elements', array( $this, 'maybe_reset_autop' ) );
 
 		return true;
+	}
+
+	/**
+	 * Load the legacy translation files until WP.org translation tool has imported them.
+	 *
+	 * @return void
+	 */
+	public function load_textdomain() {
+		load_plugin_textdomain( 'contact-form-7-extras', false, plugin_basename( $this->plugin_dir ) . '/languages' );
 	}
 
 	/**
