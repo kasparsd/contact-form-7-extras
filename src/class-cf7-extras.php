@@ -111,13 +111,20 @@ class Cf7_Extras {
 	/**
 	 * Get the public URL to the asset file.
 	 *
-	 * @param string $asset_path Relative path to the asset file.
+	 * @param string $asset_path_relative Relative path to the asset file.
 	 */
-	public function asset_url( $asset_path ) {
+	public function asset_url( $asset_path_relative ) {
+		static $plugin_basename;
+
+		// Do this only once per every request to save some processing time.
+		if ( ! isset( $plugin_basename ) ) {
+			$plugin_basename = plugin_basename( $this->plugin_dir );
+		}
+
 		$file_path = sprintf(
 			'%s/%s',
-			plugin_basename( $this->plugin_dir ),
-			ltrim( $asset_path, '/' )
+			$plugin_basename,
+			ltrim( $asset_path_relative, '/' )
 		);
 
 		return plugins_url( $file_path );
