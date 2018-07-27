@@ -394,7 +394,7 @@ class Cf7_Extras {
 
 		wp_enqueue_style(
 			'cf7-extras',
-			$this->asset_url( 'css/admin.css' ),
+			$this->asset_url( 'assets/css/admin.css' ),
 			null,
 			'0.2',
 			'all'
@@ -402,7 +402,7 @@ class Cf7_Extras {
 
 		wp_enqueue_script(
 			'cf7-extras-js',
-			$this->asset_url( 'js/admin.js' ),
+			$this->asset_url( 'assets/js/admin.js' ),
 			array( 'jquery' ),
 			'0.2',
 			true
@@ -616,7 +616,7 @@ class Cf7_Extras {
 
 		wp_enqueue_script(
 			'cf7-extras',
-			$this->asset_url( 'js/controls.js' ),
+			$this->asset_url( 'assets/js/controls.js' ),
 			array( 'contact-form-7' ),
 			'0.0.1',
 			true
