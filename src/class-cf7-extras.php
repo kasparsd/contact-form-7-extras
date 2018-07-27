@@ -60,7 +60,7 @@ class Cf7_Extras {
 
 		if ( empty( $this->plugin_dir ) ) {
 			$this->set_error(
-				__( 'Failed to load the plugin because the plugin directory was not set.', 'contact-form-7-extras' )
+				__( 'Failed to load the Contact Form 7 Controls plugin because the plugin directory was not set.', 'contact-form-7-extras' )
 			);
 
 			return false;
