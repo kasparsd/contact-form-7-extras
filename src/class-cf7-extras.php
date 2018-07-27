@@ -22,6 +22,13 @@ class Cf7_Extras {
 	protected $plugin_dir;
 
 	/**
+	 * Store all errors and warnings for the request.
+	 *
+	 * @var array
+	 */
+	protected $errors = [];
+
+	/**
 	 * Get the plugin singleton.
 	 *
 	 * @return Cf7_Extras
@@ -46,9 +53,19 @@ class Cf7_Extras {
 	/**
 	 * Register all WP hooks.
 	 *
-	 * @return void
+	 * @return boolean If hooks were registered.
 	 */
 	public function init() {
+		add_action( 'admin_notices', array( $this, 'render_admin_errors' ) );
+
+		if ( empty( $this->plugin_dir ) ) {
+			$this->set_error(
+				__( 'Failed to load the plugin because the plugin directory was not set.', 'contact-form-7-extras' )
+			);
+
+			return false;
+		}
+
 		// Add Extra settings to contact form settings
 		// This filter was removed in version 4.2 of CF7.
 		add_action( 'wpcf7_add_meta_boxes', array( $this, 'wpcf7_add_meta_boxes' ) );
@@ -78,6 +95,8 @@ class Cf7_Extras {
 
 		// TODO: Enable Google analytics tracking when AJAX is disabled.
 		add_filter( 'wpcf7_form_elements', array( $this, 'maybe_reset_autop' ) );
+
+		return true;
 	}
 
 	/**
@@ -641,6 +660,43 @@ class Cf7_Extras {
 		}
 
 		return $form;
+	}
+
+	/**
+	 * Register an error for the current request.
+	 *
+	 * @param  string $message Error message.
+	 *
+	 * @return void
+	 */
+	public function set_error( $message ) {
+		$this->errors[] = $message;
+	}
+
+	/**
+	 * Render any errors for the admin side.
+	 *
+	 * @return void
+	 */
+	public function render_admin_errors() {
+		if ( empty( $this->errors ) ) {
+			return;
+		}
+
+		$error_html = [];
+
+		foreach ( $this->errors as $error_message ) {
+			$error_html[] = sprintf(
+				'<p>%s</p>',
+				esc_html( $error_message )
+			);
+		}
+
+		?>
+		<div class="notice notice-error">
+			<?php echo implode( '', $error_html ); // WPCS: sanitization ok. ?>
+		</div>
+		<?php
 	}
 
 }
