@@ -3,9 +3,9 @@
  * Plugin Name: Contact Form 7 Controls
  * Description: Add simple controls for the advanced functionality of Contact Form 7.
  * Tags: contact form, contact form 7, cf7, admin, backend, google analytics, ga, forms, form, track
- * Plugin URI: https://github.com/kasparsd/contact-form-7-extras
+ * Plugin URI: https://preseto.com/plugins/contact-form-7-controls
  * Author: Kaspars Dambis
- * Author URI: https://kaspars.net
+ * Author URI: https://preseto.com
  * Version: 0.6.0
  * License: GPL2
  * Text Domain: contact-form-7-extras

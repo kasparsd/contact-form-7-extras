@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/kasparsd/contact-form-7-extras.svg?branch=master)](https://travis-ci.org/kasparsd/contact-form-7-extras)
 
-Source of the [Contact Form 7 Controls plugin](https://wordpress.org/plugins/contact-form-7-extras/) for WordPress.
+Source of the [Contact Form 7 Controls plugin](https://preseto.com/plugins/contact-form-7-controls) for WordPress.
 
 
 ## Install
