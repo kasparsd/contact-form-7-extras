@@ -5,6 +5,7 @@ const deployConfig = {
 	svn_user: 'kasparsd',
 	build_dir: '<%= dist_dir %>',
 	plugin_main_file: 'plugin.php',
+	assets_dir: 'assets/dotorg',
 };
 
 module.exports = function( grunt ) {
