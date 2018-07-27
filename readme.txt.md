@@ -54,6 +54,12 @@ The "[Storage for Contact Form 7](https://codecanyon.net/item/storage-for-contac
 
 ## Changelog
 
+### 0.6.0 (July 27, 2018)
+
+- Set the minimum supported version of WordPress [to 4.6 for the community translations to work](https://developer.wordpress.org/plugins/internationalization/how-to-internationalize-your-plugin/#loading-text-domain).
+- Reformat code to match the WordPress coding standards.
+- Introduce developer tooling and automated checks for PHP syntax errors and coding standards.  
+
 ### 0.5.1 (July 26, 2018)
 
 - Add support for community translations, [fixes #19](https://github.com/kasparsd/contact-form-7-extras/issues/19).
