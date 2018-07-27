@@ -102,7 +102,7 @@ class Cf7_Extras {
 	/**
 	 * Set the directory path to this plugin.
 	 *
-	 * @param string $path
+	 * @param string $path Absolute path to the root directory of this plugin.
 	 */
 	public function set_plugin_dir( $path ) {
 		$this->plugin_dir = $path;
