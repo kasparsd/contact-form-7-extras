@@ -2,7 +2,7 @@
 
 Contributors: kasparsd, buzztone   
 Tags: Contact Form 7, cf7, admin, backend, redirect, tracking, google analytics, ga, simple, interface, dashboard, recaptcha   
-Requires at least: 3.0   
+Requires at least: 4.6   
 Tested up to: 4.9.7   
 Stable tag: {{ version }}   
 
