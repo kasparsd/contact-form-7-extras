@@ -6,7 +6,7 @@
  * Plugin URI: https://github.com/kasparsd/contact-form-7-extras
  * Author: Kaspars Dambis
  * Author URI: https://kaspars.net
- * Version: 0.6.0-dev
+ * Version: 0.6.0
  * License: GPL2
  * Text Domain: contact-form-7-extras
  */
