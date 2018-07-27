@@ -109,6 +109,21 @@ class Cf7_Extras {
 	}
 
 	/**
+	 * Get the public URL to the asset file.
+	 *
+	 * @param string $asset_path Relative path to the asset file.
+	 */
+	public function asset_url( $asset_path ) {
+		$file_path = sprintf(
+			'%s/%s',
+			plugin_basename( $this->plugin_dir ),
+			ltrim( $asset_path, '/' )
+		);
+
+		return plugins_url( $file_path );
+	}
+
+	/**
 	 * Register the custom tab for our form settings.
 	 *
 	 * @param integer $post_id Current form ID.
@@ -372,7 +387,7 @@ class Cf7_Extras {
 
 		wp_enqueue_style(
 			'cf7-extras',
-			plugins_url( 'css/admin.css', $this->plugin_dir ),
+			$this->asset_url( 'css/admin.css' ),
 			null,
 			'0.2',
 			'all'
@@ -380,7 +395,7 @@ class Cf7_Extras {
 
 		wp_enqueue_script(
 			'cf7-extras-js',
-			plugins_url( 'js/admin.js', $this->plugin_dir ),
+			$this->asset_url( 'js/admin.js' ),
 			array( 'jquery' ),
 			'0.2',
 			true
@@ -594,7 +609,7 @@ class Cf7_Extras {
 
 		wp_enqueue_script(
 			'cf7-extras',
-			plugins_url( 'js/controls.js', $this->plugin_dir ),
+			$this->asset_url( 'js/controls.js' ),
 			array( 'contact-form-7' ),
 			'0.0.1',
 			true
