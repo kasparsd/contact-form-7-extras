@@ -119,6 +119,7 @@ module.exports = function( grunt ) {
 					plugin_slug: 'contact-form-7-extras',
 					svn_user: 'kasparsd',
 					build_dir: '<%= dist_dir %>',
+					plugin_main_file: 'plugin.php',
 				},
 			}
 		},
