@@ -15,6 +15,13 @@ class Cf7_Extras {
 	protected $rendered = array();
 
 	/**
+	 * File path to this plugin directory.
+	 *
+	 * @var string
+	 */
+	protected $plugin_dir;
+
+	/**
 	 * Get the plugin singleton.
 	 *
 	 * @return Cf7_Extras
@@ -33,7 +40,7 @@ class Cf7_Extras {
 	 * Class constructor.
 	 */
 	public function __construct() {
-		// Do nothing for now.
+		$this->plugin_dir = dirname( dirname( __FILE__ ) );
 	}
 
 	/**
@@ -337,7 +344,7 @@ class Cf7_Extras {
 
 		wp_enqueue_style(
 			'cf7-extras',
-			plugins_url( 'css/admin.css', __FILE__ ),
+			plugins_url( 'css/admin.css', $this->plugin_dir ),
 			null,
 			'0.2',
 			'all'
@@ -345,7 +352,7 @@ class Cf7_Extras {
 
 		wp_enqueue_script(
 			'cf7-extras-js',
-			plugins_url( 'js/admin.js', __FILE__ ),
+			plugins_url( 'js/admin.js', $this->plugin_dir ),
 			array( 'jquery' ),
 			'0.2',
 			true
@@ -559,7 +566,7 @@ class Cf7_Extras {
 
 		wp_enqueue_script(
 			'cf7-extras',
-			plugins_url( 'js/controls.js', __FILE__ ),
+			plugins_url( 'js/controls.js', $this->plugin_dir ),
 			array( 'contact-form-7' ),
 			'0.0.1',
 			true
