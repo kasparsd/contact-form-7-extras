@@ -4,10 +4,17 @@
 
 Source of the [Contact Form 7 Controls plugin](https://wordpress.org/plugins/contact-form-7-extras/) for WordPress.
 
-Install the plugin by searching for "Contact Form 7 Controls" under "Plugins → Add New" in your WordPress dashboard.
+
+## Install
+
+Search for "Contact Form 7 Controls" under "Plugins → Add New" in your WordPress dashboard.
+
+Install as a [Composer dependancy](https://packagist.org/packages/kasparsd/contact-form-7-extras):
+
+	composer require kasparsd/contact-form-7-extras
 
 
-## Start Contributing
+## Contribute
 
 We use [Composer](https://getcomposer.org) for managing PHP related dependencies and linting tools while [Node.js](https://nodejs.org) is used for the triggering the `pre-commit` hook, building the plugin release and deploying to WP.org
 
