@@ -8,7 +8,8 @@
   },
   "scripts": {
     "build": "grunt build",
-    "deploy": "grunt deploy"
+    "deploy": "grunt deploy",
+    "deploy-trunk": "grunt deploy:trunk"
   },
   "repository": {
     "type": "git",

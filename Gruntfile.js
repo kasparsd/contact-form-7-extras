@@ -1,5 +1,12 @@
 /* jshint es3: false, esversion: 5, node: true */
 
+const deployConfig = {
+	plugin_slug: 'contact-form-7-extras',
+	svn_user: 'kasparsd',
+	build_dir: '<%= dist_dir %>',
+	plugin_main_file: 'plugin.php',
+};
+
 module.exports = function( grunt ) {
 
 	// Load all Grunt plugins.
@@ -115,12 +122,12 @@ module.exports = function( grunt ) {
 
 		wp_deploy: {
 			deploy: {
-				options: {
-					plugin_slug: 'contact-form-7-extras',
-					svn_user: 'kasparsd',
-					build_dir: '<%= dist_dir %>',
-					plugin_main_file: 'plugin.php',
-				},
+				options: deployConfig,
+			},
+			trunk: {
+				options: Object.assign( deployConfig, {
+					deploy_tag: false,
+				} )
 			}
 		},
 	} );
@@ -138,6 +145,13 @@ module.exports = function( grunt ) {
 		'deploy', [
 			'build',
 			'wp_deploy',
+		]
+	);
+
+	grunt.registerTask(
+		'deploy:trunk', [
+			'build',
+			'wp_deploy:trunk',
 		]
 	);
 
