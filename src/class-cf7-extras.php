@@ -40,7 +40,7 @@ class Cf7_Extras {
 	 * Class constructor.
 	 */
 	public function __construct() {
-		$this->plugin_dir = dirname( dirname( __FILE__ ) );
+		// Do nothing for now.
 	}
 
 	/**
@@ -78,6 +78,15 @@ class Cf7_Extras {
 
 		// TODO: Enable Google analytics tracking when AJAX is disabled.
 		add_filter( 'wpcf7_form_elements', array( $this, 'maybe_reset_autop' ) );
+	}
+
+	/**
+	 * Set the directory path to this plugin.
+	 *
+	 * @param string $path
+	 */
+	public function set_plugin_dir( $path ) {
+		$this->plugin_dir = $path;
 	}
 
 	/**

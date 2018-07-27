@@ -14,4 +14,5 @@
 include_once dirname( __FILE__ ) . '/src/class-cf7-extras.php';
 
 $plugin = Cf7_Extras::instance();
+$plugin->set_plugin_dir( dirname( __FILE__ ) );
 $plugin->init();
