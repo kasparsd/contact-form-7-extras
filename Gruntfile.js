@@ -15,10 +15,7 @@ module.exports = function( grunt ) {
 	// Load all Grunt plugins.
 	require( 'load-grunt-tasks' )( grunt );
 
-	function getPluginVersion( pluginFile ) {
-		var pluginSource = grunt.file.read( pluginFile );
-		return pluginSource.match( /Version:\s*(.+)$/mi )[1];
-	};
+	const pluginVersion = grunt.file.read( 'plugin.php' ).match( /Version:\s*(.+)$/mi )[1];
 
 	// Get a list of all the files and directories to exclude from the distribution.
 	var distignore = ignoreParse( '.distignore', {
@@ -53,7 +50,7 @@ module.exports = function( grunt ) {
 					},
 					{
 						from: 'STABLETAG',
-						to: getPluginVersion( 'plugin.php' )
+						to: pluginVersion
 					}
 				]
 			},
