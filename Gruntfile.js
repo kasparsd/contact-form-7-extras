@@ -1,4 +1,5 @@
-/* jshint es3: false, esversion: 5, node: true */
+/* eslint-env es6, node */
+/* eslint camelcase: warn, comma-dangle: off */
 
 const ignoreParse = require( 'parse-gitignore' );
 const exec = require( 'child_process' ).exec;
@@ -21,9 +22,9 @@ module.exports = function( grunt ) {
 	// Get a list of all the files and directories to exclude from the distribution.
 	const releaseFiles = ignoreParse( '.distignore', {
 		invert: true,
-	} );
+	});
 
-	grunt.initConfig( {
+	grunt.initConfig({
 		pkg: grunt.file.readJSON( 'package.json' ),
 
 		dist_dir: 'dist',
@@ -86,23 +87,23 @@ module.exports = function( grunt ) {
 			trunk: {
 				options: Object.assign( deployConfig, {
 					deploy_tag: false,
-				} )
+				})
 			}
 		},
-	} );
+	});
 
 	grunt.registerTask( 'check-diff', function() {
 		const done = this.async(); // This won't work with the ES6 fat arrow syntax.
 
-		exec( 'git diff HEAD --quiet', (err) => {
+		exec( 'git diff HEAD --quiet', ( err ) => {
 			if ( err ) {
 				grunt.log.error( 'Found uncommited changes in your current working directory.' );
-				done(false);
+				done( false );
 			}
 
 			done();
-		} );
-	} );
+		});
+	});
 
 	grunt.registerTask(
 		'build', [
