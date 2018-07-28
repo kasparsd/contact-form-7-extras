@@ -91,11 +91,16 @@ module.exports = function( grunt ) {
 		},
 	} );
 
-	grunt.registerTask( 'check-diff', () => {
+	grunt.registerTask( 'check-diff', function() {
+		const done = this.async(); // This won't work with the ES6 fat arrow syntax.
+
 		exec( 'git diff HEAD --quiet', (err) => {
 			if ( err ) {
-				grunt.fail.fatal( 'Found uncommited changes in your current working directory.' );
+				grunt.log.error( 'Found uncommited changes in your current working directory.' );
+				done(false);
 			}
+
+			done();
 		} );
 	} );
 
