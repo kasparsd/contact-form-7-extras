@@ -48,12 +48,26 @@ module.exports = function( grunt ) {
 						from: /^#{3,}\s(.+)$/,
 						to: '= $1 ='
 					},
+				]
+			},
+			version: {
+				src: [
+					'<%= dist_dir %>/readme.txt',
+					'package.json',
+					'composer.json',
+				],
+				overwrite: true,
+				replacements: [
+					{
+						from: /"version":\s*"(.+)"/,
+						to: `"version": "${pluginVersion}"`
+					},
 					{
 						from: 'STABLETAG',
 						to: pluginVersion
-					}
+					},
 				]
-			},
+			}
 		},
 
 		copy: {
