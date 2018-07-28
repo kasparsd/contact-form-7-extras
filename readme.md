@@ -16,7 +16,7 @@ Install as a [Composer dependancy](https://packagist.org/packages/kasparsd/conta
 
 ## Contribute
 
-We use [Composer](https://getcomposer.org) for managing PHP related dependencies and linting tools while [Node.js](https://nodejs.org) is used for the triggering the `pre-commit` hook, building the plugin release and deploying to WP.org
+We use [Composer](https://getcomposer.org) for managing PHP related dependencies and linting while [Node.js](https://nodejs.org) is used for the triggering the `pre-commit` hook, building the plugin release and deploying to WP.org via [Grunt](https://gruntjs.com).
 
 1. Clone the plugin repository:
 
