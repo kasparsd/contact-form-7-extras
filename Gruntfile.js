@@ -1,6 +1,7 @@
 /* jshint es3: false, esversion: 5, node: true */
 
 const ignoreParse = require( 'parse-gitignore' );
+const exec = require( 'child_process' ).exec;
 
 const deployConfig = {
 	plugin_slug: 'contact-form-7-extras',
@@ -11,6 +12,14 @@ const deployConfig = {
 };
 
 module.exports = function( grunt ) {
+
+	grunt.registerTask( 'check-diff', () => {
+		exec( 'git diff HEAD --quiet', (err) => {
+			if ( err ) {
+				grunt.fail.fatal( 'Found uncommited changes in your current working directory.' );
+			}
+		} );
+	} );
 
 	// Load all Grunt plugins.
 	require( 'load-grunt-tasks' )( grunt );
@@ -101,6 +110,7 @@ module.exports = function( grunt ) {
 
 	grunt.registerTask(
 		'deploy', [
+			'check-diff',
 			'build',
 			'wp_deploy',
 		]
@@ -108,6 +118,7 @@ module.exports = function( grunt ) {
 
 	grunt.registerTask(
 		'deploy:trunk', [
+			'check-diff',
 			'build',
 			'wp_deploy:trunk',
 		]
