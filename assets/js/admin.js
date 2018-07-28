@@ -7,7 +7,7 @@ jQuery( document ).ready( function( $ ) {
 
 		$( this ).on( 'change', function() {
 			$( target ).toggle( ! $( this ).is( ':checked' ) );
-		});
-	});
+		} );
+	} );
 
-});
+} );
