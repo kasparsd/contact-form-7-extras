@@ -18,7 +18,7 @@ module.exports = function( grunt ) {
 	const pluginVersion = grunt.file.read( 'plugin.php' ).match( /Version:\s*(.+)$/mi )[1];
 
 	// Get a list of all the files and directories to exclude from the distribution.
-	var distignore = ignoreParse( '.distignore', {
+	const releaseFiles = ignoreParse( '.distignore', {
 		invert: true,
 	} );
 
@@ -58,7 +58,7 @@ module.exports = function( grunt ) {
 
 		copy: {
 			dist: {
-				src: [ '**' ].concat( distignore ),
+				src: [ '**' ].concat( releaseFiles ),
 				dest: '<%= dist_dir %>',
 				expand: true,
 			}
