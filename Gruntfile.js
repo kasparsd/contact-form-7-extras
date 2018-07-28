@@ -13,14 +13,6 @@ const deployConfig = {
 
 module.exports = function( grunt ) {
 
-	grunt.registerTask( 'check-diff', () => {
-		exec( 'git diff HEAD --quiet', (err) => {
-			if ( err ) {
-				grunt.fail.fatal( 'Found uncommited changes in your current working directory.' );
-			}
-		} );
-	} );
-
 	// Load all Grunt plugins.
 	require( 'load-grunt-tasks' )( grunt );
 
@@ -99,6 +91,13 @@ module.exports = function( grunt ) {
 		},
 	} );
 
+	grunt.registerTask( 'check-diff', () => {
+		exec( 'git diff HEAD --quiet', (err) => {
+			if ( err ) {
+				grunt.fail.fatal( 'Found uncommited changes in your current working directory.' );
+			}
+		} );
+	} );
 
 	grunt.registerTask(
 		'build', [
