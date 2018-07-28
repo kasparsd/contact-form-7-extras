@@ -2,6 +2,7 @@
   "name": "kasparsd/contact-form-7-extras",
   "description": "Simple controls for some of the advanced Contact Form 7 plugin functionality.",
   "type": "wordpress-plugin",
+  "version": "0.6.0",
   "license": "GPL-2.0",
   "authors": [
     {
