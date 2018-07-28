@@ -20,7 +20,8 @@
   },
   "scripts": {
     "lint": [
-      "vendor/bin/phpcs ."
+      "vendor/bin/phpcs .",
+      "npm run lint"
     ],
     "build": [
       "npm run build"
