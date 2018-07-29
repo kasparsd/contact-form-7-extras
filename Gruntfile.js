@@ -115,16 +115,16 @@ module.exports = function( grunt ) {
 
 	grunt.registerTask(
 		'deploy', [
-			'check-diff',
 			'build',
+			'check-diff',
 			'wp_deploy',
 		]
 	);
 
 	grunt.registerTask(
 		'deploy:trunk', [
-			'check-diff',
 			'build',
+			'check-diff',
 			'wp_deploy:trunk',
 		]
 	);
