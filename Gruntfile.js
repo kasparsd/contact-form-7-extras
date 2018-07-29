@@ -81,7 +81,7 @@ module.exports = function( grunt ) {
 		},
 
 		wp_deploy: {
-			deploy: {
+			default: {
 				options: deployConfig,
 			},
 			trunk: {
@@ -117,7 +117,7 @@ module.exports = function( grunt ) {
 		'deploy', [
 			'build',
 			'check-diff',
-			'wp_deploy',
+			'wp_deploy:default',
 		]
 	);
 
