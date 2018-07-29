@@ -54,6 +54,10 @@ The "[Storage for Contact Form 7](https://codecanyon.net/item/storage-for-contac
 
 ## Changelog
 
+### 0.6.1 (July 29, 2018)
+
+- Fix the missing `formEventEnabled()` function.
+
 ### 0.6.0 (July 27, 2018)
 
 - Set the minimum supported version of WordPress [to 4.6 for the community translations to work](https://developer.wordpress.org/plugins/internationalization/how-to-internationalize-your-plugin/#loading-text-domain).
