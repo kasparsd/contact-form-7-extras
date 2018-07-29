@@ -85,7 +85,7 @@ module.exports = function( grunt ) {
 				options: deployConfig,
 			},
 			trunk: {
-				options: Object.assign( deployConfig, {
+				options: Object.assign( {}, deployConfig, {
 					deploy_tag: false,
 				} )
 			}
