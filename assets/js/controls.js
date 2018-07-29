@@ -14,7 +14,7 @@
 		}
 	};
 
-	function trackAnalyticsEvent( formId, eventName ) {
+	function formEventEnabled( formId, eventName ) {
 		formId = parseInt( formId );
 
 		if ( ! formId || ! window.cf7_extras.events[ eventName ] ) {
