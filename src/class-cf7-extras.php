@@ -618,7 +618,7 @@ class Cf7_Extras {
 			'cf7-extras',
 			$this->asset_url( 'assets/js/controls.js' ),
 			array( 'contact-form-7' ),
-			'0.0.1',
+			'0.0.2',
 			true
 		);
 
