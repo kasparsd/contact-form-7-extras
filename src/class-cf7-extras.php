@@ -8,6 +8,13 @@
 class Cf7_Extras {
 
 	/**
+	 * CSS and JS asset version. Bump with every release!
+	 *
+	 * @var string
+	 */
+	const ASSET_VERSION = '0.6.3';
+
+	/**
 	 * Keep track of forms that have been rendered during the request.
 	 *
 	 * @var array
@@ -399,8 +406,8 @@ class Cf7_Extras {
 		wp_enqueue_style(
 			'cf7-extras',
 			$this->asset_url( 'assets/css/admin.css' ),
-			null,
-			'0.2',
+			array(),
+			self::ASSET_VERSION,
 			'all'
 		);
 
@@ -408,7 +415,7 @@ class Cf7_Extras {
 			'cf7-extras-js',
 			$this->asset_url( 'assets/js/admin.js' ),
 			array( 'jquery' ),
-			'0.2',
+			self::ASSET_VERSION,
 			true
 		);
 	}
