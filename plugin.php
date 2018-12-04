@@ -6,7 +6,7 @@
  * Plugin URI: https://preseto.com/plugins/contact-form-7-controls
  * Author: Kaspars Dambis
  * Author URI: https://preseto.com
- * Version: 0.6.1
+ * Version: 0.6.2
  * License: GPL2
  * Text Domain: contact-form-7-extras
  */
