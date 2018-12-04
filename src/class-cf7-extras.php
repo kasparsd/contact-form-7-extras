@@ -267,11 +267,13 @@ class Cf7_Extras {
 					<p class="desc">%s</p>',
 					checked( $settings['track-ga'], true, false ),
 					esc_html__( 'Trigger Google Analytics and/or Matomo (formerly Piwik) events on form submissions. This will tigger the tracking code that has been set up on the site.', 'contact-form-7-extras' ),
-					esc_html( sprintf(
-						/* translators: %s: Title of the current form */
-						__( 'Track form submissions as events with category "Contact Form", actions "Sent", "Error" or "Submit" and label "%s".', 'contact-form-7-extras' ),
-						$cf7->title()
-					) )
+					esc_html(
+						sprintf(
+							/* translators: %s: Title of the current form */
+							__( 'Track form submissions as events with category "Contact Form", actions "Sent", "Error" or "Submit" and label "%s".', 'contact-form-7-extras' ),
+							$cf7->title()
+						)
+					)
 				),
 			),
 		);
@@ -285,16 +287,18 @@ class Cf7_Extras {
 				admin_url( 'admin.php' )
 			);
 
-			$form_entries = get_posts( array(
-				'fields' => 'ids',
-				'post_type' => 'cf7_entry',
-				'post_parent' => $post_id,
-				'posts_per_page' => -1,
-			) );
+			$form_entries = get_posts(
+				array(
+					'fields' => 'ids',
+					'post_type' => 'cf7_entry',
+					'post_parent' => $post_id,
+					'posts_per_page' => -1,
+				)
+			);
 
 			$storage_field = array(
 				'label' => __( 'Store Form Entries', 'contact-form-7-extras' ),
-				'docs_url' => 'https://codecanyon.net/item/storage-for-contact-form-7-/7806229?ref=Preseto',
+				'docs_url' => 'https://preseto.com/go/cf7-storage?utm_source=cf7conex',
 				'field' => sprintf(
 					'<p>%s</p>',
 					sprintf(
@@ -308,13 +312,13 @@ class Cf7_Extras {
 		} else {
 			$storage_field = array(
 				'label' => __( 'Store Form Entries', 'contact-form-7-extras' ),
-				'docs_url' => 'https://codecanyon.net/item/storage-for-contact-form-7-/7806229?ref=Preseto',
+				'docs_url' => 'https://preseto.com/go/cf7-storage?utm_source=cf7connew',
 				'field' => sprintf(
 					'<p>%s</p>',
 					sprintf(
 						/* translators: %s: Text "Storage for Contact Form 7" with a link to the product page */
 						esc_html__( 'Install the %s plugin to save the form submissions in your WordPress database or export as CSV for Excel.', 'contact-form-7-extras' ),
-						'<a href="https://codecanyon.net/item/storage-for-contact-form-7-/7806229?ref=Preseto">Storage for Contact Form 7</a>'
+						'<a href="https://preseto.com/go/cf7-storage?utm_source=cf7connew">Storage for Contact Form 7</a>'
 					)
 				),
 			);
@@ -676,9 +680,11 @@ class Cf7_Extras {
 			$form_meta = get_post_meta( $form_instance->id(), '_form', true );
 			$form = $manager->do_shortcode( $form_meta );
 
-			$form_instance->set_properties( array(
-				'form' => $form,
-			) );
+			$form_instance->set_properties(
+				array(
+					'form' => $form,
+				)
+			);
 		}
 
 		return $form;
