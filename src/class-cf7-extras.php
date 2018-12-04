@@ -267,11 +267,13 @@ class Cf7_Extras {
 					<p class="desc">%s</p>',
 					checked( $settings['track-ga'], true, false ),
 					esc_html__( 'Trigger Google Analytics and/or Matomo (formerly Piwik) events on form submissions. This will tigger the tracking code that has been set up on the site.', 'contact-form-7-extras' ),
-					esc_html( sprintf(
-						/* translators: %s: Title of the current form */
-						__( 'Track form submissions as events with category "Contact Form", actions "Sent", "Error" or "Submit" and label "%s".', 'contact-form-7-extras' ),
-						$cf7->title()
-					) )
+					esc_html(
+						sprintf(
+							/* translators: %s: Title of the current form */
+							__( 'Track form submissions as events with category "Contact Form", actions "Sent", "Error" or "Submit" and label "%s".', 'contact-form-7-extras' ),
+							$cf7->title()
+						)
+					)
 				),
 			),
 		);
@@ -285,12 +287,14 @@ class Cf7_Extras {
 				admin_url( 'admin.php' )
 			);
 
-			$form_entries = get_posts( array(
-				'fields' => 'ids',
-				'post_type' => 'cf7_entry',
-				'post_parent' => $post_id,
-				'posts_per_page' => -1,
-			) );
+			$form_entries = get_posts(
+				array(
+					'fields' => 'ids',
+					'post_type' => 'cf7_entry',
+					'post_parent' => $post_id,
+					'posts_per_page' => -1,
+				)
+			);
 
 			$storage_field = array(
 				'label' => __( 'Store Form Entries', 'contact-form-7-extras' ),
