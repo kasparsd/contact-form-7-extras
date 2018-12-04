@@ -54,6 +54,11 @@ The "[Storage for Contact Form 7](https://codecanyon.net/item/storage-for-contac
 
 ## Changelog
 
+### 0.6.2 (December 4, 2018)
+
+- Add support for automatic [`gtag.js` Google Analytics tracking](https://support.google.com/analytics/answer/7538414).
+- Marked as tested with WordPress 5.0.
+
 ### 0.6.1 (July 29, 2018)
 
 - Fix the missing `formEventEnabled()` function.
