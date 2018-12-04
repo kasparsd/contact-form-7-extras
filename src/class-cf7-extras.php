@@ -680,9 +680,11 @@ class Cf7_Extras {
 			$form_meta = get_post_meta( $form_instance->id(), '_form', true );
 			$form = $manager->do_shortcode( $form_meta );
 
-			$form_instance->set_properties( array(
-				'form' => $form,
-			) );
+			$form_instance->set_properties(
+				array(
+					'form' => $form,
+				)
+			);
 		}
 
 		return $form;
