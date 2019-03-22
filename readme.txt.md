@@ -51,7 +51,7 @@ The [standard Contact event](https://developers.facebook.com/docs/facebook-pixel
 
 ### Contribute
 
-- Report issues and submit improvements in the [GitHub repository](https://github.com/kasparsd/contact-form-7-extras).
+- Report issues and suggest improvements [on GitHub](https://github.com/kasparsd/contact-form-7-extras).
 - Add [a translation to your language](https://translate.wordpress.org/projects/wp-plugins/contact-form-7-extras).
 
 
