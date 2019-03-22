@@ -11,7 +11,7 @@ Simple controls for some of the advanced Contact Form 7 plugin functionality.
 
 ## Description
 
-This plugin enables simple controls for some of the advanced features of the [Contact Form 7](http://wordpress.org/plugins/contact-form-7/) plugin:
+This plugin enables simple controls for some of the advanced features of the [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) plugin:
 
 - Disable AJAX form submissions
 - Disable default form CSS
