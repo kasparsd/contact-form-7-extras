@@ -79,7 +79,7 @@ The "[Storage for Contact Form 7](https://codecanyon.net/item/storage-for-contac
 
 ## Changelog
 
-### 0.7.0 (March 22, 2018)
+### 0.7.0 (March 22, 2019)
 
 - Add support for automatic [Facebook Pixel event tracking](https://developers.facebook.com/docs/facebook-pixel/implementation/conversion-tracking/).
 - Marked as tested with WordPress 5.1.
