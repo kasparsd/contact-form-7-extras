@@ -17,7 +17,7 @@ This plugin enables simple controls for some of the advanced features of the [Co
 - Disable default form CSS
 - Disable automatic paragraph formatting
 - Disable HTML5 input field types or enable the HTML5 input type fallback
-- Track form submissions, errors and completions with Google Analytics and Matomo (formerly Piwik)
+- Track form submissions, errors and completions with Google Analytics, Matomo (formerly Piwik) and Facebook Pixel.
 - Redirect to URL on form submission
 - Specify the Google Recaptcha language
 
@@ -57,6 +57,11 @@ The "[Storage for Contact Form 7](https://codecanyon.net/item/storage-for-contac
 
 
 ## Changelog
+
+### 0.6.3 (March 22, 2018)
+
+- Add support for automatic [Facebook Pixel event tracking](https://developers.facebook.com/docs/facebook-pixel/implementation/conversion-tracking/).
+- Marked as tested with WordPress 5.1.
 
 ### 0.6.2 (December 4, 2018)
 
