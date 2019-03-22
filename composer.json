@@ -1,6 +1,7 @@
 {
   "name": "kasparsd/contact-form-7-extras",
   "description": "Simple controls for some of the advanced Contact Form 7 plugin functionality.",
+  "homepage": "https://preseto.com/plugins/contact-form-7-controls",
   "type": "wordpress-plugin",
   "license": "GPL-2.0",
   "authors": [
