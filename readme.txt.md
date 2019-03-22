@@ -38,6 +38,10 @@ Please note that some settings work on per-page level and will inherit for all f
 
 Search for "Contact Form 7 Controls" using the standard plugin installer.
 
+Alternatively, add it as [a Composer dependency](https://packagist.org/packages/kasparsd/contact-form-7-extras):
+
+	composer require kasparsd/contact-form-7-extras
+
 
 ## Frequently Asked Questions
 
