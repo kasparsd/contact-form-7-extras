@@ -12,7 +12,7 @@ class Cf7_Extras {
 	 *
 	 * @var string
 	 */
-	const ASSET_VERSION = '0.6.3';
+	const ASSET_VERSION = '0.6.4';
 
 	/**
 	 * Keep track of forms that have been rendered during the request.
@@ -273,7 +273,7 @@ class Cf7_Extras {
 					</label>
 					<p class="desc">%s</p>',
 					checked( $settings['track-ga'], true, false ),
-					esc_html__( 'Trigger Google Analytics and/or Matomo (formerly Piwik) events on form submissions. This will tigger the tracking code that has been set up on the site.', 'contact-form-7-extras' ),
+					esc_html__( 'Trigger Google Analytics, Matomo (formerly Piwik) and Facebook Pixel events on form submissions. This will tigger the tracking code that has been set up on the site.', 'contact-form-7-extras' ),
 					esc_html(
 						sprintf(
 							/* translators: %s: Title of the current form */

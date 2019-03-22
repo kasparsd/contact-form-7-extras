@@ -3,7 +3,7 @@
 Contributors: kasparsd, buzztone   
 Tags: Contact Form 7, cf7, admin, backend, redirect, tracking, google analytics, ga, simple, interface, dashboard, recaptcha   
 Requires at least: 4.6   
-Tested up to: 5.0   
+Tested up to: 5.1   
 Stable tag: STABLETAG   
 
 Simple controls for some of the advanced Contact Form 7 plugin functionality.
@@ -11,13 +11,13 @@ Simple controls for some of the advanced Contact Form 7 plugin functionality.
 
 ## Description
 
-This plugin enables simple controls for some of the advanced features of the [Contact Form 7](http://wordpress.org/plugins/contact-form-7/) plugin:
+This plugin enables simple controls for some of the advanced features of the [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) plugin:
 
 - Disable AJAX form submissions
 - Disable default form CSS
 - Disable automatic paragraph formatting
 - Disable HTML5 input field types or enable the HTML5 input type fallback
-- Track form submissions, errors and completions with Google Analytics and Matomo (formerly Piwik)
+- Track form submissions, errors and completions with Google Analytics, Matomo (formerly Piwik) and Facebook Pixel.
 - Redirect to URL on form submission
 - Specify the Google Recaptcha language
 
@@ -27,16 +27,41 @@ Please note that some settings work on per-page level and will inherit for all f
 
 - [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) version 4.3 or later for features related to submission tracking and redirects.
 
+### Usage
 
-### How to Contribute
+The plugin adds a new "Customize" tab for each Contact Form 7 form in the WordPress administration area.
 
-- Report issues and submit improvements in the [GitHub repository](https://github.com/kasparsd/contact-form-7-extras).
+### Analytics Tracking
+
+The plugin automatically triggers analytics events for the following services:
+
+- [Google Analytics](https://analytics.google.com/analytics/web/) with `ga()`, `_gaq.push()` and `dataLayer.push()` implementations,
+- [Matomo](https://matomo.org/) (formerly Piwik),
+- [Facebook Pixel Conversion Tracking](https://developers.facebook.com/docs/facebook-pixel/implementation/conversion-tracking).
+
+It passes the following data with the event:
+
+- "Contact Form" as the event category,
+- "Submit", "Sent", "Error" or "Spam" as the event action, and
+- the form title as the event title.
+
+#### Facebook Pixel
+
+The [standard Contact event](https://developers.facebook.com/docs/facebook-pixel/implementation/conversion-tracking#standard-events) is used for Facebook Pixel with `content_category` property set to the event type (Submit, Sent, Error, Spam) and `content_name` set to the form title.
+
+### Contribute
+
+- Report issues and suggest improvements [on GitHub](https://github.com/kasparsd/contact-form-7-extras).
 - Add [a translation to your language](https://translate.wordpress.org/projects/wp-plugins/contact-form-7-extras).
 
 
 ## Installation
 
 Search for "Contact Form 7 Controls" using the standard plugin installer.
+
+Alternatively, add it as [a Composer dependency](https://packagist.org/packages/kasparsd/contact-form-7-extras):
+
+	composer require kasparsd/contact-form-7-extras
 
 
 ## Frequently Asked Questions
@@ -53,6 +78,11 @@ The "[Storage for Contact Form 7](https://codecanyon.net/item/storage-for-contac
 
 
 ## Changelog
+
+### 0.7.0 (March 22, 2018)
+
+- Add support for automatic [Facebook Pixel event tracking](https://developers.facebook.com/docs/facebook-pixel/implementation/conversion-tracking/).
+- Marked as tested with WordPress 5.1.
 
 ### 0.6.2 (December 4, 2018)
 
