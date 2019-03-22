@@ -12,7 +12,7 @@ class Cf7_Extras {
 	 *
 	 * @var string
 	 */
-	const ASSET_VERSION = '0.6.3';
+	const ASSET_VERSION = '0.6.4';
 
 	/**
 	 * Keep track of forms that have been rendered during the request.
