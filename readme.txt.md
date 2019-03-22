@@ -23,12 +23,18 @@ This plugin enables simple controls for some of the advanced features of the [Co
 
 Please note that some settings work on per-page level and will inherit for all forms on the same page. For example, disabling AJAX form submissions for one form will disable AJAX submissions on all forms on the same page.
 
+
+### Usage
+
+The plugin adds a new "Customize" tab for each Contact Form 7 form in the WordPress administration area.
+
+
 ### Requirements
 
 - [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) version 4.3 or later for features related to submission tracking and redirects.
 
 
-### How to Contribute
+### Contribute
 
 - Report issues and submit improvements in the [GitHub repository](https://github.com/kasparsd/contact-form-7-extras).
 - Add [a translation to your language](https://translate.wordpress.org/projects/wp-plugins/contact-form-7-extras).
