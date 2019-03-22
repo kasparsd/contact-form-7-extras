@@ -34,8 +34,8 @@ The plugin will automatically trigger analytics events for the following service
 
 It passes the following data with the event:
 
-- "Contact Form" as event category,
-- "Submit", "Sent", "Error" or "Spam" as event action, and
+- "Contact Form" as the event category,
+- "Submit", "Sent", "Error" or "Spam" as the event action, and
 - the form title as the event title.
 
 #### Facebook Pixel
