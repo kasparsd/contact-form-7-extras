@@ -15,7 +15,7 @@
     "source": "https://github.com/kasparsd/contact-form-7-extras"
   },
   "require-dev": {
-    "wp-coding-standards/wpcs": "^1.2.0"
+    "wp-coding-standards/wpcs": "^2.0"
   },
   "scripts": {
     "lint": [
