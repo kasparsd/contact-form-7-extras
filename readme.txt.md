@@ -24,6 +24,25 @@ This plugin enables simple controls for some of the advanced features of the [Co
 Please note that some settings work on per-page level and will inherit for all forms on the same page. For example, disabling AJAX form submissions for one form will disable AJAX submissions on all forms on the same page.
 
 
+### Analytics Tracking
+
+The plugin will automatically trigger analytics events for the following services:
+
+- [Google Analytics](https://analytics.google.com/analytics/web/) with `ga()`, `_gaq.push()` and `dataLayer.push()` implementations,
+- [Matomo](https://matomo.org/) (formerly Piwik),
+- [Facebook Pixel Conversion Tracking](https://developers.facebook.com/docs/facebook-pixel/implementation/conversion-tracking).
+
+It passes the following data with the event:
+
+- "Contact Form" as event category,
+- "Submit", "Sent", "Error" or "Spam" as event action, and
+- the form title as the event title.
+
+#### Facebook Pixel
+
+The [standard Contact event](https://developers.facebook.com/docs/facebook-pixel/implementation/conversion-tracking#standard-events) is used for Facebook Pixel with `content_category` property set to the event type (Submit, Sent, Error, Spam) and `content_name` set to the form title.
+
+
 ### Usage
 
 The plugin adds a new "Customize" tab for each Contact Form 7 form in the WordPress administration area.
