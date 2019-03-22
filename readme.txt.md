@@ -26,7 +26,7 @@ Please note that some settings work on per-page level and will inherit for all f
 
 ### Analytics Tracking
 
-The plugin will automatically trigger analytics events for the following services:
+The plugin automatically triggers analytics events for the following services:
 
 - [Google Analytics](https://analytics.google.com/analytics/web/) with `ga()`, `_gaq.push()` and `dataLayer.push()` implementations,
 - [Matomo](https://matomo.org/) (formerly Piwik),
