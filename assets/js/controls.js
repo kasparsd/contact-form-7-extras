@@ -1,3 +1,5 @@
+/* eslint camelcase: warn */
+
 ( function( $ ) {
 	if ( ! window.cf7_extras ) {
 		return;
@@ -27,6 +29,14 @@
 		// Matomo (formerly Piwik) is available.
 		if ( 'undefined' !== typeof _paq && 'function' === typeof _paq.push ) {
 			_paq.push( [ 'trackEvent', eventCategory, eventAction, eventTitle ] );
+		}
+
+		// Facebook Pixel contact event.
+		if ( 'function' === typeof fbq ) {
+			fbq( 'track', 'Contact', {
+				content_category: eventAction,
+				content_name: eventTitle
+			} );
 		}
 	};
 
