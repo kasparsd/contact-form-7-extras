@@ -14,15 +14,15 @@ const deployConfig = {
 
 const readmeReplaceRules = [
 	{
-		from: /^#\s(.+)$/,
+		from: /^#\s(.+)$/gm,
 		to: '=== $1 ==='
 	},
 	{
-		from: /^##\s(.+)$/,
+		from: /^##\s(.+)$/gm,
 		to: '== $1 =='
 	},
 	{
-		from: /^#{3,}\s(.+)$/,
+		from: /^#{3,}\s(.+)$/gm,
 		to: '= $1 ='
 	},
 ];
