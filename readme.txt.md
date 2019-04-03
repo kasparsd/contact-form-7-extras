@@ -78,5 +78,8 @@ The "[Storage for Contact Form 7](https://codecanyon.net/item/storage-for-contac
 1. Contact Form 7 Advanced Controls
 
 
+## Upgrade Notice
 
+### 0.7.1
 
+Updated documentation to link to our new website. Also you can now pre-order the PRO version 🚀 that will include additional analytics and tracking features.
