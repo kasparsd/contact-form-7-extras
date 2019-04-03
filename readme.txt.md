@@ -23,7 +23,9 @@ This plugin enables simple controls for some of the advanced features of the [Co
 
 Please note that some settings work on per-page level and will inherit for all forms on the same page. For example, disabling AJAX form submissions for one form will disable AJAX submissions on all forms on the same page.
 
-**Visit the [official plugin homepage →](https://formcontrols.com)**
+### 🚀 Get PRO
+
+Support the continued development of this plugin by [pre-ordering the PRO version](https://formcontrols.com/pro) that will include advanced analytics and tracking features. [Learn more →](https://formcontrols.com/pro)
 
 ### Requirements
 
