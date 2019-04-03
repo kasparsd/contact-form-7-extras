@@ -1,27 +1,29 @@
 # Contact Form 7 Controls
 
 Contributors: kasparsd, buzztone   
-Tags: Contact Form 7, cf7, admin, backend, redirect, tracking, google analytics, ga, simple, interface, dashboard, recaptcha   
+Tags: Contact Form 7, cf7, admin, backend, redirect, tracking, google analytics, facebook pixel, ga, simple, interface, dashboard, recaptcha   
 Requires at least: 4.6   
 Tested up to: 5.1   
 Stable tag: STABLETAG   
 
-Simple controls for some of the advanced Contact Form 7 plugin functionality.
+Simple controls, analytics, tracking and redirects for Contact Form 7.
 
 
 ## Description
 
 This plugin enables simple controls for some of the advanced features of the [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) plugin:
 
+- Track form submissions, errors and completions [with Google Analytics, Matomo (formerly Piwik) and Facebook Pixel](https://formcontrols.com/docs).
+- Redirect to URL on form submission
 - Disable AJAX form submissions
 - Disable default form CSS
 - Disable automatic paragraph formatting
 - Disable HTML5 input field types or enable the HTML5 input type fallback
-- Track form submissions, errors and completions with Google Analytics, Matomo (formerly Piwik) and Facebook Pixel.
-- Redirect to URL on form submission
 - Specify the Google Recaptcha language
 
 Please note that some settings work on per-page level and will inherit for all forms on the same page. For example, disabling AJAX form submissions for one form will disable AJAX submissions on all forms on the same page.
+
+**Visit the [official plugin homepage →](https://formcontrols.com)**
 
 ### Requirements
 
