@@ -12,6 +12,21 @@ const deployConfig = {
 	assets_dir: 'assets/dotorg',
 };
 
+const readmeReplaceRules = [
+	{
+		from: /^#\s(.+)$/,
+		to: '=== $1 ==='
+	},
+	{
+		from: /^##\s(.+)$/,
+		to: '== $1 =='
+	},
+	{
+		from: /^#{3,}\s(.+)$/,
+		to: '= $1 ='
+	},
+];
+
 module.exports = function( grunt ) {
 
 	// Load all Grunt plugins.
@@ -37,26 +52,16 @@ module.exports = function( grunt ) {
 			readme: {
 				src: 'readme.txt.md',
 				dest: '<%= dist_dir %>/readme.txt',
-				replacements: [
-					{
-						from: /^#\s(.+)$/,
-						to: '=== $1 ==='
-					},
-					{
-						from: /^##\s(.+)$/,
-						to: '== $1 =='
-					},
-					{
-						from: /^#{3,}\s(.+)$/,
-						to: '= $1 ='
-					},
-				]
+				replacements: readmeReplaceRules
+			},
+			changelog: {
+				src: 'changelog.md',
+				dest: '<%= dist_dir %>/changelog.txt',
+				replacements: readmeReplaceRules
 			},
 			version: {
 				src: [
-					'<%= dist_dir %>/readme.txt',
-					'package.json',
-					'composer.json',
+					'<%= dist_dir %>/readme.txt'
 				],
 				overwrite: true,
 				replacements: [
