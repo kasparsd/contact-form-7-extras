@@ -1,18 +1,19 @@
 {
   "name": "kasparsd/contact-form-7-extras",
   "description": "Simple controls for some of the advanced Contact Form 7 plugin functionality.",
-  "homepage": "https://preseto.com/plugins/contact-form-7-controls",
+  "homepage": "https://formcontrols.com",
   "type": "wordpress-plugin",
   "license": "GPL-2.0",
   "authors": [
     {
       "name": "Kaspars Dambis",
-      "homepage": "https://preseto.com"
+      "homepage": "https://kaspars.net"
     }
   ],
   "support": {
     "issues": "https://github.com/kasparsd/contact-form-7-extras/issues",
-    "source": "https://github.com/kasparsd/contact-form-7-extras"
+    "source": "https://github.com/kasparsd/contact-form-7-extras",
+    "docs": "https://formcontrols.com/docs"
   },
   "require-dev": {
     "wp-coding-standards/wpcs": "^2.0"
