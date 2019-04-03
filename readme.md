@@ -7,7 +7,7 @@ Source of the [Contact Form 7 Controls plugin](https://formcontrols.com) for Wor
 
 ## 🚀 Get PRO
 
-Support the continued development of this plugin by [pre-ordering the PRO version](https://formcontrols.com/pro) that will be available soon.
+Support the continued development of this plugin by [pre-ordering the PRO version](https://formcontrols.com/pro) that will include advanced analytics and tracking features. [Learn more →](https://formcontrols.com/pro)
 
 
 ## Install
