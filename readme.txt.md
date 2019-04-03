@@ -82,4 +82,4 @@ The "[Storage for Contact Form 7](https://codecanyon.net/item/storage-for-contac
 
 ### 0.7.1
 
-Updated documentation to link to our new website. Also you can now pre-order the PRO version 🚀 that will include additional analytics and tracking features.
+Documentation update to mention our new website. Support the continued development of this plugin by pre-ordering the PRO version 🚀 that will include advanced analytics and tracking features.
