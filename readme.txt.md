@@ -59,6 +59,11 @@ The [standard Contact event](https://developers.facebook.com/docs/facebook-pixel
 - Add [a translation to your language](https://translate.wordpress.org/projects/wp-plugins/contact-form-7-extras).
 
 
+## Changelog
+
+See the [release notes](https://github.com/kasparsd/contact-form-7-extras/releases) for the complete changelog.
+
+
 ## Installation
 
 Search for "Contact Form 7 Controls" under "Plugins" → "Add New" in your WordPress administration panel.
