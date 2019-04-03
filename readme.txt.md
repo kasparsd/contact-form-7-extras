@@ -61,7 +61,7 @@ The [standard Contact event](https://developers.facebook.com/docs/facebook-pixel
 
 ## Installation
 
-Search for "Contact Form 7 Controls" using the standard plugin installer.
+Search for "Contact Form 7 Controls" under "Plugins" → "Add New" in your WordPress administration panel.
 
 Alternatively, add it as [a Composer dependency](https://packagist.org/packages/kasparsd/contact-form-7-extras):
 
