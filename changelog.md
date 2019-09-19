@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.7.2 (September 19, 2019)
+
+- Rename the plugin to "Controls for Contact Form 7" for trademark compliance.
+- Mark as tested with WordPress 5.2.
+
 ## 0.7.1 (April 3, 2019)
 
 - Documentation update to link to our [new homepage](https://formcontrols.com).
