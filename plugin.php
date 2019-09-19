@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name: Contact Form 7 Controls
+ * Plugin Name: Controls for Contact Form 7
  * Description: Simple controls for the advanced functionality of Contact Form 7.
  * Plugin URI: https://formcontrols.com
  * Author: Kaspars Dambis
  * Author URI: https://formcontrols.com
- * Version: 0.7.1
+ * Version: 0.7.2
  * License: GPL2
  * Text Domain: contact-form-7-extras
  */
