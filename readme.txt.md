@@ -3,7 +3,7 @@
 Contributors: kasparsd, buzztone   
 Tags: Contact Form 7, cf7, admin, backend, redirect, tracking, google analytics, facebook pixel, ga, simple, interface, dashboard, recaptcha   
 Requires at least: 4.6   
-Tested up to: 5.1   
+Tested up to: 5.2   
 Stable tag: STABLETAG   
 
 Simple controls, analytics, tracking and redirects for Contact Form 7.
