@@ -3,7 +3,7 @@
   "description": "Simple controls for some of the advanced Contact Form 7 plugin functionality.",
   "homepage": "https://formcontrols.com",
   "type": "wordpress-plugin",
-  "license": "GPL-2.0",
+  "license": "GPL-2.0-or-later",
   "authors": [
     {
       "name": "Kaspars Dambis",
@@ -20,8 +20,9 @@
   },
   "scripts": {
     "lint": [
-      "vendor/bin/phpcs .",
-      "npm run lint"
+      "phpcs .",
+      "npm run lint",
+      "composer validate"
     ],
     "build": [
       "npm run build"
