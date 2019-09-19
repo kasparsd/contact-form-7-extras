@@ -1,4 +1,4 @@
-# Contact Form 7 Controls
+# Controls for Contact Form 7
 
 Contributors: kasparsd, buzztone   
 Tags: Contact Form 7, cf7, admin, backend, redirect, tracking, google analytics, facebook pixel, ga, simple, interface, dashboard, recaptcha   
