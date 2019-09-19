@@ -66,7 +66,7 @@ See the [release notes](https://github.com/kasparsd/contact-form-7-extras/releas
 
 ## Installation
 
-Search for "Contact Form 7 Controls" under "Plugins" → "Add New" in your WordPress administration panel.
+Search for "Controls for Contact Form 7" under "Plugins" → "Add New" in your WordPress administration panel.
 
 Alternatively, add it as [a Composer dependency](https://packagist.org/packages/kasparsd/contact-form-7-extras):
 
@@ -82,7 +82,7 @@ The "[Storage for Contact Form 7](https://codecanyon.net/item/storage-for-contac
 
 ## Screenshots
 
-1. Contact Form 7 Advanced Controls
+1. Advanced Controls for Contact Form 7
 
 
 ## Upgrade Notice
