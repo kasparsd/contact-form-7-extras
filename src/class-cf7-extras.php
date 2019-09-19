@@ -660,7 +660,7 @@ class Cf7_Extras {
 		}
 
 		// Redirect only if this is a successful non-AJAX response.
-		if ( 'mail_sent' == $result['status'] ) {
+		if ( 'mail_sent' === $result['status'] ) {
 			$redirect = trim( $this->get_form_settings( $form, 'redirect-success' ) );
 
 			if ( ! empty( $redirect ) ) {
