@@ -23,7 +23,7 @@
     "wordpress",
     "wordpress plugin"
   ],
-  "license": "GPL-2.0",
+  "license": "GPL-2.0-or-later",
   "devDependencies": {
     "eslint": "^6.4.0",
     "eslint-config-wordpress": "^2.0.0",
