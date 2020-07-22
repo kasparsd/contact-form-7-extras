@@ -76,11 +76,14 @@
 
 		// GA via Google Tag Manager.
 		if ( 'object' === typeof dataLayer && 'function' === typeof dataLayer.push ) {
-			dataLayer.push( {
-				eventCategory: eventCategory,
-				eventAction: eventAction,
-				eventLabel: eventTitle
-			} );
+			dataLayer.push( [
+				'event',
+				eventAction,
+				{
+					'event_category': eventCategory,
+					'event_label': eventTitle
+				}
+			] );
 		}
 
 		// Matomo (formerly Piwik) is available.
