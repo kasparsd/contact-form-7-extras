@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Controls for Contact Form 7
- * Description: Simple controls for the advanced functionality of Contact Form 7.
+ * Description: Simple controls for the advanced functionality of Contact Form 7. Pre-order the <a href="https://formcontrols.com/pro">🚀 PRO version</a> for advanced analytics and tracking features.
  * Plugin URI: https://formcontrols.com
  * Author: Kaspars Dambis
  * Author URI: https://formcontrols.com

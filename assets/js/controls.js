@@ -1,9 +1,66 @@
 /* eslint camelcase: warn */
 
 ( function( $ ) {
-	if ( ! window.cf7_extras ) {
-		return;
-	}
+
+	var jQueryEvent, formEventCallback;
+
+	var formEventCallbacks = {
+		wpcf7mailsent: function( form ) {
+			var formConfig;
+
+			if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga' ) ) {
+				formConfig = getFormConfig( form.contactFormId );
+				trackAnalyticsEvent( 'Contact Form', 'Sent', formConfig.title );
+			}
+		},
+		wpcf7mailfailed: function( form ) {
+			var formConfig;
+
+			if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga' ) ) {
+				formConfig = getFormConfig( form.contactFormId );
+				trackAnalyticsEvent( 'Contact Form', 'Error', formConfig.title );
+			}
+		},
+		wpcf7spam: function( form ) {
+			var formConfig;
+
+			if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga' ) ) {
+				formConfig = getFormConfig( form.contactFormId );
+				trackAnalyticsEvent( 'Contact Form', 'Spam', formConfig.title );
+			}
+		},
+		wpcf7submit: function( form ) {
+			var formConfig;
+
+			if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga' ) ) {
+				formConfig = getFormConfig( form.contactFormId );
+				trackAnalyticsEvent( 'Contact Form', 'Submit', formConfig.title );
+			}
+
+			if ( form.contactFormId && 'mail_sent' === form.status && formEventEnabled( form.contactFormId, 'redirect-success' ) ) {
+				formConfig = getFormConfig( form.contactFormId );
+
+				if ( formConfig.redirect_url ) {
+					window.location = formConfig.redirect_url;
+				}
+			}
+		}
+	};
+
+	var jQueryEvents = {
+		'wpcf7:mailsent': function( event, form ) {
+			formCallbacks.wpcf7mailsent( form );
+		},
+		'wpcf7:mailfailed': function( event, form ) {
+			formCallbacks.wpcf7mailfailed( form );
+		},
+		'wpcf7:spam': function( event, form ) {
+			formCallbacks.wpcf7spam( form );
+		},
+		'wpcf7:submit': function( event, form ) {
+			formCallbacks.wpcf7submit( form );
+		}
+	};
 
 	function trackAnalyticsEvent( eventCategory, eventAction, eventTitle ) {
 
@@ -64,47 +121,26 @@
 		return false;
 	};
 
-	$( document ).on( 'wpcf7:mailsent', function( event, form ) {
-		var formConfig;
+	// We need the event config for each form to do anything.
+	if ( ! window.cf7_extras ) {
+		return;
+	}
 
-		if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga' ) ) {
-			formConfig = getFormConfig( form.contactFormId );
-			trackAnalyticsEvent( 'Contact Form', 'Sent', formConfig.title );
-		}
-	} );
-
-	$( document ).on( 'wpcf7:mailfailed', function( event, form ) {
-		var formConfig;
-
-		if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga' ) ) {
-			formConfig = getFormConfig( form.contactFormId );
-			trackAnalyticsEvent( 'Contact Form', 'Error', formConfig.title );
-		}
-	} );
-
-	$( document ).on( 'wpcf7:spam', function( event, form ) {
-		var formConfig;
-
-		if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga' ) ) {
-			formConfig = getFormConfig( form.contactFormId );
-			trackAnalyticsEvent( 'Contact Form', 'Spam', formConfig.title );
-		}
-	} );
-
-	$( document ).on( 'wpcf7:submit', function( event, form ) {
-		var formConfig;
-
-		if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga' ) ) {
-			formConfig = getFormConfig( form.contactFormId );
-			trackAnalyticsEvent( 'Contact Form', 'Submit', formConfig.title );
+	// Register the new JS events in CF7 version 5.2 and above.
+	if ( 'function' === typeof document.addEventListener ) {
+		for ( formEventCallback in formEventCallbacks ) {
+			document.addEventListener( formEventCallback, function( event ) {
+				if ( event.detail ) {
+					formEventCallbacks[ formEventCallback ].call( this, event.detail );
+				}
+			} );
 		}
 
-		if ( form.contactFormId && 'mail_sent' === form.status && formEventEnabled( form.contactFormId, 'redirect-success' ) ) {
-			formConfig = getFormConfig( form.contactFormId );
-
-			if ( formConfig.redirect_url ) {
-				window.location = formConfig.redirect_url;
-			}
+	// Register the legacy jQuery events pre CF7 version 5.2.
+	} else if ( 'function' === typeof $ ) {
+		for ( jQueryEvent in jQueryEvents ) {
+			$( document ).on( jQueryEvent, jQueryEvents[ jQueryEvent ] );
 		}
-	} );
+	}
+
 }( jQuery ) );
