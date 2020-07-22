@@ -1,6 +1,7 @@
 {
   "name": "contact-form-7-extras",
   "description": "Simple controls for some of the advanced Contact Form 7 plugin functionality",
+  "private": true,
   "homepage": "https://formcontrols.com",
   "author": {
     "name": "Kaspars Dambis",
@@ -10,7 +11,8 @@
     "lint": "eslint *.js assets",
     "build": "grunt build",
     "deploy": "grunt deploy",
-    "deploy-trunk": "grunt deploy:trunk"
+    "deploy-trunk": "grunt deploy:trunk",
+    "wp-env": "wp-env"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,7 @@
   ],
   "license": "GPL-2.0-or-later",
   "devDependencies": {
+    "@wordpress/env": "^1.6.0",
     "eslint": "^6.8.0",
     "eslint-config-wordpress": "^2.0.0",
     "grunt": "^1.2.1",
