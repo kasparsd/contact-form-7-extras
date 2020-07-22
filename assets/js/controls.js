@@ -130,8 +130,8 @@
 	if ( 'function' === typeof document.addEventListener ) {
 		for ( formEventCallback in formEventCallbacks ) {
 			document.addEventListener( formEventCallback, function( event ) {
-				if ( event.detail ) {
-					formEventCallbacks[ formEventCallback ].call( this, event.detail );
+				if ( event.type in formEventCallbacks ) {
+					formEventCallbacks[ event.type ].call( event, event.detail );
 				}
 			} );
 		}
