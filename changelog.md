@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.7.3 (July 22, 2020)
+
+- Compatability with the Javascript event changes in the latest [version 5.2 of the Contact Form 7 plugin](https://contactform7.com/2020/07/04/contact-form-7-52/).
+- Mark as tested with WordPress 5.4.
+
 ## 0.7.2 (September 19, 2019)
 
 - Rename the plugin to "Controls for Contact Form 7" for trademark compliance.

@@ -3,13 +3,15 @@
 Contributors: kasparsd, buzztone   
 Tags: Contact Form 7, cf7, forms, form, admin, backend, redirect, tracking, analytics, google analytics, facebook pixel, ga, simple, interface, dashboard, recaptcha   
 Requires at least: 4.6   
-Tested up to: 5.2   
+Tested up to: 5.4   
 Stable tag: STABLETAG   
 
 Simple controls, analytics, tracking and redirects for Contact Form 7.
 
 
 ## Description
+
+**NEW:** Pre-order the [🚀 PRO version](https://formcontrols.com/pro) that will include advanced analytics and tracking features.
 
 This plugin enables simple controls for some of the advanced features of the [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) plugin:
 
@@ -22,10 +24,6 @@ This plugin enables simple controls for some of the advanced features of the [Co
 - Specify the Google Recaptcha language
 
 Please note that some settings work on per-page level and will inherit for all forms on the same page. For example, disabling AJAX form submissions for one form will disable AJAX submissions on all forms on the same page.
-
-### 🚀 Get PRO
-
-Support the continued development of this plugin by [pre-ordering the PRO version](https://formcontrols.com/pro) that will include advanced analytics and tracking features. [Learn more →](https://formcontrols.com/pro)
 
 ### Requirements
 
@@ -87,6 +85,6 @@ The "[Storage for Contact Form 7](https://codecanyon.net/item/storage-for-contac
 
 ## Upgrade Notice
 
-### 0.7.1
+### 0.7.3
 
-Documentation update to mention our new website. Support the continued development of this plugin by pre-ordering the PRO version 🚀 that will include advanced analytics and tracking features.
+Compatability with the Javascript event changes in the latest version 5.2 of the Contact Form 7 plugin. Support this plugin by subscribing to the 🚀 PRO plan.

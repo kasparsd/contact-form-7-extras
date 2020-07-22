@@ -12,7 +12,7 @@ class Cf7_Extras {
 	 *
 	 * @var string
 	 */
-	const ASSET_VERSION = '0.6.4';
+	const ASSET_VERSION = '0.6.5';
 
 	/**
 	 * Keep track of forms that have been rendered during the request.
@@ -629,7 +629,7 @@ class Cf7_Extras {
 			'cf7-extras',
 			$this->asset_url( 'assets/js/controls.js' ),
 			array( 'contact-form-7' ),
-			'0.0.2',
+			self::ASSET_VERSION,
 			true
 		);
 
