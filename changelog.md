@@ -1,5 +1,9 @@
 # Changelog
 
+## NEXT
+
+- Use the [suggested structure for the Global Site Tag (gtag.js) events](https://developers.google.com/gtagjs/reference/api#event).
+
 ## 0.7.3 (July 22, 2020)
 
 - Compatability with the Javascript event changes in the latest [version 5.2 of the Contact Form 7 plugin](https://contactform7.com/2020/07/04/contact-form-7-52/).
