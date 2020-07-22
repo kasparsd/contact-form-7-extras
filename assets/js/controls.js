@@ -64,6 +64,23 @@
 
 	function trackAnalyticsEvent( eventCategory, eventAction, eventTitle ) {
 
+		// Helper method required for the event to be registered by gtag.js.
+		var dataLayerPush = function() {
+			if ( 'object' === typeof window.dataLayer && 'function' === typeof window.dataLayer.push ) {
+				window.dataLayer.push( arguments );
+			}
+		};
+
+		// GA via Google Tag Manager or Global Site Tag (gtag.js).
+		dataLayerPush(
+			'event',
+			eventAction,
+			{
+				'event_category': eventCategory,
+				'event_label': eventTitle
+			}
+		);
+
 		// Universal Google Analytics is available.
 		if ( 'function' === typeof ga ) {
 			ga( 'send', 'event', eventCategory, eventAction, eventTitle );
@@ -72,18 +89,6 @@
 		// Classic Google Analytics is available.
 		if ( 'object' === typeof _gaq && 'function' === typeof _gaq.push ) {
 			_gaq.push( [ '_trackEvent', eventCategory, eventAction, eventTitle ] );
-		}
-
-		// GA via Google Tag Manager.
-		if ( 'object' === typeof dataLayer && 'function' === typeof dataLayer.push ) {
-			dataLayer.push( [
-				'event',
-				eventAction,
-				{
-					'event_category': eventCategory,
-					'event_label': eventTitle
-				}
-			] );
 		}
 
 		// Matomo (formerly Piwik) is available.
