@@ -80,7 +80,9 @@ The "[Storage for Contact Form 7](https://codecanyon.net/item/storage-for-contac
 
 ## Screenshots
 
-1. Advanced Controls for Contact Form 7
+1. Google Analytics events associated with form submissions.
+2. Facebook Pixel "Contact" event associated with form submission.
+3. Controls for Contact Form 7 plugin settings.
 
 
 ## Upgrade Notice
