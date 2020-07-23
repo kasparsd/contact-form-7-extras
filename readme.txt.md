@@ -1,4 +1,4 @@
-# Controls for Contact Form 7
+# Controls for Contact Form 7 (Analytics & Tracking)
 
 Contributors: kasparsd, buzztone   
 Tags: Contact Form 7, cf7, forms, form, admin, backend, redirect, tracking, analytics, google analytics, facebook pixel, ga, simple, interface, dashboard, recaptcha   
@@ -11,11 +11,11 @@ Simple controls, analytics, tracking and redirects for Contact Form 7.
 
 ## Description
 
-**NEW:** Pre-order the [🚀 PRO version](https://formcontrols.com/pro) that will include advanced analytics and tracking features.
+**NEW:** Subscribe to the [🚀 PRO version](https://formcontrols.com/pro) for advanced analytics and tracking features, and professional support by the plugin author.
 
-This plugin enables simple controls for some of the advanced features of the [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) plugin:
+This is an addon for the [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) plugin with the following features:
 
-- Track form submissions, errors and completions [with Google Analytics, Matomo (formerly Piwik) and Facebook Pixel](https://formcontrols.com/docs).
+- [Track form submissions, errors and completions](https://formcontrols.com/docs) with Google Analytics, Global Site Tag (gtag.js), Matomo (formerly Piwik) and Facebook Pixel.
 - Redirect to URL on form submission
 - Disable AJAX form submissions
 - Disable default form CSS
@@ -23,7 +23,7 @@ This plugin enables simple controls for some of the advanced features of the [Co
 - Disable HTML5 input field types or enable the HTML5 input type fallback
 - Specify the Google Recaptcha language
 
-Please note that some settings work on per-page level and will inherit for all forms on the same page. For example, disabling AJAX form submissions for one form will disable AJAX submissions on all forms on the same page.
+Please note that some settings work on the per-page level and will apply to all forms on the same page. For example, disabling AJAX form submissions for one form will disable AJAX submissions on all forms on the same page.
 
 ### Requirements
 
@@ -35,9 +35,9 @@ The plugin adds a new "Customize" tab for each Contact Form 7 form in the WordPr
 
 ### Analytics Tracking
 
-The plugin automatically triggers analytics events for the following services:
+The plugin _automatically_ triggers analytics events for the following services:
 
-- [Google Analytics](https://analytics.google.com/analytics/web/) with `ga()`, `_gaq.push()` and `dataLayer.push()` implementations,
+- [Google Analytics](https://analytics.google.com/analytics/web/) and [Global Site Tag (gtag.js)](https://developers.google.com/gtagjs) with `ga()`, `_gaq.push()` and `dataLayer.push()` implementations,
 - [Matomo](https://matomo.org/) (formerly Piwik),
 - [Facebook Pixel Conversion Tracking](https://developers.facebook.com/docs/facebook-pixel/implementation/conversion-tracking).
 
@@ -85,6 +85,10 @@ The "[Storage for Contact Form 7](https://codecanyon.net/item/storage-for-contac
 
 ## Upgrade Notice
 
+### 0.8.0
+
+Use the suggested Google Global Site Tag (gtag.js) event structure. This will make the "Contact Form" events appear in both Google Analytics and Google Tag Manager.
+
 ### 0.7.3
 
-Compatability with the Javascript event changes in the latest version 5.2 of the Contact Form 7 plugin. Support this plugin by subscribing to the 🚀 PRO plan.
+Compatability with the Javascript event changes in the latest version 5.2 of the Contact Form 7 plugin.

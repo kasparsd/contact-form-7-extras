@@ -1,8 +1,9 @@
 # Changelog
 
-## NEXT
+## 0.8.0 (July 25, 2020)
 
-- Use the [suggested structure for the Global Site Tag (gtag.js) events](https://developers.google.com/gtagjs/reference/api#event).
+- Fix: Use the suggested Google Global Site Tag (gtag.js) [event structure](https://developers.google.com/analytics/devguides/collection/gtagjs/events). This will make the "Contact Form" events appear in both Google Analytics and Google Tag Manager.
+- Invite users to subscribe to the [🚀 PRO version](https://formcontrols.com/pro) of the plugin. This allows me to continue updating and supporting the plugin for all the 10,000+ active users of the plugin.
 
 ## 0.7.3 (July 22, 2020)
 
