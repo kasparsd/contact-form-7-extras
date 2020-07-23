@@ -1,4 +1,4 @@
-# Controls for Contact Form 7
+# Controls for Contact Form 7 (Analytics & Tracking)
 
 Contributors: kasparsd, buzztone   
 Tags: Contact Form 7, cf7, forms, form, admin, backend, redirect, tracking, analytics, google analytics, facebook pixel, ga, simple, interface, dashboard, recaptcha   
@@ -11,7 +11,7 @@ Simple controls, analytics, tracking and redirects for Contact Form 7.
 
 ## Description
 
-**NEW:** Pre-order the [🚀 PRO version](https://formcontrols.com/pro) that will include advanced analytics and tracking features.
+**NEW:** Subscribe to the [🚀 PRO version](https://formcontrols.com/pro) to get advanced analytics and tracking features.
 
 This plugin enables simple controls for some of the advanced features of the [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) plugin:
 
