@@ -1,13 +1,13 @@
 # Changelog
 
-## 0.8.0 (July 25, 2020)
+## 0.8.0 (July 23, 2020)
 
 - Fix: Use the suggested Google Global Site Tag (gtag.js) [event structure](https://developers.google.com/analytics/devguides/collection/gtagjs/events). This will make the "Contact Form" events appear in both Google Analytics and Google Tag Manager.
 - Invite users to subscribe to the [🚀 PRO version](https://formcontrols.com/pro) of the plugin. This allows me to continue updating and supporting the plugin for all the 10,000+ active users of the plugin.
 
 ## 0.7.3 (July 22, 2020)
 
-- Compatability with the Javascript event changes in the latest [version 5.2 of the Contact Form 7 plugin](https://contactform7.com/2020/07/04/contact-form-7-52/).
+- Compatibility with the Javascript event changes in the latest [version 5.2 of the Contact Form 7 plugin](https://contactform7.com/2020/07/04/contact-form-7-52/).
 - Mark as tested with WordPress 5.4.
 
 ## 0.7.2 (September 19, 2019)

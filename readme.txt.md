@@ -21,7 +21,7 @@ This is an addon for the [Contact Form 7](https://wordpress.org/plugins/contact-
 - Disable default form CSS
 - Disable automatic paragraph formatting
 - Disable HTML5 input field types or enable the HTML5 input type fallback
-- Specify the Google Recaptcha language
+- Specify the Google reCAPTCHA language
 
 Please note that some settings work on the per-page level and will apply to all forms on the same page. For example, disabling AJAX form submissions for one form will disable AJAX submissions on all forms on the same page.
 
@@ -91,4 +91,4 @@ Use the suggested Google Global Site Tag (gtag.js) event structure. This will ma
 
 ### 0.7.3
 
-Compatability with the Javascript event changes in the latest version 5.2 of the Contact Form 7 plugin.
+Compatibility with the Javascript event changes in the latest version 5.2 of the Contact Form 7 plugin.
