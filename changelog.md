@@ -1,8 +1,8 @@
 # Changelog
 
-## NEXT
+## 0.8.0 (July 25, 2020)
 
-- Use the [suggested structure for the Global Site Tag (gtag.js) events](https://developers.google.com/gtagjs/reference/api#event).
+- Fix: Use the suggested Google Global Site Tag (gtag.js) [event structure](https://developers.google.com/analytics/devguides/collection/gtagjs/events). This will make the "Contact Form" events appear in both Google Analytics and Google Tag Manager. 
 
 ## 0.7.3 (July 22, 2020)
 

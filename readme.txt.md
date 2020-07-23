@@ -85,6 +85,10 @@ The "[Storage for Contact Form 7](https://codecanyon.net/item/storage-for-contac
 
 ## Upgrade Notice
 
+### 0.8.0
+
+Fix: Update the Google Global Site Tag (gtag.js) event logic to use the [suggested event structure](https://developers.google.com/analytics/devguides/collection/gtagjs/events).
+
 ### 0.7.3
 
-Compatability with the Javascript event changes in the latest version 5.2 of the Contact Form 7 plugin. Support this plugin by subscribing to the 🚀 PRO plan.
+Compatability with the Javascript event changes in the latest version 5.2 of the Contact Form 7 plugin.
