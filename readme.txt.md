@@ -87,7 +87,7 @@ The "[Storage for Contact Form 7](https://codecanyon.net/item/storage-for-contac
 
 ### 0.8.0
 
-Fix: Update the Google Global Site Tag (gtag.js) event logic to use the [suggested event structure](https://developers.google.com/analytics/devguides/collection/gtagjs/events).
+Use the suggested Google Global Site Tag (gtag.js) event structure. This will make the "Contact Form" events appear in both Google Analytics and Google Tag Manager.
 
 ### 0.7.3
 
