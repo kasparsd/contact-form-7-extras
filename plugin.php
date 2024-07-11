@@ -5,7 +5,7 @@
  * Plugin URI: https://formcontrols.com
  * Author: Kaspars Dambis
  * Author URI: https://formcontrols.com
- * Version: 0.8.0
+ * Version: 0.8.1
  * License: GPL2
  * Text Domain: contact-form-7-extras
  */
