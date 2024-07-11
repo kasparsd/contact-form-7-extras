@@ -3,6 +3,8 @@
 	<config name="installed_paths" value="vendor/wp-coding-standards/wpcs" />
 	<arg name="extensions" value="php" />
 
+	<file>.</file>
+
 	<rule ref="WordPress-Core">
 		<exclude name="Generic.Formatting.MultipleStatementAlignment" />
 		<exclude name="WordPress.Arrays.MultipleStatementAlignment" />
