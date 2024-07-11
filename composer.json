@@ -20,18 +20,8 @@
   },
   "scripts": {
     "lint": [
-      "phpcs .",
-      "npm run lint",
+      "phpcs",
       "composer validate"
-    ],
-    "build": [
-      "npm run build"
-    ],
-    "post-install-cmd": [
-      "npm install"
-    ],
-    "post-update-cmd": [
-      "npm install"
     ]
   }
 }

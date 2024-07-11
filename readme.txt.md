@@ -1,9 +1,9 @@
-# Controls for Contact Form 7 (Analytics & Tracking)
+# Controls for Contact Form 7 (Redirects, Analytics & Tracking)
 
 Contributors: kasparsd, buzztone   
 Tags: Contact Form 7, cf7, forms, form, admin, backend, redirect, tracking, analytics, google analytics, facebook pixel, ga, simple, interface, dashboard, recaptcha   
 Requires at least: 4.6   
-Tested up to: 5.4   
+Tested up to: 6.5   
 Stable tag: STABLETAG   
 
 Simple controls, analytics, tracking and redirects for Contact Form 7.

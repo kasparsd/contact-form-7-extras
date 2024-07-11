@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.8.1 (July 11, 2024)
+
+- Fix: require `jquery` for the front-end control script since the Contact Form 7 plugin no longer enqueues it. Eventually to be replaced with pure Javascript.
+- Confirm that plugin works with WordPress 6.5.
+- Tooling: update development tooling.
+
 ## 0.8.0 (July 23, 2020)
 
 - Fix: Use the suggested Google Global Site Tag (gtag.js) [event structure](https://developers.google.com/analytics/devguides/collection/gtagjs/events). This will make the "Contact Form" events appear in both Google Analytics and Google Tag Manager.

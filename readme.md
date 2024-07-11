@@ -1,6 +1,6 @@
 # Contact Form 7 Controls
 
-[![Build Status](https://travis-ci.org/kasparsd/contact-form-7-extras.svg?branch=master)](https://travis-ci.org/kasparsd/contact-form-7-extras)
+[![Lint and Test](https://github.com/kasparsd/contact-form-7-extras/actions/workflows/test.yml/badge.svg)](https://github.com/kasparsd/contact-form-7-extras/actions/workflows/test.yml)
 
 Source of the [Contact Form 7 Controls plugin](https://formcontrols.com) for WordPress.
 
@@ -21,7 +21,7 @@ Install as a [Composer dependancy](https://packagist.org/packages/kasparsd/conta
 
 ## Contribute
 
-We use [Composer](https://getcomposer.org) for managing PHP related dependencies and linting while [Node.js](https://nodejs.org) is used for the triggering the `pre-commit` hook, building the plugin release and deploying to WP.org via [Grunt](https://gruntjs.com).
+We use [Composer](https://getcomposer.org) for managing PHP development dependencies while [Node.js](https://nodejs.org) is used for most scripting needs, building the plugin release and deploying to WP.org via [Grunt](https://gruntjs.com).
 
 1. Clone the plugin repository:
 
@@ -30,11 +30,12 @@ We use [Composer](https://getcomposer.org) for managing PHP related dependencies
 
 2. Setup the development environment and tools:
 
+	   npm install
 	   composer install
 
 3. Prepare a release in the `dist` directory:
 
-	   composer build
+	   npm run build
 
 
 ## Screenshot

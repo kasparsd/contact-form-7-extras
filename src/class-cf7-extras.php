@@ -33,7 +33,7 @@ class Cf7_Extras {
 	 *
 	 * @var array
 	 */
-	protected $errors = [];
+	protected $errors = array();
 
 	/**
 	 * Get the plugin singleton.
@@ -628,7 +628,7 @@ class Cf7_Extras {
 		wp_enqueue_script(
 			'cf7-extras',
 			$this->asset_url( 'assets/js/controls.js' ),
-			array( 'contact-form-7' ),
+			array( 'contact-form-7', 'jquery' ),
 			self::ASSET_VERSION,
 			true
 		);
@@ -718,7 +718,7 @@ class Cf7_Extras {
 			return;
 		}
 
-		$error_html = [];
+		$error_html = array();
 
 		foreach ( $this->errors as $error_message ) {
 			$error_html[] = sprintf(
