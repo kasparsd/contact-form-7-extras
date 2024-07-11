@@ -2,6 +2,7 @@
 
 ## 0.8.1 (July 11, 2024)
 
+- Fix: require `jquery` for the front-end control script since the Contact Form 7 plugin no longer enqueues it. Eventually to be replaced with pure Javascript.
 - Confirm that plugin works with WordPress 6.5.
 - Tooling: update development tooling.
 
