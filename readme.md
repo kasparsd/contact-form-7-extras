@@ -1,6 +1,6 @@
 # Contact Form 7 Controls
 
-[![Build Status](https://travis-ci.org/kasparsd/contact-form-7-extras.svg?branch=master)](https://travis-ci.org/kasparsd/contact-form-7-extras)
+[![Lint and Test](https://github.com/kasparsd/contact-form-7-extras/actions/workflows/test.yml/badge.svg)](https://github.com/kasparsd/contact-form-7-extras/actions/workflows/test.yml)
 
 Source of the [Contact Form 7 Controls plugin](https://formcontrols.com) for WordPress.
 
