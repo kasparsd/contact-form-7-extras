@@ -33,7 +33,7 @@ class Cf7_Extras {
 	 *
 	 * @var array
 	 */
-	protected $errors = [];
+	protected $errors = array();
 
 	/**
 	 * Get the plugin singleton.
@@ -718,7 +718,7 @@ class Cf7_Extras {
 			return;
 		}
 
-		$error_html = [];
+		$error_html = array();
 
 		foreach ( $this->errors as $error_message ) {
 			$error_html[] = sprintf(
