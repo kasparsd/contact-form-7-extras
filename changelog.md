@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.8.1 (July 11, 2024)
+
+- Confirm that plugin works with WordPress 6.5.
+- Tooling: update development tooling.
+
 ## 0.8.0 (July 23, 2020)
 
 - Fix: Use the suggested Google Global Site Tag (gtag.js) [event structure](https://developers.google.com/analytics/devguides/collection/gtagjs/events). This will make the "Contact Form" events appear in both Google Analytics and Google Tag Manager.
