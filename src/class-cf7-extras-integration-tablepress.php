@@ -83,7 +83,7 @@ class Cf7_Extras_Integration_TablePress extends Cf7_Extras_Integration {
 					'<option value="%d" %s>%s</option>',
 					$table_id,
 					selected( $tablepress_id_selected, $table_id, false ),
-					$table_name
+					esc_html( $table_name )
 				);
 			}
 		} else {
