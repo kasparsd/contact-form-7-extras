@@ -33,7 +33,9 @@
     "wpackagist-theme/twentytwentyfive": "^1.0",
     "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
     "wp-phpunit/wp-phpunit": "^6.7",
-    "yoast/phpunit-polyfills": "^3.0"
+    "yoast/phpunit-polyfills": "^3.0",
+    "wpackagist-plugin/query-monitor": "^3.17",
+    "wpackagist-plugin/wp-mail-debugger": "^1.1"
   },
   "scripts": {
     "lint": [
