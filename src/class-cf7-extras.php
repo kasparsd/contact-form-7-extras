@@ -337,6 +337,13 @@ class Cf7_Extras {
 			$fields
 		);
 
+		/**
+		 * Let plugins add items to the settings.
+		 *
+		 * @param array $fields List of fields to display.
+		 */
+		$fields = apply_filters( 'cf7_extras__controls_fields', $fields );
+
 		$rows = array();
 
 		foreach ( $fields as $field_id => $field ) {
