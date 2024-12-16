@@ -1,9 +1,20 @@
 <?php
 
+/**
+ * TablePress integration.
+ */
 class Cf7_Extras_Integration_TablePress extends Cf7_Extras_Integration {
 
+	/**
+	 * TablePress field ID.
+	 *
+	 * @var string
+	 */
 	const FIELD_TABLEPRESS_ID = 'tablepress-id';
 
+	/**
+	 * Initialize the integration.
+	 */
 	public function init() {
 		add_filter( 'cf7_extras__controls_fields', array( $this, 'controls_fields' ), 10, 2 );
 
@@ -118,6 +129,13 @@ class Cf7_Extras_Integration_TablePress extends Cf7_Extras_Integration {
 		return array_merge( $tablepress_fields, $fields ); // Merge to prepend the storage fields.
 	}
 
+	/**
+	 * Store the form submission in TablePress.
+	 *
+	 * @param WPCF7_ContactForm $contact_form Instance of the form being processed.
+	 *
+	 * @return void
+	 */
 	public function store_submission_in_tablepress( $contact_form ) {
 		$settings = $this->get_settings( $contact_form->id() );
 		$table_id = (int) $settings->get( 'tablepress-id' );
@@ -130,7 +148,7 @@ class Cf7_Extras_Integration_TablePress extends Cf7_Extras_Integration {
 				$form_data = $form_submission->get_posted_data();
 
 				$extra_data = array(
-					'cf7_time' => date( 'c', $form_submission->get_meta( 'timestamp' ) ),
+					'cf7_time' => gmdate( 'c', $form_submission->get_meta( 'timestamp' ) ),
 					'cf7_url' => $form_submission->get_meta( 'url' ),
 				);
 
@@ -145,6 +163,14 @@ class Cf7_Extras_Integration_TablePress extends Cf7_Extras_Integration {
 		}
 	}
 
+	/**
+	 * Merge form data with table data.
+	 *
+	 * @param array $table TablePress table data.
+	 * @param array $form_data Form data.
+	 *
+	 * @return array Updated TablePress table data.
+	 */
 	public function get_data_for_table( $table, $form_data ) {
 		$header_row = array_map( 'trim', current( $table['data'] ) );
 
