@@ -151,15 +151,6 @@ class Cf7_Extras_Integration_TablePress extends Cf7_Extras_Integration {
 
 		$table['data'][] = $table_row; // Append our row.
 
-		$num_rows = count( $table['data'] );
-		$num_cols = max( array_map( 'count', $table['data'] ) );
-
-		// Ensure our newly added fields are visible.
-		$table['visibility'] = array(
-			'rows' => array_replace( array_fill( 0, $num_rows, 1 ), $table['visibility']['rows'] ),
-			'columns' => array_replace( array_fill( 0, $num_cols, 1 ), $table['visibility']['columns'] ),
-		);
-
 		return $table;
 	}
 
