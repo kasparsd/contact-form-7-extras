@@ -5,6 +5,7 @@ Tags: Contact Form 7, cf7, forms, form, admin, backend, redirect, tracking, anal
 Requires at least: 4.6   
 Tested up to: 6.7   
 Stable tag: STABLETAG   
+License: GPLv2 or later
 
 Simple controls, analytics, tracking and redirects for Contact Form 7.
 
