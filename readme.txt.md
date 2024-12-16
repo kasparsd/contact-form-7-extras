@@ -23,6 +23,7 @@ This is an addon for the [Contact Form 7](https://wordpress.org/plugins/contact-
 - Disable automatic paragraph formatting
 - Disable HTML5 input field types or enable the HTML5 input type fallback
 - Specify the Google reCAPTCHA language
+- Store form submissions in [Storage for Contact Form 7](https://preseto.com/go/cf7-storage?utm_source=wporg) or [TablePress](https://wordpress.org/plugins/tablepress/).
 
 Please note that some settings work on the per-page level and will apply to all forms on the same page. For example, disabling AJAX form submissions for one form will disable AJAX submissions on all forms on the same page.
 
