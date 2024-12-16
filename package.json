@@ -14,6 +14,8 @@
     "format": "npm-run-all format:*",
     "format:js": "eslint --fix *.js assets",
     "format:php": "composer format",
+    "test": "npm-run-all test:*",
+    "test:php": "wp-env run tests-cli --env-cwd=wp-content/plugins/contact-form-7-extras composer test",
     "build": "grunt build",
     "deploy": "grunt deploy",
     "deploy-trunk": "grunt deploy:trunk",
