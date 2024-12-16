@@ -2,3 +2,7 @@
 /themes/
 /plugins/
 !/plugins/contact-form-7-extras
+
+# Ignore various helpers added by plugins.
+/db.php
+/object-cache.php
