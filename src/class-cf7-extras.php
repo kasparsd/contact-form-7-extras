@@ -682,10 +682,15 @@ class Cf7_Extras {
 		$disable_autop = $this->get_form_settings( $form_instance, 'disable-autop' );
 
 		if ( $disable_autop ) {
-			$manager = WPCF7_ShortcodeManager::get_instance();
-
 			$form_meta = get_post_meta( $form_instance->id(), '_form', true );
-			$form = $manager->do_shortcode( $form_meta );
+
+			if ( class_exists( 'WPCF7_FormTagsManager' ) ) {
+				$manager = WPCF7_FormTagsManager::get_instance();
+				$form = $manager->replace_all( $form_meta );
+			} else {
+				$manager = WPCF7_ShortcodeManager::get_instance();
+				$form = $manager->do_shortcode( $form_meta );
+			}
 
 			$form_instance->set_properties(
 				array(
