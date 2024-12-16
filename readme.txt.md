@@ -7,7 +7,7 @@ Tested up to: 6.7
 Stable tag: STABLETAG   
 License: GPLv2 or later
 
-Simple controls, analytics, tracking and redirects for Contact Form 7.
+Analytics, tracking, redirects and storage for Contact Form 7.
 
 
 ## Description
