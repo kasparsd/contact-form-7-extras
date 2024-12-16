@@ -520,9 +520,9 @@ class Cf7_Extras {
 		if ( isset( $field ) ) {
 			if ( isset( $settings[ $field ] ) ) {
 				return $settings[ $field ];
-			} else {
-				return null;
 			}
+
+			return null;
 		}
 
 		return $settings;
