@@ -10,7 +10,7 @@
  * Text Domain: contact-form-7-extras
  */
 
-include_once __DIR__ . '/src/class-cf7-extras.php';
+require_once __DIR__ . '/src/class-cf7-extras.php';
 
 $plugin = Cf7_Extras::instance();
 $plugin->set_plugin_dir( __DIR__ );

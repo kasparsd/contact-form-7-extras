@@ -738,5 +738,4 @@ class Cf7_Extras {
 		</div>
 		<?php
 	}
-
 }
