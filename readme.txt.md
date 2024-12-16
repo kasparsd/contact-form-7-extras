@@ -35,6 +35,12 @@ Please note that some settings work on the per-page level and will apply to all 
 
 The plugin adds a new "Controls" tab for each Contact Form 7 form in the WordPress administration area.
 
+### Form Submission Storage
+
+*Setup the official companion plugin [Storage for Contact Form 7 plugin](https://preseto.com/go/cf7-storage?utm_source=wporg) for capturing the form submissions safely in the WordPres database.*
+
+Alternatively, there is also a basic integration with the [TablePress plugin](https://wordpress.org/plugins/tablepress/). Select the TablePress table where to store the form submissions. The plugin will add any missing columns for each form field, and append the form entries as rows to the table. Additionally, fields `cf7_time` (submission time as [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)) and `cf7_url` (URL where the form was submitted) are stored along with the form data.
+
 ### Analytics Tracking
 
 The plugin _automatically_ triggers analytics events for the following services:
