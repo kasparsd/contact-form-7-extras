@@ -671,7 +671,8 @@ class Cf7_Extras {
 	}
 
 	/**
-	 * Maybe disable WP core autop() on form email contents.
+	 * Maybe disable WP core autop() on form email contents
+	 * by re-parsing the form content without the autop.
 	 *
 	 * @param WPCF7_ContactForm $form Current CF7 form.
 	 *
