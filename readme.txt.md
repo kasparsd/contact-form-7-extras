@@ -7,7 +7,7 @@ Tested up to: 6.7
 Stable tag: STABLETAG   
 License: GPLv2 or later
 
-Simple controls, analytics, tracking and redirects for Contact Form 7.
+Analytics, tracking, redirects and storage for Contact Form 7.
 
 
 ## Description
@@ -23,6 +23,7 @@ This is an addon for the [Contact Form 7](https://wordpress.org/plugins/contact-
 - Disable automatic paragraph formatting
 - Disable HTML5 input field types or enable the HTML5 input type fallback
 - Specify the Google reCAPTCHA language
+- Store form submissions in [Storage for Contact Form 7](https://preseto.com/go/cf7-storage?utm_source=wporg) or [TablePress](https://wordpress.org/plugins/tablepress/).
 
 Please note that some settings work on the per-page level and will apply to all forms on the same page. For example, disabling AJAX form submissions for one form will disable AJAX submissions on all forms on the same page.
 
@@ -34,9 +35,15 @@ Please note that some settings work on the per-page level and will apply to all 
 
 The plugin adds a new "Controls" tab for each Contact Form 7 form in the WordPress administration area.
 
+### Form Submission Storage
+
+*Setup the official companion plugin [Storage for Contact Form 7 plugin](https://preseto.com/go/cf7-storage?utm_source=wporg) for capturing the form submissions safely in the WordPres database.*
+
+Alternatively, there is also a basic integration with the [TablePress plugin](https://wordpress.org/plugins/tablepress/). Select the TablePress table where to store the form submissions. The plugin will add any missing columns for each form field, and append the form entries as rows to the table. Additionally, fields `cf7_time` (submission time as [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)) and `cf7_url` (URL where the form was submitted) are stored along with the form data.
+
 ### Analytics Tracking
 
-The plugin _automatically_ triggers analytics events for the following services:
+The plugin *automatically* triggers analytics events for the following services:
 
 - [Google Analytics (GA4)](https://support.google.com/analytics/topic/14088998) using [Google Tag Manager](https://support.google.com/tagmanager/answer/9442095) and [Global Tag (gtag.js)](https://developers.google.com/tag-platform/gtagjs) with `ga()`, `_gaq.push()` and `dataLayer.push()` implementations,
 - [Matomo](https://matomo.org/) (formerly Piwik),
@@ -80,7 +87,7 @@ Add it as [a Composer dependency](https://packagist.org/packages/kasparsd/contac
 
 ### How to save Contact Form 7 submissions in the WordPress database?
 
-The "[Storage for Contact Form 7](https://codecanyon.net/item/storage-for-contact-form-7-/7806229)" plugin stores all contact form submissions (including attachments) securely in the WordPress database. It also provides a CSV export of the form entries.
+The "[Storage for Contact Form 7](https://preseto.com/go/cf7-storage?utm_source=wporg)" plugin stores all contact form submissions (including attachments) securely in the WordPress database. It also provides a CSV export of the form entries.
 
 
 ## Screenshots
