@@ -2,3 +2,7 @@
 /node_modules
 /vendor
 .DS_Store
+
+# Local overrides.
+/phpcs.xml
+/phpunit.xml
