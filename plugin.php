@@ -14,4 +14,5 @@ require_once __DIR__ . '/src/class-cf7-extras.php';
 
 $plugin = Cf7_Extras::instance();
 $plugin->set_plugin_dir( __DIR__ );
-$plugin->init();
+
+add_action( 'plugins_loaded', array( $plugin, 'init' ) );
