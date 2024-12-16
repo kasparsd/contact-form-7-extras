@@ -30,12 +30,16 @@
     "roots/wordpress": "^6.7",
     "wpackagist-plugin/contact-form-7": "^6.0",
     "roots/wordpress-core-installer": "^1.100",
-    "wpackagist-theme/twentytwentyfive": "^1.0"
+    "wpackagist-theme/twentytwentyfive": "^1.0",
+    "dealerdirect/phpcodesniffer-composer-installer": "^1.0"
   },
   "scripts": {
     "lint": [
       "phpcs",
       "composer validate"
+    ],
+    "format": [
+      "phpcbf"
     ]
   },
   "config": {
