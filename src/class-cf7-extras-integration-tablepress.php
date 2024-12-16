@@ -123,7 +123,7 @@ class Cf7_Extras_Integration_TablePress extends Cf7_Extras_Integration {
 					esc_attr( $this->get_field_name( self::FIELD_TABLEPRESS_ID ) ),
 					implode( '', $tablepress_options ),
 					implode( ' | ', $entries_links ),
-					esc_html__( 'Store form submissions in TablePress. Each entry is a single row with a column for each field.', 'contact-form-7-extras' )
+					esc_html__( 'Store form submissions in a TablePress table. Entries are appended to any existing rows and columns along with a dedicated header column matching the field names.', 'contact-form-7-extras' )
 				),
 			),
 		);
