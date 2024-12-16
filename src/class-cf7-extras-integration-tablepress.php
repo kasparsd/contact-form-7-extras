@@ -18,7 +18,9 @@ class Cf7_Extras_Integration_TablePress extends Cf7_Extras_Integration {
 	public function init() {
 		add_filter( 'cf7_extras__controls_fields', array( $this, 'controls_fields' ), 10, 2 );
 
-		add_action( 'wpcf7_before_send_mail', array( $this, 'store_submission_in_tablepress' ) ); // The before hooks runs also when form submissions fail.
+		if ( class_exists( 'TablePress' ) ) {
+			add_action( 'wpcf7_before_send_mail', array( $this, 'store_submission_in_tablepress' ) ); // The before hooks runs also when form submissions fail.
+		}
 	}
 
 	/**
