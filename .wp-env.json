@@ -2,5 +2,8 @@
   "core": "./tools/local/wordpress",
   "mappings": {
     "wp-content": "./tools/local/wp-content"
-  }
+  },
+  "plugins": [
+    "."
+  ]
 }
