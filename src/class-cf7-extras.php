@@ -349,7 +349,7 @@ class Cf7_Extras {
 		 *
 		 * @param array $fields List of fields to display.
 		 */
-		$fields = apply_filters( 'cf7_extras__controls_fields', $fields );
+		$fields = apply_filters( 'cf7_extras__controls_fields', $fields, $settings );
 
 		$rows = array();
 
