@@ -87,7 +87,7 @@ Add it as [a Composer dependency](https://packagist.org/packages/kasparsd/contac
 
 ### How to save Contact Form 7 submissions in the WordPress database?
 
-The "[Storage for Contact Form 7](https://codecanyon.net/item/storage-for-contact-form-7-/7806229)" plugin stores all contact form submissions (including attachments) securely in the WordPress database. It also provides a CSV export of the form entries.
+The "[Storage for Contact Form 7](https://preseto.com/go/cf7-storage?utm_source=wporg)" plugin stores all contact form submissions (including attachments) securely in the WordPress database. It also provides a CSV export of the form entries.
 
 
 ## Screenshots
