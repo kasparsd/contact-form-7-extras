@@ -36,6 +36,13 @@ class Cf7_Extras {
 	protected $errors = array();
 
 	/**
+	 * Store instances of form settings by form ID.
+	 *
+	 * @var array
+	 */
+	protected $form_settings = array();
+
+	/**
 	 * Get the plugin singleton.
 	 *
 	 * @return Cf7_Extras
@@ -486,53 +493,23 @@ class Cf7_Extras {
 	 *
 	 * @param  WPCF7_ContactForm $form Form object.
 	 * @param  string            $field Setting field id.
-	 * @param  boolean           $fresh Fetch a fresh value from the DB instead of cache.
+	 * @param  boolean           $fresh Not used.
 	 *
 	 * @return mixed
 	 */
 	public function get_form_settings( $form, $field = null, $fresh = false ) {
-		static $form_settings = array();
-
-		if ( isset( $form_settings[ $form->id() ] ) && ! $fresh ) {
-			$settings = $form_settings[ $form->id() ];
-		} else {
-			$settings = get_post_meta( $form->id(), 'extras', true );
+		if ( ! isset( $this->form_settings[ $form->id() ] ) ) {
+			$this->form_settings[ $form->id() ] = new Cf7_Extras_Form_Settings( $form ); // Cache it for re-use.
 		}
 
-		$settings = wp_parse_args(
-			$settings,
-			array(
-				'disable-css' => false,
-				'disable-ajax' => false,
-				'html5-disable' => false,
-				'html5-fallback' => false,
-				'disable-autop' => false,
-				'redirect-success' => false,
-				'track-ga-success' => false,
-				'track-ga-submit' => false,
-				'track-ga' => false,
-				'google-recaptcha-lang' => null,
-			)
-		);
-
-		// Cache it for re-use.
-		$form_settings[ $form->id() ] = $settings;
-
-		// Convert individual legacy settings into one.
-		if ( ! empty( $settings['track-ga-success'] ) || ! empty( $settings['track-ga-submit'] ) ) {
-			$settings['track-ga'] = true;
-		}
+		$settings = $this->form_settings[ $form->id() ];
 
 		// Return a specific field value.
 		if ( isset( $field ) ) {
-			if ( isset( $settings[ $field ] ) ) {
-				return $settings[ $field ];
-			}
-
-			return null;
+			return $settings->get( $field );
 		}
 
-		return $settings;
+		return $settings->all();
 	}
 
 
