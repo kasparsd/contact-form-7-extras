@@ -15,7 +15,7 @@ Simple controls, analytics, tracking and redirects for Contact Form 7.
 
 This is an addon for the [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) plugin with the following features:
 
-- [Track form submissions, errors and completions](https://formcontrols.com/docs) with Google Analytics, Global Site Tag (gtag.js), Matomo (formerly Piwik) and Facebook Pixel.
+- [Track form submissions, errors and completions](https://formcontrols.com/docs) with Google Analytics (GA4), Google Tag (gtag.js), Google Tag Manager (GTM), Matomo (formerly Piwik) and Facebook Pixel.
 - Redirect to URL on form submission
 - Disable AJAX form submissions
 - Disable default form CSS
