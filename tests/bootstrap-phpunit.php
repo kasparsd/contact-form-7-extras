@@ -23,12 +23,12 @@ if ( $wp_env_tests_dir ) {
 
 global $wp_tests_options; // WP testing library uses this to define option values.
 
-$wp_tests_options = [
-	'active_plugins' => [
+$wp_tests_options = array(
+	'active_plugins' => array(
 		'contact-form-7-extras/plugin.php',
 		'contact-form-7/wp-contact-form-7.php',
-	],
-];
+	),
+);
 
 // Include all helper functions.
 require_once $wp_tests_dir . '/includes/functions.php';
