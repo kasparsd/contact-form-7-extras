@@ -205,7 +205,7 @@ class Cf7_Extras {
 					</label>
 					<p class="desc">%s</p>',
 					checked( $settings['disable-autop'], true, false ),
-					esc_html__( 'Disable automatic paragraph formatting', 'contact-form-7-extras' ),
+					esc_html__( 'Disable automatic paragraph formatting in form output', 'contact-form-7-extras' ),
 					__( 'Same as <code>define( \'WPCF7_AUTOP\', false );</code>.', 'contact-form-7-extras' )
 				),
 			),
