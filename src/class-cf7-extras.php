@@ -436,7 +436,7 @@ class Cf7_Extras {
 		}
 
 		$panels['cf7-extras'] = array(
-			'title' => __( 'Customize', 'contact-form-7-extras' ),
+			'title' => __( 'Controls', 'contact-form-7-extras' ),
 			'callback' => array( $this, 'wpcf7_metabox' ),
 		);
 

@@ -32,7 +32,7 @@ Please note that some settings work on the per-page level and will apply to all 
 
 ### Usage
 
-The plugin adds a new "Customize" tab for each Contact Form 7 form in the WordPress administration area.
+The plugin adds a new "Controls" tab for each Contact Form 7 form in the WordPress administration area.
 
 ### Analytics Tracking
 
