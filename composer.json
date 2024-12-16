@@ -29,7 +29,8 @@
     "wp-coding-standards/wpcs": "^3.1",
     "roots/wordpress": "^6.7",
     "wpackagist-plugin/contact-form-7": "^6.0",
-    "roots/wordpress-core-installer": "^1.100"
+    "roots/wordpress-core-installer": "^1.100",
+    "wpackagist-theme/twentytwentyfive": "^1.0"
   },
   "scripts": {
     "lint": [
@@ -47,7 +48,8 @@
   "extra": {
     "wordpress-install-dir": "tools/local/wordpress",
     "installer-paths": {
-      "tools/local/wp-content/plugins/{$name}/": [ "type:wordpress-plugin" ]
+      "tools/local/wp-content/plugins/{$name}/": [ "type:wordpress-plugin" ],
+      "tools/local/wp-content/themes/{$name}/": [ "type:wordpress-theme" ]
     }
   }
 }
