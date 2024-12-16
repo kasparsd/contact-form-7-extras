@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "XDebug",
+      "type": "php",
+      "request": "launch",
+      "port": 9003,
+      "pathMappings": {
+        "/var/www/html/wp-content/plugins/contact-form-7-extras": "${workspaceFolder}",
+        "/var/www/html/wp-content": "${workspaceFolder}/tools/local/wp-content",
+        "/var/www/html": "${workspaceFolder}/tools/local/wordpress"
+      }
+    }
+  ]
+}

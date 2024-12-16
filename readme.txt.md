@@ -1,10 +1,11 @@
 # Controls for Contact Form 7 (Redirects, Analytics & Tracking)
 
 Contributors: kasparsd, buzztone   
-Tags: Contact Form 7, cf7, forms, form, admin, backend, redirect, tracking, analytics, google analytics, facebook pixel, ga, simple, interface, dashboard, recaptcha   
+Tags: Contact Form 7, gtm, matomo, google analytics, facebook pixel  
 Requires at least: 4.6   
-Tested up to: 6.5   
+Tested up to: 6.7   
 Stable tag: STABLETAG   
+License: GPLv2 or later
 
 Simple controls, analytics, tracking and redirects for Contact Form 7.
 
@@ -15,7 +16,7 @@ Simple controls, analytics, tracking and redirects for Contact Form 7.
 
 This is an addon for the [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) plugin with the following features:
 
-- [Track form submissions, errors and completions](https://formcontrols.com/docs) with Google Analytics, Global Site Tag (gtag.js), Matomo (formerly Piwik) and Facebook Pixel.
+- [Track form submissions, errors and completions](https://formcontrols.com/docs) with Google Analytics (GA4), Google Tag (gtag.js), Google Tag Manager (GTM), Matomo (formerly Piwik) and Facebook Pixel.
 - Redirect to URL on form submission
 - Disable AJAX form submissions
 - Disable default form CSS
@@ -31,13 +32,13 @@ Please note that some settings work on the per-page level and will apply to all 
 
 ### Usage
 
-The plugin adds a new "Customize" tab for each Contact Form 7 form in the WordPress administration area.
+The plugin adds a new "Controls" tab for each Contact Form 7 form in the WordPress administration area.
 
 ### Analytics Tracking
 
 The plugin _automatically_ triggers analytics events for the following services:
 
-- [Google Analytics](https://analytics.google.com/analytics/web/) and [Global Site Tag (gtag.js)](https://developers.google.com/gtagjs) with `ga()`, `_gaq.push()` and `dataLayer.push()` implementations,
+- [Google Analytics (GA4)](https://support.google.com/analytics/topic/14088998) using [Google Tag Manager](https://support.google.com/tagmanager/answer/9442095) and [Global Tag (gtag.js)](https://developers.google.com/tag-platform/gtagjs) with `ga()`, `_gaq.push()` and `dataLayer.push()` implementations,
 - [Matomo](https://matomo.org/) (formerly Piwik),
 - [Facebook Pixel Conversion Tracking](https://developers.facebook.com/docs/facebook-pixel/implementation/conversion-tracking).
 
@@ -64,9 +65,13 @@ See the [release notes](https://github.com/kasparsd/contact-form-7-extras/releas
 
 ## Installation
 
+### From your WordPress dashboard
+
 Search for "Controls for Contact Form 7" under "Plugins" → "Add New" in your WordPress administration panel.
 
-Alternatively, add it as [a Composer dependency](https://packagist.org/packages/kasparsd/contact-form-7-extras):
+### Using Composer
+
+Add it as [a Composer dependency](https://packagist.org/packages/kasparsd/contact-form-7-extras):
 
 	composer require kasparsd/contact-form-7-extras
 

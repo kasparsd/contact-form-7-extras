@@ -1,7 +1,9 @@
-/tests
-/vendor
-/node_modules
-/assets/dotorg
+/tests/
+/vendor/
+/node_modules/
+/tools/
+/tests/
+/assets/dotorg/
 Gruntfile.js
 composer.json
 composer.lock

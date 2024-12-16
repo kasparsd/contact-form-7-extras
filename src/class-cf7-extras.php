@@ -67,7 +67,7 @@ class Cf7_Extras {
 
 		if ( empty( $this->plugin_dir ) ) {
 			$this->set_error(
-				__( 'Failed to load the Contact Form 7 Controls plugin because the plugin directory was not set.', 'contact-form-7-extras' )
+				__( 'Failed to load the Controls for Contact Form 7 plugin because the plugin directory was not set.', 'contact-form-7-extras' )
 			);
 
 			return false;
@@ -144,7 +144,7 @@ class Cf7_Extras {
 	 *
 	 * @return void
 	 */
-	function wpcf7_add_meta_boxes( $post_id ) {
+	public function wpcf7_add_meta_boxes( $post_id ) {
 		add_meta_box(
 			'cf7s-subject',
 			__( 'Extra Settings', 'contact-form-7-extras' ),
@@ -205,7 +205,7 @@ class Cf7_Extras {
 					</label>
 					<p class="desc">%s</p>',
 					checked( $settings['disable-autop'], true, false ),
-					esc_html__( 'Disable automatic paragraph formatting', 'contact-form-7-extras' ),
+					esc_html__( 'Disable automatic paragraph formatting in form output', 'contact-form-7-extras' ),
 					__( 'Same as <code>define( \'WPCF7_AUTOP\', false );</code>.', 'contact-form-7-extras' )
 				),
 			),
@@ -246,7 +246,7 @@ class Cf7_Extras {
 					</label>
 					<p class="desc">%s</p>',
 					esc_url( $settings['redirect-success'] ),
-					esc_attr( 'http://example.com' ),
+					esc_attr( 'https://example.com/thank-you' ),
 					esc_html__( 'Enter the URL where users should be redirected after successful form submissions.', 'contact-form-7-extras' )
 				),
 			),
@@ -373,7 +373,7 @@ class Cf7_Extras {
 	 *
 	 * @return void
 	 */
-	function wpcf7_save_contact_form( $cf7 ) {
+	public function wpcf7_save_contact_form( $cf7 ) {
 		if ( ! isset( $_POST ) || empty( $_POST ) || ! isset( $_POST['extra'] ) || ! is_array( $_POST['extra'] ) ) {
 			return;
 		}
@@ -398,7 +398,7 @@ class Cf7_Extras {
 	 *
 	 * @return void
 	 */
-	function admin_enqueue_scripts( $hook ) {
+	public function admin_enqueue_scripts( $hook ) {
 		if ( false === strpos( $hook, 'wpcf7' ) ) {
 			return;
 		}
@@ -436,7 +436,7 @@ class Cf7_Extras {
 		}
 
 		$panels['cf7-extras'] = array(
-			'title' => __( 'Customize', 'contact-form-7-extras' ),
+			'title' => __( 'Controls', 'contact-form-7-extras' ),
 			'callback' => array( $this, 'wpcf7_metabox' ),
 		);
 
@@ -535,7 +535,7 @@ class Cf7_Extras {
 	 *
 	 * @return void
 	 */
-	function maybe_alter_scripts() {
+	public function maybe_alter_scripts() {
 		// @todo use wp_scripts() in future
 		global $wp_scripts;
 
@@ -592,7 +592,7 @@ class Cf7_Extras {
 	 *
 	 * @return void
 	 */
-	function track_form_events() {
+	public function track_form_events() {
 		if ( empty( $this->rendered ) ) {
 			return;
 		}
@@ -651,7 +651,7 @@ class Cf7_Extras {
 	 *
 	 * @return void
 	 */
-	function wpcf7_submit( $form, $result ) {
+	public function wpcf7_submit( $form, $result ) {
 		// JS is already doing the redirect.
 		if ( isset( $_POST['_wpcf7_is_ajax_call'] ) || ! isset( $result['status'] ) ) {
 			return;
@@ -671,21 +671,27 @@ class Cf7_Extras {
 	}
 
 	/**
-	 * Maybe disable WP core autop() on form email contents.
+	 * Maybe disable WP core autop() on form email contents
+	 * by re-parsing the form content without the autop.
 	 *
 	 * @param WPCF7_ContactForm $form Current CF7 form.
 	 *
 	 * @return WPCF7_ContactForm
 	 */
-	function maybe_reset_autop( $form ) {
+	public function maybe_reset_autop( $form ) {
 		$form_instance = WPCF7_ContactForm::get_current();
 		$disable_autop = $this->get_form_settings( $form_instance, 'disable-autop' );
 
 		if ( $disable_autop ) {
-			$manager = WPCF7_ShortcodeManager::get_instance();
-
 			$form_meta = get_post_meta( $form_instance->id(), '_form', true );
-			$form = $manager->do_shortcode( $form_meta );
+
+			if ( class_exists( 'WPCF7_FormTagsManager' ) ) {
+				$manager = WPCF7_FormTagsManager::get_instance();
+				$form = $manager->replace_all( $form_meta );
+			} else {
+				$manager = WPCF7_ShortcodeManager::get_instance();
+				$form = $manager->do_shortcode( $form_meta );
+			}
 
 			$form_instance->set_properties(
 				array(
@@ -733,5 +739,4 @@ class Cf7_Extras {
 		</div>
 		<?php
 	}
-
 }

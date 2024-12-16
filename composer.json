@@ -15,13 +15,52 @@
     "source": "https://github.com/kasparsd/contact-form-7-extras",
     "docs": "https://formcontrols.com/docs"
   },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org",
+      "only": [
+        "wpackagist-plugin/*",
+        "wpackagist-theme/*"
+      ]
+    }
+  ],
   "require-dev": {
-    "wp-coding-standards/wpcs": "^2.0"
+    "wp-coding-standards/wpcs": "^3.1",
+    "roots/wordpress": "^6.7",
+    "wpackagist-plugin/contact-form-7": "^6.0",
+    "roots/wordpress-core-installer": "^1.100",
+    "wpackagist-theme/twentytwentyfive": "^1.0",
+    "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+    "wp-phpunit/wp-phpunit": "^6.7",
+    "yoast/phpunit-polyfills": "^3.0",
+    "wpackagist-plugin/query-monitor": "^3.17",
+    "wpackagist-plugin/wp-mail-debugger": "^1.1"
   },
   "scripts": {
     "lint": [
       "phpcs",
       "composer validate"
+    ],
+    "format": [
+      "phpcbf"
+    ],
+    "test": [
+      "phpunit"
     ]
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "roots/wordpress-core-installer": true,
+      "composer/installers": true
+    }
+  },
+  "extra": {
+    "wordpress-install-dir": "tools/local/wordpress",
+    "installer-paths": {
+      "tools/local/wp-content/plugins/{$name}/": [ "type:wordpress-plugin" ],
+      "tools/local/wp-content/themes/{$name}/": [ "type:wordpress-theme" ]
+    }
   }
 }
