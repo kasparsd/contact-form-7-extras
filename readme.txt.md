@@ -65,9 +65,13 @@ See the [release notes](https://github.com/kasparsd/contact-form-7-extras/releas
 
 ## Installation
 
+### From your WordPress dashboard
+
 Search for "Controls for Contact Form 7" under "Plugins" → "Add New" in your WordPress administration panel.
 
-Alternatively, add it as [a Composer dependency](https://packagist.org/packages/kasparsd/contact-form-7-extras):
+### Using Composer
+
+Add it as [a Composer dependency](https://packagist.org/packages/kasparsd/contact-form-7-extras):
 
 	composer require kasparsd/contact-form-7-extras
 
