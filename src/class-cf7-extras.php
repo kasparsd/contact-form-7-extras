@@ -246,7 +246,7 @@ class Cf7_Extras {
 					</label>
 					<p class="desc">%s</p>',
 					esc_url( $settings['redirect-success'] ),
-					esc_attr( 'http://example.com' ),
+					esc_attr( 'https://example.com/thank-you' ),
 					esc_html__( 'Enter the URL where users should be redirected after successful form submissions.', 'contact-form-7-extras' )
 				),
 			),
