@@ -16,12 +16,17 @@
     "docs": "https://formcontrols.com/docs"
   },
   "require-dev": {
-    "wp-coding-standards/wpcs": "^2.0"
+    "wp-coding-standards/wpcs": "^3.1"
   },
   "scripts": {
     "lint": [
       "phpcs",
       "composer validate"
     ]
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
   }
 }
