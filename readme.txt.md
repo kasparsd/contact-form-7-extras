@@ -43,7 +43,7 @@ Alternatively, there is also a basic integration with the [TablePress plugin](ht
 
 ### Analytics Tracking
 
-The plugin _automatically_ triggers analytics events for the following services:
+The plugin *automatically* triggers analytics events for the following services:
 
 - [Google Analytics (GA4)](https://support.google.com/analytics/topic/14088998) using [Google Tag Manager](https://support.google.com/tagmanager/answer/9442095) and [Global Tag (gtag.js)](https://developers.google.com/tag-platform/gtagjs) with `ga()`, `_gaq.push()` and `dataLayer.push()` implementations,
 - [Matomo](https://matomo.org/) (formerly Piwik),
