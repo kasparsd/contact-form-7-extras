@@ -110,9 +110,9 @@ class Cf7_Extras {
 		// TODO: Enable Google analytics tracking when AJAX is disabled.
 		add_filter( 'wpcf7_form_elements', array( $this, 'maybe_reset_autop' ) );
 
-		$integrations = [
-			new Cf7_Extras_Integration_TablePress()
-		];
+		$integrations = array(
+			new Cf7_Extras_Integration_TablePress(),
+		);
 
 		foreach ( $integrations as $integration ) {
 			if ( $integration instanceof Cf7_Extras_Integration ) {

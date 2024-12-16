@@ -14,34 +14,34 @@ class Integration_TablePress_Test extends WP_UnitTestCase {
 	public function test_can_merge_new_fields() {
 		$integration = new Cf7_Extras_Integration_TablePress();
 
-		$table = [
-			'data' => [
-				[
+		$table = array(
+			'data' => array(
+				array(
 					'',
 					'header cell',
-				],
-				[
+				),
+				array(
 					'first_name',
-					''
-				]
-			]
-		];
+					'',
+				),
+			),
+		);
 
-		$form_data = [
+		$form_data = array(
 			'first_name' => 'John ',
 			'age' => '25',
-			'food_preferences' => [
+			'food_preferences' => array(
 				'pizza',
 				'pasta',
-			],
-		];
+			),
+		);
 
 		$this->assertEquals(
-			[
-				[ '', 'header cell', 'first_name', 'age', 'food_preferences' ],
-				[ 'first_name', '', '', '', '' ],
-				[ '', '', 'John ', '25', 'pizza, pasta' ],
-			],
+			array(
+				array( '', 'header cell', 'first_name', 'age', 'food_preferences' ),
+				array( 'first_name', '', '', '', '' ),
+				array( '', '', 'John ', '25', 'pizza, pasta' ),
+			),
 			$integration->get_data_for_table( $table, $form_data )['data']
 		);
 	}

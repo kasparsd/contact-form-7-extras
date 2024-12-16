@@ -7,7 +7,7 @@ class Cf7_Extras_Integration_TablePress extends Cf7_Extras_Integration {
 	public function init() {
 		add_filter( 'cf7_extras__controls_fields', array( $this, 'controls_fields' ), 10, 2 );
 
-		add_action( 'wpcf7_before_send_mail', [ $this, 'store_submission_in_tablepress' ] ); // The before hooks runs also when form submissions fail.
+		add_action( 'wpcf7_before_send_mail', array( $this, 'store_submission_in_tablepress' ) ); // The before hooks runs also when form submissions fail.
 	}
 
 	/**
@@ -80,14 +80,14 @@ class Cf7_Extras_Integration_TablePress extends Cf7_Extras_Integration {
 			);
 		}
 
-		$entries_links = [];
+		$entries_links = array();
 
 		if ( ! empty( $settings['tablepress-id'] ) ) {
 			$entries_url = add_query_arg(
 				array(
 					'page' => 'tablepress',
 					'action' => 'edit',
-					'table_id' => (int) $settings['tablepress-id']
+					'table_id' => (int) $settings['tablepress-id'],
 				),
 				admin_url( 'admin.php' )
 			);
@@ -112,7 +112,7 @@ class Cf7_Extras_Integration_TablePress extends Cf7_Extras_Integration {
 					implode( ' | ', $entries_links ),
 					esc_html__( 'Store form submissions in TablePress. Each entry is a single row with a column for each field.', 'contact-form-7-extras' )
 				),
-			)
+			),
 		);
 
 		return array_merge( $tablepress_fields, $fields ); // Merge to prepend the storage fields.
@@ -129,10 +129,10 @@ class Cf7_Extras_Integration_TablePress extends Cf7_Extras_Integration {
 				$form_submission = WPCF7_Submission::get_instance();
 				$form_data = $form_submission->get_posted_data();
 
-				$extra_data = [
+				$extra_data = array(
 					'cf7_time' => date( 'c', $form_submission->get_meta( 'timestamp' ) ),
 					'cf7_url' => $form_submission->get_meta( 'url' ),
-				];
+				);
 
 				$form_data = array_merge( $extra_data, $form_data );
 
@@ -179,7 +179,7 @@ class Cf7_Extras_Integration_TablePress extends Cf7_Extras_Integration {
 
 		// Ensure all rows have the same number of columns.
 		$table['data'] = array_map(
-			function( $row ) use ( $cols_fill ) {
+			function ( $row ) use ( $cols_fill ) {
 				return array_replace( $cols_fill, $row );
 			},
 			$table['data']
@@ -187,5 +187,4 @@ class Cf7_Extras_Integration_TablePress extends Cf7_Extras_Integration {
 
 		return $table;
 	}
-
 }
