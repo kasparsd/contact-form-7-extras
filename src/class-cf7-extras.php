@@ -144,7 +144,7 @@ class Cf7_Extras {
 	 *
 	 * @return void
 	 */
-	function wpcf7_add_meta_boxes( $post_id ) {
+	public function wpcf7_add_meta_boxes( $post_id ) {
 		add_meta_box(
 			'cf7s-subject',
 			__( 'Extra Settings', 'contact-form-7-extras' ),
@@ -373,7 +373,7 @@ class Cf7_Extras {
 	 *
 	 * @return void
 	 */
-	function wpcf7_save_contact_form( $cf7 ) {
+	public function wpcf7_save_contact_form( $cf7 ) {
 		if ( ! isset( $_POST ) || empty( $_POST ) || ! isset( $_POST['extra'] ) || ! is_array( $_POST['extra'] ) ) {
 			return;
 		}
@@ -398,7 +398,7 @@ class Cf7_Extras {
 	 *
 	 * @return void
 	 */
-	function admin_enqueue_scripts( $hook ) {
+	public function admin_enqueue_scripts( $hook ) {
 		if ( false === strpos( $hook, 'wpcf7' ) ) {
 			return;
 		}
@@ -535,7 +535,7 @@ class Cf7_Extras {
 	 *
 	 * @return void
 	 */
-	function maybe_alter_scripts() {
+	public function maybe_alter_scripts() {
 		// @todo use wp_scripts() in future
 		global $wp_scripts;
 
@@ -592,7 +592,7 @@ class Cf7_Extras {
 	 *
 	 * @return void
 	 */
-	function track_form_events() {
+	public function track_form_events() {
 		if ( empty( $this->rendered ) ) {
 			return;
 		}
@@ -651,7 +651,7 @@ class Cf7_Extras {
 	 *
 	 * @return void
 	 */
-	function wpcf7_submit( $form, $result ) {
+	public function wpcf7_submit( $form, $result ) {
 		// JS is already doing the redirect.
 		if ( isset( $_POST['_wpcf7_is_ajax_call'] ) || ! isset( $result['status'] ) ) {
 			return;
@@ -677,7 +677,7 @@ class Cf7_Extras {
 	 *
 	 * @return WPCF7_ContactForm
 	 */
-	function maybe_reset_autop( $form ) {
+	public function maybe_reset_autop( $form ) {
 		$form_instance = WPCF7_ContactForm::get_current();
 		$disable_autop = $this->get_form_settings( $form_instance, 'disable-autop' );
 
