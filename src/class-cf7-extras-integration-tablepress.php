@@ -151,6 +151,17 @@ class Cf7_Extras_Integration_TablePress extends Cf7_Extras_Integration {
 
 		$table['data'][] = $table_row; // Append our row.
 
+		$max_cols = max( array_map( 'count', $table['data'] ) );
+		$cols_fill = array_fill( 0, $max_cols, '' );
+
+		// Ensure all rows have the same number of columns.
+		$table['data'] = array_map(
+			function( $row ) use ( $cols_fill ) {
+				return array_replace( $cols_fill, $row );
+			},
+			$table['data']
+		);
+
 		return $table;
 	}
 
