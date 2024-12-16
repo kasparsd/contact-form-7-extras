@@ -1,8 +1,5 @@
 <?php
 
-use SebastianBergmann\RecursionContext\InvalidArgumentException;
-use PHPUnit\Framework\ExpectationFailedException;
-
 /**
  * Test the main plugin class.
  */
