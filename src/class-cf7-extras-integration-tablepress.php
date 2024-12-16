@@ -145,7 +145,7 @@ class Cf7_Extras_Integration_TablePress extends Cf7_Extras_Integration {
 		}
 	}
 
-	private function get_data_for_table( $table, $form_data ) {
+	public function get_data_for_table( $table, $form_data ) {
 		$header_row = array_map( 'trim', current( $table['data'] ) );
 
 		// Get the column index for each header value.
