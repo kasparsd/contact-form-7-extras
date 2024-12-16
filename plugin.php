@@ -11,6 +11,8 @@
  */
 
 require_once __DIR__ . '/src/class-cf7-extras-form-settings.php';
+require_once __DIR__ . '/src/class-cf7-extras-integration.php'; // Before all integrations.
+require_once __DIR__ . '/src/class-cf7-extras-integration-tablepress.php';
 require_once __DIR__ . '/src/class-cf7-extras.php';
 
 $plugin = Cf7_Extras::instance();
