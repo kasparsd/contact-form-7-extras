@@ -126,7 +126,16 @@ class Cf7_Extras_Integration_TablePress extends Cf7_Extras_Integration {
 			$table = TablePress::$model_table->load( $table_id );
 
 			if ( ! empty( $table ) && is_array( $table['data'] ) ) {
-				$form_data = WPCF7_Submission::get_instance()->get_posted_data();
+				$form_submission = WPCF7_Submission::get_instance();
+				$form_data = $form_submission->get_posted_data();
+
+				$extra_data = [
+					'cf7_time' => date( 'c', $form_submission->get_meta( 'timestamp' ) ),
+					'cf7_url' => $form_submission->get_meta( 'url' ),
+				];
+
+				$form_data = array_merge( $extra_data, $form_data );
+
 				$table = $this->get_data_for_table( $table, $form_data );
 
 				if ( is_array( $table ) ) {
@@ -137,18 +146,32 @@ class Cf7_Extras_Integration_TablePress extends Cf7_Extras_Integration {
 	}
 
 	private function get_data_for_table( $table, $form_data ) {
-		$table_row = array();
+		$header_row = array_map( 'trim', current( $table['data'] ) );
 
-		foreach ( $form_data as $value ) {
+		// Get the column index for each header value.
+		foreach ( array_keys( $form_data ) as $form_field_name ) {
+			if ( ! in_array( $form_field_name, $header_row, true ) ) {
+				$header_row[] = $form_field_name;
+			}
+		}
+
+		// Map by values for quick lookup for the new data.
+		$col_index = array_flip( $header_row ); // This works only if there are no duplicate column names.
+
+		// Prefill the row with empty values.
+		$table_row = array_fill( 0, count( $col_index ), '' );
+
+		foreach ( $form_data as $key => $value ) {
 			if ( is_array( $value ) ) {
 				$col_value = implode( ', ', $value );
 			} elseif ( is_scalar( $value ) ) {
 				$col_value = (string) $value;
 			}
 
-			$table_row[] = $col_value; // TODO: Consider mapping to existing columns, if found.
+			$table_row[ $col_index[ $key ] ] = $col_value;
 		}
 
+		$table['data'][0] = $header_row; // Update the header row to include our headers.
 		$table['data'][] = $table_row; // Append our row.
 
 		$max_cols = max( array_map( 'count', $table['data'] ) );
