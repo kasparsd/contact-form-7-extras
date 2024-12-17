@@ -1,6 +1,6 @@
 {
   "$schema": "https://playground.wordpress.net/blueprint-schema.json",
-	"landingPage": "/wp-admin/admin.php?page=wpcf7&post=5&action=edit#cf7-extras",
+	"landingPage": "/wp-admin/admin.php?page=wpcf7&post=4&action=edit",
 	"preferredVersions": {
 		"php": "7.4",
 		"wp": "latest"
