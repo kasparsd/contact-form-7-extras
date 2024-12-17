@@ -3,6 +3,7 @@
 
 const ignoreParse = require( 'parse-gitignore' );
 const exec = require( 'child_process' ).exec;
+const fs = require( 'fs' );
 
 const deployConfig = {
 	plugin_slug: 'contact-form-7-extras',
@@ -97,18 +98,29 @@ module.exports = function( grunt ) {
 		},
 	} );
 
-	grunt.registerTask( 'check-diff', function() {
-		const done = this.async(); // This won't work with the ES6 fat arrow syntax.
+	grunt.registerTask(
+		'check-diff',
+		function() {
+			const done = this.async(); // This won't work with the ES6 fat arrow syntax.
 
-		exec( 'git diff HEAD --quiet', ( err ) => {
-			if ( err ) {
-				grunt.log.error( 'Found uncommited changes in your current working directory.' );
-				done( false );
-			}
+			exec( 'git diff HEAD --quiet', ( err ) => {
+				if ( err ) {
+					grunt.log.error( 'Found uncommited changes in your current working directory.' );
+					done( false );
+				}
 
-			done();
-		} );
-	} );
+				done();
+			} );
+		}
+	);
+
+	grunt.registerTask(
+		'blueprint-url',
+		function() {
+			const blueprintJson = JSON.parse( fs.readFileSync( 'assets/blueprints/blueprint.json', 'utf8' ) );
+			grunt.log.write( `Blueprint URL: https://playground.wordpress.net/#${ encodeURI( JSON.stringify( blueprintJson ) ) }` );
+		}
+	);
 
 	grunt.registerTask(
 		'build', [

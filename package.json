@@ -19,7 +19,8 @@
     "build": "grunt build",
     "deploy": "grunt deploy",
     "deploy-trunk": "grunt deploy:trunk",
-    "wp-env": "wp-env"
+    "wp-env": "wp-env",
+    "blueprint": "grunt blueprint-url"
   },
   "repository": {
     "type": "git",

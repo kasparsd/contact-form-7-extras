@@ -1,0 +1,33 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"landingPage": "/wp-admin/admin.php?page=wpcf7&post=4&action=edit",
+	"preferredVersions": {
+		"php": "7.4",
+		"wp": "latest"
+	},
+	"steps": [
+		{
+			"step": "login"
+		},
+		{
+			"step": "installPlugin",
+			"pluginData": {
+				"resource": "wordpress.org/plugins",
+				"slug": "contact-form-7"
+			},
+			"options": {
+				"activate": true
+			}
+		},
+		{
+			"step": "installPlugin",
+			"pluginData": {
+				"resource": "wordpress.org/plugins",
+				"slug": "contact-form-7-extras"
+			},
+			"options": {
+				"activate": true
+			}
+		}
+	]
+}
