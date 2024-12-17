@@ -622,7 +622,7 @@ class Cf7_Extras {
 		wp_enqueue_script(
 			'cf7-extras',
 			$this->asset_url( 'assets/js/controls.js' ),
-			array( 'contact-form-7', 'jquery' ),
+			array( 'contact-form-7' ),
 			self::ASSET_VERSION,
 			true
 		);
