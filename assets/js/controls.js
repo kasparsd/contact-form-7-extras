@@ -1,7 +1,7 @@
 /* eslint camelcase: warn */
 
-( function( $ ) {
-	var jQueryEvent, formEventCallback;
+( function() {
+	var formEventCallback;
 
 	var formEventCallbacks = {
 		wpcf7mailsent: function( form, formConfig ) {
@@ -111,18 +111,6 @@
 				}
 			);
 		}
-	} else if ( 'function' === typeof $ ) { // Register the legacy jQuery events pre CF7 version 5.2.
-		for ( jQueryEvent in jQueryEvents ) {
-			$( document ).on(
-				jQueryEvent,
-				function( event ) {
-					var eventType = jQueryEvent.replace( ':', '' );
-					if ( formEventCallbacks[ eventType ] && formEventEnabled( event.details.contactFormId, 'track-ga' ) ) {
-						formEventCallbacks[ eventType ].call( event.details );
-					}
-				}
-			);
-		}
 	}
 
-}( jQuery ) );
+}() );
