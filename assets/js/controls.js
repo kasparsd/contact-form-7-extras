@@ -1,5 +1,4 @@
 /* eslint camelcase: warn */
-
 ( function() {
 	var formEventCallback;
 
