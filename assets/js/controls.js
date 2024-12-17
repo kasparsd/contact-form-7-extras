@@ -1,8 +1,7 @@
 /* eslint camelcase: warn */
 
-( function( $ ) {
-
-	var jQueryEvent, formEventCallback;
+( function() {
+	var formEventCallback;
 
 	var formEventCallbacks = {
 		wpcf7mailsent: function( form ) {
@@ -143,12 +142,6 @@
 				}
 			} );
 		}
-
-	// Register the legacy jQuery events pre CF7 version 5.2.
-	} else if ( 'function' === typeof $ ) {
-		for ( jQueryEvent in jQueryEvents ) {
-			$( document ).on( jQueryEvent, jQueryEvents[ jQueryEvent ] );
-		}
 	}
 
-}( jQuery ) );
+}() );
