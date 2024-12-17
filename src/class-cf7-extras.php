@@ -348,18 +348,18 @@ class Cf7_Extras {
 			);
 		}
 
-		// Place the storage links on top.
-		$fields = array_merge(
-			array( 'extra-cf7-storage' => $storage_field ),
-			$fields
-		);
-
 		/**
 		 * Let plugins add items to the settings.
 		 *
 		 * @param array $fields List of fields to display.
 		 */
 		$fields = apply_filters( 'cf7_extras__controls_fields', $fields, $settings );
+
+		// Place the storage links on top.
+		$fields = array_merge(
+			array( 'extra-cf7-storage' => $storage_field ),
+			$fields
+		);
 
 		$rows = array();
 
