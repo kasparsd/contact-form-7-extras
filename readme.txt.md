@@ -2,6 +2,7 @@
 
 Contributors: kasparsd, buzztone   
 Tags: Contact Form 7, gtm, matomo, google analytics, facebook pixel  
+Donate link: https://formcontrols.com/pro   
 Requires at least: 4.6   
 Tested up to: 6.7   
 Stable tag: STABLETAG   
