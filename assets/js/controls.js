@@ -1,64 +1,29 @@
 /* eslint camelcase: warn */
-
-( function( $ ) {
-
-	var jQueryEvent, formEventCallback;
+( function() {
+	var formEventCallback;
 
 	var formEventCallbacks = {
-		wpcf7mailsent: function( form ) {
-			var formConfig;
-
-			if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga' ) ) {
-				formConfig = getFormConfig( form.contactFormId );
-				trackAnalyticsEvent( 'Contact Form', 'Sent', formConfig.title );
-			}
+		wpcf7mailsent: function( form, formConfig ) {
+			trackAnalyticsEvent( 'Contact Form', 'Sent', formConfig.title );
 		},
-		wpcf7mailfailed: function( form ) {
-			var formConfig;
-
-			if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga' ) ) {
-				formConfig = getFormConfig( form.contactFormId );
-				trackAnalyticsEvent( 'Contact Form', 'Error', formConfig.title );
-			}
+		wpcf7mailfailed: function( form, formConfig ) {
+			trackAnalyticsEvent( 'Contact Form', 'Error', formConfig.title );
 		},
-		wpcf7spam: function( form ) {
-			var formConfig;
-
-			if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga' ) ) {
-				formConfig = getFormConfig( form.contactFormId );
-				trackAnalyticsEvent( 'Contact Form', 'Spam', formConfig.title );
-			}
+		wpcf7spam: function( form, formConfig ) {
+			trackAnalyticsEvent( 'Contact Form', 'Spam', formConfig.title );
 		},
-		wpcf7submit: function( form ) {
-			var formConfig;
+		wpcf7submit: function( form, formConfig ) {
+			var errorStati = [ 'validation_failed', 'acceptance_missing', 'spam', 'aborted', 'mail_failed' ];
 
-			if ( form.contactFormId && formEventEnabled( form.contactFormId, 'track-ga' ) ) {
-				formConfig = getFormConfig( form.contactFormId );
+			if ( form.status && -1 === errorStati.indexOf( form.status ) ) {
 				trackAnalyticsEvent( 'Contact Form', 'Submit', formConfig.title );
+			} else {
+				trackAnalyticsEvent( 'Contact Form', form.status, formConfig.title );
 			}
 
-			if ( form.contactFormId && 'mail_sent' === form.status && formEventEnabled( form.contactFormId, 'redirect-success' ) ) {
-				formConfig = getFormConfig( form.contactFormId );
-
-				if ( formConfig.redirect_url ) {
-					window.location = formConfig.redirect_url;
-				}
+			if ( 'mail_sent' === form.status && formEventEnabled( form.contactFormId, 'redirect-success' ) && formConfig.redirect_url ) {
+				window.location = formConfig.redirect_url;
 			}
-		}
-	};
-
-	var jQueryEvents = {
-		'wpcf7:mailsent': function( event, form ) {
-			formCallbacks.wpcf7mailsent( form );
-		},
-		'wpcf7:mailfailed': function( event, form ) {
-			formCallbacks.wpcf7mailfailed( form );
-		},
-		'wpcf7:spam': function( event, form ) {
-			formCallbacks.wpcf7spam( form );
-		},
-		'wpcf7:submit': function( event, form ) {
-			formCallbacks.wpcf7submit( form );
 		}
 	};
 
@@ -66,9 +31,8 @@
 
 		// Helper method required for the event to be registered by gtag.js.
 		var dataLayerPush = function() {
-			if ( 'object' === typeof window.dataLayer && 'function' === typeof window.dataLayer.push ) {
-				window.dataLayer.push( arguments );
-			}
+			window.dataLayer = window.dataLayer || [];
+			window.dataLayer.push( arguments );
 		};
 
 		// GA via Google Tag Manager or Global Site Tag (gtag.js).
@@ -137,18 +101,15 @@
 	// Register the new JS events in CF7 version 5.2 and above.
 	if ( 'function' === typeof document.addEventListener ) {
 		for ( formEventCallback in formEventCallbacks ) {
-			document.addEventListener( formEventCallback, function( event ) {
-				if ( event.type in formEventCallbacks ) {
-					formEventCallbacks[ event.type ].call( event, event.detail );
+			document.addEventListener(
+				formEventCallback,
+				function( event ) {
+					if ( event.type in formEventCallbacks && formEventEnabled( event.detail.contactFormId, 'track-ga' ) ) {
+						formEventCallbacks[ event.type ].call( event, event.detail, getFormConfig( event.detail.contactFormId ) );
+					}
 				}
-			} );
-		}
-
-	// Register the legacy jQuery events pre CF7 version 5.2.
-	} else if ( 'function' === typeof $ ) {
-		for ( jQueryEvent in jQueryEvents ) {
-			$( document ).on( jQueryEvent, jQueryEvents[ jQueryEvent ] );
+			);
 		}
 	}
 
-}( jQuery ) );
+}() );

@@ -348,18 +348,18 @@ class Cf7_Extras {
 			);
 		}
 
-		// Place the storage links on top.
-		$fields = array_merge(
-			array( 'extra-cf7-storage' => $storage_field ),
-			$fields
-		);
-
 		/**
 		 * Let plugins add items to the settings.
 		 *
 		 * @param array $fields List of fields to display.
 		 */
 		$fields = apply_filters( 'cf7_extras__controls_fields', $fields, $settings );
+
+		// Place the storage links on top.
+		$fields = array_merge(
+			array( 'extra-cf7-storage' => $storage_field ),
+			$fields
+		);
 
 		$rows = array();
 
@@ -622,7 +622,7 @@ class Cf7_Extras {
 		wp_enqueue_script(
 			'cf7-extras',
 			$this->asset_url( 'assets/js/controls.js' ),
-			array( 'contact-form-7', 'jquery' ),
+			array( 'contact-form-7' ),
 			self::ASSET_VERSION,
 			true
 		);
