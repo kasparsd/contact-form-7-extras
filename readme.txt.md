@@ -1,8 +1,8 @@
 # Controls for Contact Form 7 (Redirects, Analytics & Tracking)
 
 Contributors: kasparsd, buzztone   
-Tags: Contact Form 7, gtm, matomo, google analytics, facebook pixel  
 Donate link: https://formcontrols.com/pro   
+Tags: contact form 7, gtm, matomo, analytics, facebook pixel  
 Requires at least: 4.6   
 Tested up to: 6.7   
 Stable tag: STABLETAG   
