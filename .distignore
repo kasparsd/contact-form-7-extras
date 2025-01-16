@@ -11,6 +11,5 @@ package.json
 package-lock.json
 phpcs.xml
 readme.md
-changelog.md
 readme.txt.md
 .*

@@ -55,11 +55,6 @@ module.exports = function( grunt ) {
 				dest: '<%= dist_dir %>/readme.txt',
 				replacements: readmeReplaceRules
 			},
-			changelog: {
-				src: 'changelog.md',
-				dest: '<%= dist_dir %>/changelog.txt',
-				replacements: readmeReplaceRules
-			},
 			version: {
 				src: [
 					'<%= dist_dir %>/readme.txt'
