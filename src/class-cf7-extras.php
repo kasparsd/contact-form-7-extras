@@ -186,7 +186,7 @@ class Cf7_Extras {
 		$fields = array(
 			'extra-disable-ajax' => array(
 				'label' => __( 'AJAX Submissions', 'contact-form-7-extras' ),
-				'docs_url' => 'http://contactform7.com/controlling-behavior-by-setting-constants/',
+				'docs_url' => 'https://contactform7.com/controlling-behavior-by-setting-constants/',
 				'field' => sprintf(
 					'<label>
 						<input id="extra-disable-ajax" data-toggle-on=".extra-field-extra-track-ga, #extra-html5-fallback-wrap" name="extra[disable-ajax]" value="1" %s type="checkbox" />
@@ -200,7 +200,7 @@ class Cf7_Extras {
 			),
 			'extra-disable-css' => array(
 				'label' => __( 'Default CSS', 'contact-form-7-extras' ),
-				'docs_url' => 'http://contactform7.com/controlling-behavior-by-setting-constants/',
+				'docs_url' => 'https://contactform7.com/controlling-behavior-by-setting-constants/',
 				'field' => sprintf(
 					'<label>
 						<input id="extra-disable-css" name="extra[disable-css]" value="1" %s type="checkbox" />
@@ -214,7 +214,7 @@ class Cf7_Extras {
 			),
 			'extra-disable-autop' => array(
 				'label' => __( 'Automatic Formatting', 'contact-form-7-extras' ),
-				'docs_url' => 'http://contactform7.com/controlling-behavior-by-setting-constants/',
+				'docs_url' => 'https://contactform7.com/controlling-behavior-by-setting-constants/#autop',
 				'field' => sprintf(
 					'<label>
 						<input id="extra-disable-autop" name="extra[disable-autop]" value="1" %s type="checkbox" />
@@ -256,7 +256,7 @@ class Cf7_Extras {
 			),
 			'extra-redirect-success' => array(
 				'label' => __( 'Redirect to URL on Success', 'contact-form-7-extras' ),
-				'docs_url' => 'http://contactform7.com/redirecting-to-another-url-after-submissions/',
+				'docs_url' => 'https://formcontrols.com/docs/contact-form-7-redirect-url',
 				'field' => sprintf(
 					'<label>
 						<input type="text" class="wide large-text" id="extra-redirect-success" name="extra[redirect-success]" value="%s" placeholder="%s" />
@@ -282,7 +282,7 @@ class Cf7_Extras {
 			),
 			'extra-track-ga' => array(
 				'label' => __( 'Analytics Tracking', 'contact-form-7-extras' ),
-				'docs_url' => 'http://contactform7.com/tracking-form-submissions-with-google-analytics/',
+				'docs_url' => 'https://formcontrols.com/docs',
 				'field' => sprintf(
 					'<label>
 						<input type="checkbox" id="extra-track-ga" name="extra[track-ga]" value="1" %s />
