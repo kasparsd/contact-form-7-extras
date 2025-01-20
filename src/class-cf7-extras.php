@@ -675,9 +675,9 @@ class Cf7_Extras {
 	 * Maybe disable WP core autop() on form email contents
 	 * by re-parsing the form content without the autop.
 	 *
-	 * @param WPCF7_ContactForm $form Current CF7 form.
+	 * @param string $form Current CF7 form.
 	 *
-	 * @return WPCF7_ContactForm
+	 * @return string
 	 */
 	public function maybe_reset_autop( $form ) {
 		$form_instance = WPCF7_ContactForm::get_current();
