@@ -103,11 +103,3 @@ The "[Storage for Contact Form 7](https://preseto.com/go/cf7-storage?utm_source=
 ### 0.9.0
 
 New feature: enable storing form submissions in TablePress plugin tables.
-
-### 0.8.0
-
-Use the suggested Google Global Site Tag (gtag.js) event structure. This will make the "Contact Form" events appear in both Google Analytics and Google Tag Manager.
-
-### 0.7.3
-
-Compatibility with the Javascript event changes in the latest version 5.2 of the Contact Form 7 plugin.
