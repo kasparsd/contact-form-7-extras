@@ -117,6 +117,8 @@ class Cf7_Extras {
 		 */
 		add_filter( 'wpcf7_form_elements', array( $this, 'maybe_reset_autop' ), 1 );
 
+		add_filter( 'wpcf7_form_elements', array( $this, 'maybe_enable_shortcodes' ) );
+
 		$integrations = array(
 			new Cf7_Extras_Integration_TablePress(),
 		);
@@ -231,6 +233,20 @@ class Cf7_Extras {
 					checked( $settings['disable-autop'], true, false ),
 					esc_html__( 'Disable automatic paragraph formatting in form output', 'contact-form-7-extras' ),
 					__( 'Same as <code>define( \'WPCF7_AUTOP\', false );</code>.', 'contact-form-7-extras' )
+				),
+			),
+			'extra-enable-shortcodes' => array(
+				'label' => __( 'Enable Shortcodes', 'contact-form-7-extras' ),
+				'docs_url' => 'https://formcontrols.com/docs/enable-wordpress-shortcodes',
+				'field' => sprintf(
+					'<label>
+						<input id="extra-enable-shortcodes" name="extra[enable-shortcodes]" value="1" %s type="checkbox" />
+						<span>%s</span>
+					</label>
+					<p class="desc">%s</p>',
+					checked( $settings['enable-shortcodes'], true, false ),
+					esc_html__( 'Enable WordPress shortcodes', 'contact-form-7-extras' ),
+					esc_html__( 'Adds support for standard WordPress shortcodes in the form content.', 'contact-form-7-extras' )
 				),
 			),
 			'extra-html5' => array(
@@ -699,6 +715,24 @@ class Cf7_Extras {
 					'form' => $form,
 				)
 			);
+		}
+
+		return $form;
+	}
+
+	/**
+	 * Maybe enable WordPress shortcodes in the form content.
+	 *
+	 * @param string $form Current CF7 form content
+	 *
+	 * @return string
+	 */
+	public function maybe_enable_shortcodes( $form ) {
+		$form_instance = WPCF7_ContactForm::get_current();
+		$enable_shortcodes = $this->get_form_settings( $form_instance, 'enable-shortcodes' );
+
+		if ( $enable_shortcodes ) {
+			$form = do_shortcode( $form );
 		}
 
 		return $form;
