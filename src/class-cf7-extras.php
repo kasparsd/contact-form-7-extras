@@ -181,6 +181,13 @@ class Cf7_Extras {
 		);
 	}
 
+	/**
+	 * Sanitize the field label with a few allowed HTML tags.
+	 *
+	 * @param string $label Field label markup.
+	 *
+	 * @return string
+	 */
 	private function esc_field_label( $label ) {
 		return wp_kses(
 			$label,
@@ -739,7 +746,7 @@ class Cf7_Extras {
 	/**
 	 * Maybe enable WordPress shortcodes in the form content.
 	 *
-	 * @param string $form Current CF7 form content
+	 * @param string $form Current CF7 form content.
 	 *
 	 * @return string
 	 */
