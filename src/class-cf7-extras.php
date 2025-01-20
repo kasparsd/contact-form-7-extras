@@ -108,7 +108,14 @@ class Cf7_Extras {
 		add_action( 'wpcf7_submit', array( $this, 'wpcf7_submit' ), 987, 2 );
 
 		// TODO: Enable Google analytics tracking when AJAX is disabled.
-		add_filter( 'wpcf7_form_elements', array( $this, 'maybe_reset_autop' ) );
+
+		/**
+		 * Use a filter instead of the WPCF7_AUTOP to disable formatting on specific forms only.
+		 *
+		 * Run very early since we're replacing the rendered form content with a fresh
+		 * version that doesn't have the autop applied.
+		 */
+		add_filter( 'wpcf7_form_elements', array( $this, 'maybe_reset_autop' ), 1 );
 
 		$integrations = array(
 			new Cf7_Extras_Integration_TablePress(),
