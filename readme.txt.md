@@ -18,12 +18,13 @@ Analytics, tracking, redirects and storage for Contact Form 7.
 This is an addon for the [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) plugin with the following features:
 
 - [Track form submissions, errors and completions](https://formcontrols.com/docs) with Google Analytics (GA4), Google Tag (gtag.js), Google Tag Manager (GTM), Matomo (formerly Piwik) and Facebook Pixel.
-- Redirect to URL on form submission
-- Disable AJAX form submissions
-- Disable default form CSS
-- Disable automatic paragraph formatting
-- Disable HTML5 input field types or enable the HTML5 input type fallback
-- Specify the Google reCAPTCHA language
+- Redirect to URL on form submission.
+- Enable native WordPress shortcodes in form content.
+- Disable AJAX form submissions.
+- Disable default form CSS.
+- Disable automatic paragraph formatting.
+- Disable HTML5 input field types or enable the HTML5 input type fallback.
+- Specify the Google reCAPTCHA language.
 - Store form submissions in [Storage for Contact Form 7](https://preseto.com/go/cf7-storage?utm_source=wporg) or [TablePress](https://wordpress.org/plugins/tablepress/).
 
 Please note that some settings work on the per-page level and will apply to all forms on the same page. For example, disabling AJAX form submissions for one form will disable AJAX submissions on all forms on the same page.
@@ -103,11 +104,3 @@ The "[Storage for Contact Form 7](https://preseto.com/go/cf7-storage?utm_source=
 ### 0.9.0
 
 New feature: enable storing form submissions in TablePress plugin tables.
-
-### 0.8.0
-
-Use the suggested Google Global Site Tag (gtag.js) event structure. This will make the "Contact Form" events appear in both Google Analytics and Google Tag Manager.
-
-### 0.7.3
-
-Compatibility with the Javascript event changes in the latest version 5.2 of the Contact Form 7 plugin.

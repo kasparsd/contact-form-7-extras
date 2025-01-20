@@ -16,6 +16,7 @@ class Cf7_Extras_Form_Settings {
 		'html5-disable' => false,
 		'html5-fallback' => false,
 		'disable-autop' => false,
+		'enable-shortcodes' => false,
 		'redirect-success' => false,
 		'track-ga-success' => false,
 		'track-ga-submit' => false,

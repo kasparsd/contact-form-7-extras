@@ -108,7 +108,16 @@ class Cf7_Extras {
 		add_action( 'wpcf7_submit', array( $this, 'wpcf7_submit' ), 987, 2 );
 
 		// TODO: Enable Google analytics tracking when AJAX is disabled.
-		add_filter( 'wpcf7_form_elements', array( $this, 'maybe_reset_autop' ) );
+
+		/**
+		 * Use a filter instead of the WPCF7_AUTOP to disable formatting on specific forms only.
+		 *
+		 * Run very early since we're replacing the rendered form content with a fresh
+		 * version that doesn't have the autop applied.
+		 */
+		add_filter( 'wpcf7_form_elements', array( $this, 'maybe_reset_autop' ), 1 );
+
+		add_filter( 'wpcf7_form_elements', array( $this, 'maybe_enable_shortcodes' ) );
 
 		$integrations = array(
 			new Cf7_Extras_Integration_TablePress(),
@@ -173,6 +182,29 @@ class Cf7_Extras {
 	}
 
 	/**
+	 * Sanitize the field label with a few allowed HTML tags.
+	 *
+	 * @param string $label Field label markup.
+	 *
+	 * @return string
+	 */
+	private function esc_field_label( $label ) {
+		return wp_kses(
+			$label,
+			array(
+				'a' => array(
+					'href' => array(),
+					'target' => array(),
+				),
+				'strong' => array(),
+				'em' => array(),
+				'span' => array(),
+				'code' => array(),
+			)
+		);
+	}
+
+	/**
 	 * Display our custom form settings.
 	 *
 	 * @param  WPCF7_ContactForm $cf7 Current form.
@@ -195,7 +227,7 @@ class Cf7_Extras {
 					<p class="desc">%s</p>',
 					checked( $settings['disable-ajax'], true, false ),
 					esc_html__( 'Disable AJAX for this form', 'contact-form-7-extras' ),
-					__( 'Same as <code>define( \'WPCF7_LOAD_JS\', false );</code>. Disabling AJAX will also disable Google Analytics event tracking and HTML5 input type fallback for this form.', 'contact-form-7-extras' )
+					$this->esc_field_label( __( 'Same as <code>define( \'WPCF7_LOAD_JS\', false );</code>. Disabling AJAX will also disable Google Analytics event tracking and HTML5 input type fallback for this form.', 'contact-form-7-extras' ) )
 				),
 			),
 			'extra-disable-css' => array(
@@ -209,7 +241,7 @@ class Cf7_Extras {
 					<p class="desc">%s</p>',
 					checked( $settings['disable-css'], true, false ),
 					esc_html__( 'Disable default CSS for this form', 'contact-form-7-extras' ),
-					__( 'Disables CSS that comes bundled with Contact Form 7. Same as <code>define( \'WPCF7_LOAD_CSS\', false );</code>.', 'contact-form-7-extras' )
+					$this->esc_field_label( __( 'Disables CSS that comes bundled with Contact Form 7. Same as <code>define( \'WPCF7_LOAD_CSS\', false );</code>.', 'contact-form-7-extras' ) )
 				),
 			),
 			'extra-disable-autop' => array(
@@ -223,7 +255,21 @@ class Cf7_Extras {
 					<p class="desc">%s</p>',
 					checked( $settings['disable-autop'], true, false ),
 					esc_html__( 'Disable automatic paragraph formatting in form output', 'contact-form-7-extras' ),
-					__( 'Same as <code>define( \'WPCF7_AUTOP\', false );</code>.', 'contact-form-7-extras' )
+					$this->esc_field_label( __( 'Same as <code>define( \'WPCF7_AUTOP\', false );</code>.', 'contact-form-7-extras' ) )
+				),
+			),
+			'extra-enable-shortcodes' => array(
+				'label' => __( 'Enable Shortcodes', 'contact-form-7-extras' ),
+				'docs_url' => 'https://formcontrols.com/docs/enable-wordpress-shortcodes',
+				'field' => sprintf(
+					'<label>
+						<input id="extra-enable-shortcodes" name="extra[enable-shortcodes]" value="1" %s type="checkbox" />
+						<span>%s</span>
+					</label>
+					<p class="desc">%s</p>',
+					checked( $settings['enable-shortcodes'], true, false ),
+					esc_html__( 'Enable WordPress shortcodes', 'contact-form-7-extras' ),
+					esc_html__( 'Adds support for standard WordPress shortcodes in the form content.', 'contact-form-7-extras' )
 				),
 			),
 			'extra-html5' => array(
@@ -668,9 +714,9 @@ class Cf7_Extras {
 	 * Maybe disable WP core autop() on form email contents
 	 * by re-parsing the form content without the autop.
 	 *
-	 * @param WPCF7_ContactForm $form Current CF7 form.
+	 * @param string $form Current CF7 form.
 	 *
-	 * @return WPCF7_ContactForm
+	 * @return string
 	 */
 	public function maybe_reset_autop( $form ) {
 		$form_instance = WPCF7_ContactForm::get_current();
@@ -692,6 +738,24 @@ class Cf7_Extras {
 					'form' => $form,
 				)
 			);
+		}
+
+		return $form;
+	}
+
+	/**
+	 * Maybe enable WordPress shortcodes in the form content.
+	 *
+	 * @param string $form Current CF7 form content.
+	 *
+	 * @return string
+	 */
+	public function maybe_enable_shortcodes( $form ) {
+		$form_instance = WPCF7_ContactForm::get_current();
+		$enable_shortcodes = $this->get_form_settings( $form_instance, 'enable-shortcodes' );
+
+		if ( $enable_shortcodes ) {
+			$form = do_shortcode( $form );
 		}
 
 		return $form;
