@@ -112,7 +112,7 @@ module.exports = function( grunt ) {
 	grunt.registerTask(
 		'blueprint-url',
 		function() {
-			const blueprintJson = JSON.parse( fs.readFileSync( 'assets/blueprints/blueprint.json', 'utf8' ) );
+			const blueprintJson = JSON.parse( fs.readFileSync( 'assets/dotorg/blueprints/blueprint.json', 'utf8' ) );
 			grunt.log.write( `Blueprint URL: https://playground.wordpress.net/#${ encodeURI( JSON.stringify( blueprintJson ) ) }` );
 		}
 	);
