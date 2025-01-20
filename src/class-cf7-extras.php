@@ -181,6 +181,22 @@ class Cf7_Extras {
 		);
 	}
 
+	private function esc_field_label( $label ) {
+		return wp_kses(
+			$label,
+			array(
+				'a' => array(
+					'href' => array(),
+					'target' => array(),
+				),
+				'strong' => array(),
+				'em' => array(),
+				'span' => array(),
+				'code' => array(),
+			)
+		);
+	}
+
 	/**
 	 * Display our custom form settings.
 	 *
@@ -204,7 +220,7 @@ class Cf7_Extras {
 					<p class="desc">%s</p>',
 					checked( $settings['disable-ajax'], true, false ),
 					esc_html__( 'Disable AJAX for this form', 'contact-form-7-extras' ),
-					__( 'Same as <code>define( \'WPCF7_LOAD_JS\', false );</code>. Disabling AJAX will also disable Google Analytics event tracking and HTML5 input type fallback for this form.', 'contact-form-7-extras' )
+					$this->esc_field_label( __( 'Same as <code>define( \'WPCF7_LOAD_JS\', false );</code>. Disabling AJAX will also disable Google Analytics event tracking and HTML5 input type fallback for this form.', 'contact-form-7-extras' ) )
 				),
 			),
 			'extra-disable-css' => array(
@@ -218,7 +234,7 @@ class Cf7_Extras {
 					<p class="desc">%s</p>',
 					checked( $settings['disable-css'], true, false ),
 					esc_html__( 'Disable default CSS for this form', 'contact-form-7-extras' ),
-					__( 'Disables CSS that comes bundled with Contact Form 7. Same as <code>define( \'WPCF7_LOAD_CSS\', false );</code>.', 'contact-form-7-extras' )
+					$this->esc_field_label( __( 'Disables CSS that comes bundled with Contact Form 7. Same as <code>define( \'WPCF7_LOAD_CSS\', false );</code>.', 'contact-form-7-extras' ) )
 				),
 			),
 			'extra-disable-autop' => array(
@@ -232,7 +248,7 @@ class Cf7_Extras {
 					<p class="desc">%s</p>',
 					checked( $settings['disable-autop'], true, false ),
 					esc_html__( 'Disable automatic paragraph formatting in form output', 'contact-form-7-extras' ),
-					__( 'Same as <code>define( \'WPCF7_AUTOP\', false );</code>.', 'contact-form-7-extras' )
+					$this->esc_field_label( __( 'Same as <code>define( \'WPCF7_AUTOP\', false );</code>.', 'contact-form-7-extras' ) )
 				),
 			),
 			'extra-enable-shortcodes' => array(
