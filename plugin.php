@@ -10,10 +10,16 @@
  * Text Domain: contact-form-7-extras
  */
 
-require_once __DIR__ . '/src/class-cf7-extras-form-settings.php';
-require_once __DIR__ . '/src/class-cf7-extras-integration.php'; // Before all integrations.
-require_once __DIR__ . '/src/class-cf7-extras-integration-tablepress.php';
-require_once __DIR__ . '/src/class-cf7-extras.php';
+$plugin_files = [
+	'class-cf7-extras-form-settings.php',
+	'class-cf7-extras-integration.php',
+	'class-cf7-extras-integration-tablepress.php',
+	'class-cf7-extras.php',
+];
+
+foreach ( $plugin_files as $file ) {
+	require_once __DIR__ . '/php/' . $file;
+}
 
 $plugin = Cf7_Extras::instance();
 $plugin->set_plugin_dir( __DIR__ );
