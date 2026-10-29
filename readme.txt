@@ -4,7 +4,7 @@ Contributors: kasparsd, buzztone
 Donate link: https://formcontrols.com/pro   
 Tags: contact form 7, gtm, matomo, analytics, facebook pixel  
 Requires at least: 4.6   
-Tested up to: 6.7   
+Tested up to: 7.1   
 Stable tag: 0.10.0   
 License: GPLv2 or later
 
