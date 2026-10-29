@@ -5,7 +5,7 @@ Donate link: https://formcontrols.com/pro
 Tags: contact form 7, gtm, matomo, analytics, facebook pixel  
 Requires at least: 4.6   
 Tested up to: 7.1   
-Stable tag: 0.10.0   
+Stable tag: 0.10.1
 License: GPLv2 or later
 
 Analytics, tracking, redirects and storage for Contact Form 7.
@@ -68,6 +68,12 @@ The [standard Contact event](https://developers.facebook.com/docs/facebook-pixel
 
 
 == Changelog ==
+
+
+= 0.10.1 =
+
+* Replace the Grunt build and deploy stack with `@wpelevator/wp-release`: npm scripts plus the Release PR flow (prepare-release, tag-release) and the `wp-release` zips and WordPress.org deploys (deploy.yml). `grunt-wp-deploy` no longer keeps wp.org trunk in sync from master; trunk only gets readme updates, and tags are built from the release zip.
+* Pass the form error statuses (`validation_failed`, `acceptance_missing`, `spam`, `aborted`, `mail_failed`) as analytics event actions during the `wpcf7submit` event, keep the dataLayer defined before pushing events, and rely only on the native Contact Form 7 JS event API (the legacy jQuery event support has been removed).
 
 See the [release notes](https://github.com/kasparsd/contact-form-7-extras/releases) for the complete changelog.
 
