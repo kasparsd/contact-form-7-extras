@@ -59,7 +59,11 @@ jobs:
   # a release note or an empty one for an explicit no-release decision.
   changeset:
     name: Check the changeset
-    if: github.event_name == 'pull_request'
+    # Skip the automated release pull requests: they consume the pending
+    # changesets (the release branch removes them from .changeset/ while
+    # applying the version bumps), so changeset-status would always fail
+    # there by design.
+    if: github.event_name == 'pull_request' && !startsWith(github.head_ref, 'release/')
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout
