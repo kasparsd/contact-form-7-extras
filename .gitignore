@@ -1,4 +1,5 @@
-/dist
+/*.zip
+/*.zip.sig
 /node_modules
 /vendor
 .DS_Store

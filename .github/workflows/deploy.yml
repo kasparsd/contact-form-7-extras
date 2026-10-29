@@ -1,0 +1,85 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+
+  deploy:
+    name: Deploy to WordPress.org
+    runs-on: ubuntu-24.04
+    concurrency:
+      group: wporg-deploy
+      cancel-in-progress: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          cache: 'npm'
+          node-version-file: '.nvmrc'
+
+      # GitHub's Ubuntu runners don't include the svn client that
+      # wp-release needs to deploy.
+      - name: Install Subversion
+        run: |
+          if command -v svn >/dev/null 2>&1; then
+            echo "Subversion is already installed."
+          else
+            sudo apt-get update --quiet
+            sudo apt-get install --yes --quiet --no-install-recommends subversion
+          fi
+
+      - name: Install NPM dependencies
+        run: npm ci
+
+      # Package the repo (selection driven by .distignore) with the
+      # checksums manifest embedded at the package root, matching the wp.org
+      # build; no signing for now.
+      - name: Build the release zip
+        if: github.event_name == 'release'
+        run: npx wp-release zip --slug contact-form-7-extras --force
+
+      # Attach the zip to the GitHub release (pre-releases included).
+      - name: Attach release artifacts
+        if: github.event_name == 'release'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "$GITHUB_REF_NAME" contact-form-7-extras.*.zip --clobber
+
+      # Stable releases: deploy exactly the files of the release zip to
+      # tags/<version> and update the wp.org assets (banners, icons,
+      # screenshots) from assets/dotorg. Trunk is left alone: the
+      # development copy on wp.org is no longer kept in sync from master.
+      - name: Deploy stable release to WordPress.org
+        if: github.event_name == 'release' && ! github.event.release.prerelease
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+        run: npx wp-release deploy-svn --from-zip contact-form-7-extras.*.zip --slug contact-form-7-extras --svn-tag ${{ github.ref_name }} --assets-dir assets/dotorg
+
+      # Pre-releases: build tags/<version> from the release zip and leave
+      # trunk alone. A leading "v" in the tag name is stripped.
+      - name: Deploy pre-release to WordPress.org
+        if: github.event_name == 'release' && github.event.release.prerelease
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+        run: npx wp-release deploy-svn --from-zip contact-form-7-extras.*.zip --slug contact-form-7-extras --svn-tag ${{ github.ref_name }}
+
+      # Master pushes: update the wp.org readme without tagging.
+      - name: Update the WordPress.org readme
+        if: github.event_name == 'push'
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+        run: npx wp-release deploy-svn . --slug contact-form-7-extras --readme-only
