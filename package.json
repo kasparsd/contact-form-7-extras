@@ -9,18 +9,17 @@
   },
   "scripts": {
     "lint": "npm-run-all lint:*",
-    "lint:js": "eslint *.js assets",
+    "lint:js": "eslint *.mjs assets",
     "lint:php": "composer lint",
     "format": "npm-run-all format:*",
-    "format:js": "eslint --fix *.js assets",
+    "format:js": "eslint --fix *.mjs assets",
     "format:php": "composer format",
     "test": "npm-run-all test:*",
     "test:php": "wp-env run tests-cli --env-cwd=wp-content/plugins/contact-form-7-extras composer test",
-    "build": "grunt build",
-    "deploy": "grunt deploy",
-    "deploy-trunk": "grunt deploy:trunk",
+    "release": "wp-release",
+    "zip": "wp-release zip --slug contact-form-7-extras --force",
     "wp-env": "wp-env",
-    "blueprint": "grunt blueprint-url"
+    "blueprint": "node -p '\"https://playground.wordpress.net/#\" + encodeURI(JSON.stringify(require(\"./assets/dotorg/blueprints/blueprint.json\")))'"
   },
   "repository": {
     "type": "git",
@@ -35,17 +34,10 @@
   ],
   "license": "GPL-2.0-or-later",
   "devDependencies": {
+    "@wordpress/env": "^10.3.0",
+    "@wpelevator/wp-release": "^0.17.0",
     "eslint": "^6.8.0",
     "eslint-config-wordpress": "^2.0.0",
-    "@wordpress/env": "^10.3.0",
-    "grunt": "^1.6.1",
-    "grunt-cli": "^1.4.3",
-    "grunt-contrib-clean": "^2.0",
-    "grunt-contrib-copy": "^1.0",
-    "grunt-text-replace": "^0.4.0",
-    "grunt-wp-deploy": "^2.1.2",
-    "load-grunt-tasks": "^5.1",
-    "npm-run-all": "^4.1.5",
-    "parse-gitignore": "^0.5"
+    "npm-run-all": "^4.1.5"
   }
 }

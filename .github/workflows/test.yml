@@ -1,6 +1,7 @@
 name: Lint and Test
 
-on: push
+on:
+  push:
 
 jobs:
 
@@ -9,21 +10,21 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version-file: .nvmrc
+          node-version-file: '.nvmrc'
           cache: 'npm'
 
-      - name: Setup PHP
+      - name: Setup PHP and Composer
         uses: shivammathur/setup-php@v2
         with:
           php-version: '7.4'
           tools: composer:v2
 
-      - name: Install JS tooling
+      - name: Install NPM dependencies
         run: npm install
 
       - name: Install PHP tooling
@@ -32,5 +33,42 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Build
-        run: npm run build
+      # Sanity check: the release packaging must work from the repo root.
+      # The config embeds the checksums manifest; no signing key is needed
+      # or used for the smoke test.
+      - name: Zip
+        run: npm run zip
+
+      # Smoke test: the zip must ship the plugin with the embedded
+      # checksums manifest.
+      - name: Zip smoke test
+        run: |
+          ZIP=$(ls contact-form-7-extras.*.zip | head -n1)
+          echo "Built $ZIP"
+          unzip -l "$ZIP" | grep -e 'plugin\.php$' -e 'checksums\.json$' -e 'readme\.txt$'
+          unzip -p "$ZIP" 'contact-form-7-extras/checksums.json' | node -e "const c=require('fs').readFileSync(0,'utf8');JSON.parse(c);console.log('checksums.json parses')"
+
+  # A pull request that changed the package needs a changeset, either with
+  # a release note or an empty one for an explicit no-release decision.
+  changeset:
+    name: Check the changeset
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          # The comparison needs the base branch history.
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          cache: 'npm'
+          node-version-file: '.nvmrc'
+
+      - name: Install NPM dependencies
+        run: npm install
+
+      - name: Changeset status
+        run: npx wp-release changeset-status --since "origin/${{ github.base_ref }}"
