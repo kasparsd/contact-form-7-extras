@@ -3,6 +3,9 @@ name: Prepare Release
 # Consumes pending changesets on master and opens or updates a release pull
 # request with the version bumps and changelog entries.
 on:
+  # Allows manually refreshing the release pull request, like after a
+  # workflow change or an unrelated fix in this file.
+  workflow_dispatch:
   push:
     branches:
       - master
