@@ -340,7 +340,7 @@ class Cf7_Extras {
 					esc_html(
 						sprintf(
 							/* translators: %s: Title of the current form */
-							__( 'Track form submissions as events with category "Contact Form", actions "Sent", "Error" or "Submit" and label "%s".', 'contact-form-7-extras' ),
+							__( 'Track form submissions as events with category "Contact Form", actions "Sent", "Error" or "Submit", form error statuses such as "spam" or "validation_failed", and label "%s".', 'contact-form-7-extras' ),
 							$cf7->title()
 						)
 					)
