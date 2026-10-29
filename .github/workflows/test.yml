@@ -1,7 +1,14 @@
 name: Lint and Test
 
+# Run on PRs and on pushes to the trunk branch only: an unfiltered push
+# trigger would run the same code twice for open PR branches (once for
+# the branch push, once for the PR). The "changeset" job below requires
+# the pull_request trigger to run at all.
 on:
   push:
+    branches:
+      - master
+  pull_request:
 
 jobs:
 
