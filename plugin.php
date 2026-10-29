@@ -10,12 +10,12 @@
  * Text Domain: contact-form-7-extras
  */
 
-$plugin_files = [
+$plugin_files = array(
 	'class-cf7-extras-form-settings.php',
 	'class-cf7-extras-integration.php',
 	'class-cf7-extras-integration-tablepress.php',
 	'class-cf7-extras.php',
-];
+);
 
 foreach ( $plugin_files as $file ) {
 	require_once __DIR__ . '/php/' . $file;
