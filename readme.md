@@ -21,21 +21,20 @@ Install as a [Composer dependancy](https://packagist.org/packages/kasparsd/conta
 
 ## Contribute
 
-We use [Composer](https://getcomposer.org) for managing PHP development dependencies while [Node.js](https://nodejs.org) is used for most scripting needs, building the plugin release and deploying to WP.org via [Grunt](https://gruntjs.com).
+We use [Composer](https://getcomposer.org) for managing PHP development dependencies while [Node.js](https://nodejs.org) is used for most scripting needs, building the plugin release and deploying to WP.org via [@wpelevator/wp-release](https://www.npmjs.com/package/@wpelevator/wp-release) with [changesets](https://npmjs.com/package/@changesets/cli)-driven release pull requests.
 
 1. Clone the plugin repository:
 
 	   git clone https://github.com/kasparsd/contact-form-7-extras.git
-	   cd widget-context-wporg
 
 2. Setup the development environment and tools:
 
 	   npm install
 	   composer install
 
-3. Prepare a release in the `dist` directory:
+3. Build a release ZIP of the plugin:
 
-	   npm run build
+	   npm run zip
 
 
 ## Screenshot

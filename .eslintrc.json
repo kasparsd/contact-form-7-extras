@@ -1,5 +1,9 @@
 {
   "extends": "wordpress",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
   "rules": {
     "space-in-parens": [
       "error",
