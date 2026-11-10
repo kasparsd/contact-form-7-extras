@@ -5,7 +5,7 @@ Donate link: https://formcontrols.com/pro
 Tags: contact form 7, gtm, matomo, analytics, facebook pixel  
 Requires at least: 4.6   
 Tested up to: 7.1   
-Stable tag: 0.10.1
+Stable tag: 0.10.2
 License: GPLv2 or later
 
 Analytics, tracking, redirects and storage for Contact Form 7.
@@ -69,6 +69,11 @@ The [standard Contact event](https://developers.facebook.com/docs/facebook-pixel
 
 == Changelog ==
 
+
+
+= 0.10.2 =
+
+* Security fix: only store the declared form-tag fields and neutralize Shortcode brackets in values stored in TablePress, preventing unauthenticated Shortcode injection into public table render output. Reported by [kta1kri](https://github.com/kta1kri) through responsible disclosure.
 
 = 0.10.1 =
 
