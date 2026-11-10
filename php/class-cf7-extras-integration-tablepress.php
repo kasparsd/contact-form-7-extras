@@ -132,6 +132,53 @@ class Cf7_Extras_Integration_TablePress extends Cf7_Extras_Integration {
 	}
 
 	/**
+	 * Keep only the form's declared form-tag fields from the posted data.
+	 *
+	 * Posted data is built from every $_POST key not starting with an
+	 * underscore (see WPCF7_Submission), so it can carry keys that are not
+	 * declared by the form. Only declared tags and the internal cf7_* keys
+	 * should end up in the TablePress table.
+	 *
+	 * @param array             $form_data    Posted data.
+	 * @param WPCF7_ContactForm $contact_form Instance of the form being processed.
+	 *
+	 * @return array Filtered form data.
+	 */
+	public function restrict_form_data( array $form_data, WPCF7_ContactForm $contact_form ): array {
+		$accepted_keys = array(
+			'cf7_time',
+			'cf7_url',
+		);
+
+		foreach ( (array) $contact_form->scan_form_tags() as $tag ) {
+			if ( ! empty( $tag->name ) ) {
+				$accepted_keys[] = $tag->name;
+			}
+		}
+
+		if ( ! empty( $accepted_keys ) ) {
+			$form_data = array_intersect_key( $form_data, array_flip( $accepted_keys ) );
+		}
+
+		return $form_data;
+	}
+
+	/**
+	 * Neutralize shortcode brackets in values stored in TablePress.
+	 *
+	 * TablePress evaluates Shortcodes in table cells when rendering, so a
+	 * value like "[table id=3 /]" would expose another table's contents on
+	 * the public site. The HTML entities still display as brackets.
+	 *
+	 * @param string $value Cell value.
+	 *
+	 * @return string Escaped value.
+	 */
+	public function escape_shortcodes( string $value ): string {
+		return str_replace( array( '[', ']' ), array( '&#91;', '&#93;' ), $value );
+	}
+
+	/**
 	 * Store the form submission in TablePress.
 	 *
 	 * @param WPCF7_ContactForm $contact_form Instance of the form being processed.
@@ -147,7 +194,7 @@ class Cf7_Extras_Integration_TablePress extends Cf7_Extras_Integration {
 
 			if ( ! empty( $table ) && is_array( $table['data'] ) ) {
 				$form_submission = WPCF7_Submission::get_instance();
-				$form_data = $form_submission->get_posted_data();
+				$form_data = $this->restrict_form_data( $form_submission->get_posted_data(), $contact_form );
 
 				$extra_data = array(
 					'cf7_time' => gmdate( 'c', $form_submission->get_meta( 'timestamp' ) ),
@@ -191,12 +238,14 @@ class Cf7_Extras_Integration_TablePress extends Cf7_Extras_Integration {
 
 		foreach ( $form_data as $key => $value ) {
 			if ( is_array( $value ) ) {
-				$col_value = implode( ', ', $value );
+				$col_value = implode( ', ', array_filter( (array) $value, 'is_scalar' ) );
 			} elseif ( is_scalar( $value ) ) {
 				$col_value = (string) $value;
+			} else {
+				continue;
 			}
 
-			$table_row[ $col_index[ $key ] ] = $col_value;
+			$table_row[ $col_index[ $key ] ] = $this->escape_shortcodes( $col_value );
 		}
 
 		$table['data'][0] = $header_row; // Update the header row to include our headers.
