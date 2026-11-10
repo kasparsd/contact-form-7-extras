@@ -19,7 +19,11 @@ class Cf7_Extras_Integration_TablePress extends Cf7_Extras_Integration {
 		add_filter( 'cf7_extras__controls_fields', array( $this, 'controls_fields' ), 10, 2 );
 
 		if ( class_exists( 'TablePress' ) ) {
-			add_action( 'wpcf7_before_send_mail', array( $this, 'store_submission_in_tablepress' ) ); // The before hooks runs also when form submissions fail.
+			// wpcf7_before_send_mail only fires for submissions that passed the
+			// validation, acceptance and spam checks (CF7 gates the hook on
+			// its "init" status), but also still runs when mail delivery
+			// fails, so entries are not lost on SMTP errors.
+			add_action( 'wpcf7_before_send_mail', array( $this, 'store_submission_in_tablepress' ) );
 		}
 	}
 
