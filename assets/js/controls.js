@@ -21,10 +21,6 @@
 			} else {
 				trackAnalyticsEvent( 'Contact Form', form.status, formConfig.title );
 			}
-
-			if ( 'mail_sent' === form.status && formEventEnabled( form.contactFormId, 'redirect-success' ) && formConfig.redirect_url ) {
-				window.location = formConfig.redirect_url;
-			}
 		}
 	};
 
@@ -105,8 +101,29 @@
 			document.addEventListener(
 				formEventCallback,
 				function( event ) {
-					if ( event.type in formEventCallbacks && formEventEnabled( event.detail.contactFormId, 'track-ga' ) ) {
-						formEventCallbacks[ event.type ].call( event, event.detail, getFormConfig( event.detail.contactFormId ) );
+					var form, formConfig;
+
+					if ( ! ( event.type in formEventCallbacks ) ) {
+						return;
+					}
+
+					form = event.detail;
+					formConfig = getFormConfig( form.contactFormId );
+
+					// Analytics tracking is enabled per form.
+					if ( formEventEnabled( form.contactFormId, 'track-ga' ) ) {
+						formEventCallbacks[ event.type ].call( event, form, formConfig );
+					}
+
+					// Redirect on successful submission is enabled independently of analytics tracking.
+					if (
+						'wpcf7submit' === event.type &&
+						'mail_sent' === form.status &&
+						formConfig &&
+						formConfig.redirect_url &&
+						formEventEnabled( form.contactFormId, 'redirect-success' )
+					) {
+						window.location = formConfig.redirect_url;
 					}
 				}
 			);
