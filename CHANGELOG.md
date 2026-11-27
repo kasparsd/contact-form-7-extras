@@ -1,3 +1,7 @@
+## 0.10.3 (2026-11-27)
+
+- Fix the thank-you page redirect not firing when Google Analytics tracking is disabled for the form, and bail out safely when a form event arrives without a matching form config (both regressions introduced in 0.10.1).
+
 ## 0.10.2 (2026-11-10)
 
 - Security fix: only store the declared form-tag fields and neutralize Shortcode brackets in values stored in TablePress, preventing unauthenticated Shortcode injection into public table render output. Reported by [kta1kri](https://github.com/kta1kri) through responsible disclosure.
