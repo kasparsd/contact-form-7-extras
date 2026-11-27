@@ -5,7 +5,7 @@ Donate link: https://formcontrols.com/pro
 Tags: contact form 7, gtm, matomo, analytics, facebook pixel  
 Requires at least: 4.6   
 Tested up to: 7.1   
-Stable tag: 0.10.2
+Stable tag: 0.10.3
 License: GPLv2 or later
 
 Analytics, tracking, redirects and storage for Contact Form 7.
@@ -70,6 +70,11 @@ The [standard Contact event](https://developers.facebook.com/docs/facebook-pixel
 == Changelog ==
 
 
+
+
+= 0.10.3 =
+
+* Fix the thank-you page redirect not firing when Google Analytics tracking is disabled for the form, and bail out safely when a form event arrives without a matching form config (both regressions introduced in 0.10.1).
 
 = 0.10.2 =
 
