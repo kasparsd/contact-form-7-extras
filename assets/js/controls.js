@@ -110,6 +110,11 @@
 					form = event.detail;
 					formConfig = getFormConfig( form.contactFormId );
 
+					// All event handling relies on the per-form config.
+					if ( ! formConfig ) {
+						return;
+					}
+
 					// Analytics tracking is enabled per form.
 					if ( formEventEnabled( form.contactFormId, 'track-ga' ) ) {
 						formEventCallbacks[ event.type ].call( event, form, formConfig );
@@ -119,7 +124,6 @@
 					if (
 						'wpcf7submit' === event.type &&
 						'mail_sent' === form.status &&
-						formConfig &&
 						formConfig.redirect_url &&
 						formEventEnabled( form.contactFormId, 'redirect-success' )
 					) {
